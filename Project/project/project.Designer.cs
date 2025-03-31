@@ -53,7 +53,6 @@
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
@@ -70,7 +69,6 @@
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.tabControl.SuspendLayout();
             this.tabPage.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -399,8 +397,6 @@
             this.tabPage3.BackColor = System.Drawing.Color.Transparent;
             this.tabPage3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage3.BackgroundImage")));
             this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tabPage3.Controls.Add(this.richTextBox2);
-            this.tabPage3.Controls.Add(this.richTextBox1);
             this.tabPage3.Controls.Add(this.label13);
             this.tabPage3.Controls.Add(this.pictureBox17);
             this.tabPage3.Controls.Add(this.pictureBox16);
@@ -422,15 +418,6 @@
             this.tabPage3.Size = new System.Drawing.Size(1424, 843);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "tabPage3";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.Color.White;
-            this.richTextBox1.Location = new System.Drawing.Point(716, 271);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(346, 355);
-            this.richTextBox1.TabIndex = 15;
-            this.richTextBox1.Text = "";
             // 
             // label13
             // 
@@ -602,15 +589,6 @@
             this.pictureBox18.TabIndex = 12;
             this.pictureBox18.TabStop = false;
             // 
-            // richTextBox2
-            // 
-            this.richTextBox2.BackColor = System.Drawing.Color.White;
-            this.richTextBox2.Location = new System.Drawing.Point(1082, 271);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(346, 355);
-            this.richTextBox2.TabIndex = 16;
-            this.richTextBox2.Text = "";
-            // 
             // ST111
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -695,8 +673,6 @@
         private System.Windows.Forms.PictureBox pictureBox20;
         private System.Windows.Forms.PictureBox pictureBox19;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
     }
 }
 

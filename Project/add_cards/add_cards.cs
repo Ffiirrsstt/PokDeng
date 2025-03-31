@@ -52,10 +52,10 @@ namespace add_cards
             conn.Close();
         }
 
-        /*private void add_cards_Load(object sender, EventArgs e)
+        private void add_cards_Load(object sender, EventArgs e)
         {
 
-            string conStr =
+            /*string conStr =
             "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\USE\\project363\\DB\\DB.mdb";
             OleDbConnection conn = new OleDbConnection(conStr);
             conn.Open();
@@ -67,7 +67,7 @@ namespace add_cards
 
             byte[] imgByte = (byte[])data.Tables["Pit"].Rows[0]["Card_Picture"];
             MemoryStream imgStream = new MemoryStream(imgByte);
-            //pictureBox1.Image = Image.FromStream(imgStream);
-        }*/
+            //pictureBox1.Image = Image.FromStream(imgStream);*/
+        }
     }
 }

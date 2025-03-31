@@ -9,9 +9,8 @@ namespace project
 {
     internal class Cards_Games
     {
-        // เมธอดในการสับไพ่
+        // การสับไพ่
         public List<Cards> ShuffleCards(List<Cards> cards)
-        //public DataTable ShuffleCards(DataRowCollection cards)
         {
             Random rng = new Random();
             int n = cards.Count;
@@ -26,14 +25,30 @@ namespace project
             return cards;
         }
 
-        // เมธอดเพื่อแจกไพ่
-        /*public void DealCards(List<Card> shuffledCards)
+        // แจกไพ่แบบ data
+        public List<List<Cards>> deal_cards(List<Cards> cards ,int cardsPerPlayer)
         {
-            // แสดงผลการแจกไพ่ (ตัวอย่าง)
-            foreach (var card in shuffledCards)
+            int count_player = 1; //ยังไม่นับรวมเจ้ามือ
+            List<List<Cards>> hands = new List<List<Cards>>(); //เก็บไพ่บนมือ
+
+            for (int i = 0; i < count_player+1; i++)
             {
-                Console.WriteLine($"{card.Rank} of {card.Suit}");
+                hands.Add(new List<Cards>());
             }
-        }*/
+
+            int totalCardsUse = (count_player + 1) * cardsPerPlayer; // คำนวณจำนวนไพ่ที่จะแจก
+
+            int cardIndex = 0;
+            for (int round = 0; round < cardsPerPlayer; round++)
+            {
+                for (int i = 0; i < count_player+1; i++) // รวมเจ้ามือแล้ว - hands[index ท้ายสุดคือเจ้ามือ]
+                {
+                    hands[i].Add(cards[cardIndex]);
+                    cardIndex++;
+                }
+            }
+
+            return hands;
+        }
     }
 }
