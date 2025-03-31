@@ -1,0 +1,10 @@
+D:\USE\project363\Project\add_cards\bin\Debug\add_cards.exe.config
+D:\USE\project363\Project\add_cards\bin\Debug\add_cards.exe
+D:\USE\project363\Project\add_cards\bin\Debug\add_cards.pdb
+D:\USE\project363\Project\add_cards\obj\Debug\add_cards.csproj.AssemblyReference.cache
+D:\USE\project363\Project\add_cards\obj\Debug\add_cards.Properties.Resources.resources
+D:\USE\project363\Project\add_cards\obj\Debug\add_cards.csproj.GenerateResource.cache
+D:\USE\project363\Project\add_cards\obj\Debug\add_cards.csproj.CoreCompileInputs.cache
+D:\USE\project363\Project\add_cards\obj\Debug\add_cards.exe
+D:\USE\project363\Project\add_cards\obj\Debug\add_cards.pdb
+D:\USE\project363\Project\add_cards\obj\Debug\add_cards.add_cards.resources
