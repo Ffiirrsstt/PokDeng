@@ -1,6 +1,5 @@
-﻿using System; 
-using System.Data;
-using System.Data.OleDb;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -8,11 +7,13 @@ namespace project
 {
     public partial class ST111 : Form
     {
-        string conStr =
+        /*
+         string conStr =
             "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\USE\\project363\\DB\\DB.mdb";
         OleDbConnection conn;
 
         DataSet data = new DataSet();
+        */
 
         object[] cards;
 
@@ -21,27 +22,25 @@ namespace project
             InitializeComponent();
         }
 
-        //void setting_loadding() {
-        async Task setting_loadding() {
-            await fetchDataCards();
+        void setting_loadding() {
+            fetchDataCards();
         }
 
-        //void fetchDataCards()
         async Task fetchDataCards()
         {
-            OleDbConnection conn = new OleDbConnection(conStr);
-            conn.Open();
-            string sql = "select * from Cards";
-            OleDbCommand cmd = new OleDbCommand(sql, conn);
+            Cards cards = new Cards();
+            List<Cards> cards_data = await cards.fetchDataCards();
 
-            OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
-            adapter.Fill(data, "Cards");
+            /*foreach (Cards card in cards_data) {
+                richTextBox1.Text += card.id+" "+ card.name;
+            }
 
-            //cards = data.Tables["Cards"].Rows[0].ItemArray;
-            DataTable cards_table = data.Tables["Cards"];
+            Cards_Games cards_game = new Cards_Games();
 
-            /*foreach (DataRow card in cards_table.Rows) {
-                //richTextBox1.Text += card["Card_Name"]+" "+card["Card_Suit"];
+            List<Cards> new_cards_data = cards_game.ShuffleCards(cards_data);
+            foreach (Cards card in new_cards_data)
+            {
+                richTextBox2.Text += card.id + " " + card.name;
             }*/
         }
 

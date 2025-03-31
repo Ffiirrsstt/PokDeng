@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace project
     {
         // เมธอดในการสับไพ่
         public List<Cards> ShuffleCards(List<Cards> cards)
+        //public DataTable ShuffleCards(DataRowCollection cards)
         {
             Random rng = new Random();
             int n = cards.Count;
@@ -17,7 +19,7 @@ namespace project
             {
                 n--;
                 int k = rng.Next(n + 1);  // เลือก index แบบสุ่ม
-                Card value = cards[k];
+                Cards value = cards[k];
                 cards[k] = cards[n];
                 cards[n] = value;
             }
@@ -25,13 +27,13 @@ namespace project
         }
 
         // เมธอดเพื่อแจกไพ่
-        public void DealCards(List<Card> shuffledCards)
+        /*public void DealCards(List<Card> shuffledCards)
         {
             // แสดงผลการแจกไพ่ (ตัวอย่าง)
             foreach (var card in shuffledCards)
             {
                 Console.WriteLine($"{card.Rank} of {card.Suit}");
             }
-        }
+        }*/
     }
 }
