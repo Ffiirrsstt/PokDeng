@@ -34,14 +34,21 @@ namespace project
             List<Cards> cards_data = await cards.fetchDataCards();
 
             Cards_Games cards_game = new Cards_Games();
-            List<List<Cards>> new_cards_data = cards_game.deal_cards(cards_data, 2);
+            //สับ
+            List<Cards> new_cards_data1 = cards_game.ShuffleCards(cards_data);
+            //แจก
+            List<List<Cards>> new_cards_data = cards_game.deal_cards(new_cards_data1, 2);
 
             pictureBox14.Image = Image.FromStream(new MemoryStream(new_cards_data[0][0].picture)); //ผู้เล่นคนแรก , ไพ่ใบที่
             pictureBox15.Image = Image.FromStream(new MemoryStream(new_cards_data[0][1].picture));
+            pictureBox14.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox15.SizeMode = PictureBoxSizeMode.StretchImage;
 
             //admin
             pictureBox16.Image = Image.FromStream(new MemoryStream(new_cards_data[1][0].picture));
+            pictureBox16.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox17.Image = Image.FromStream(new MemoryStream(new_cards_data[1][1].picture));
+            pictureBox17.SizeMode = PictureBoxSizeMode.StretchImage;
 
             /*foreach (Cards card in cards_data) {
                 richTextBox1.Text += card.id+" "+ card.name;

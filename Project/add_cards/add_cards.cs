@@ -35,7 +35,7 @@ namespace add_cards
                 foreach (string rank in ranks)
                 {
                     string cardName = $"{rank} of {suit}";
-                    string imagePath = $"D:\\USE\\project363\\img\\card_jpg\\{cardName}.jpg"; // ไฟล์ภาพของไพ่
+                    string imagePath = $"D:\\USE\\project363\\img\\card\\{cardName}.jpg"; // ไฟล์ภาพของไพ่
                     //byte[] imageBytes = System.IO.File.Exists(imagePath) ? System.IO.File.ReadAllBytes(imagePath) : new byte[0];
                     byte[] imageBytes = System.IO.File.ReadAllBytes(imagePath);
 
