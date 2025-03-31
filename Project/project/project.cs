@@ -1,25 +1,53 @@
 ﻿using System; 
 using System.Data;
-using System.Drawing;
+using System.Data.OleDb;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace project
 {
     public partial class ST111 : Form
     {
+        string conStr =
+            "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\USE\\project363\\DB\\DB.mdb";
+        OleDbConnection conn;
+
         DataSet data = new DataSet();
+
+        object[] cards;
 
         public ST111()
         {
             InitializeComponent();
         }
 
-        void setting_loadding() {
+        //void setting_loadding() {
+        async Task setting_loadding() {
+            await fetchDataCards();
+        }
 
+        //void fetchDataCards()
+        async Task fetchDataCards()
+        {
+            OleDbConnection conn = new OleDbConnection(conStr);
+            conn.Open();
+            string sql = "select * from Cards";
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
+
+            OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+            adapter.Fill(data, "Cards");
+
+            //cards = data.Tables["Cards"].Rows[0].ItemArray;
+            DataTable cards_table = data.Tables["Cards"];
+
+            /*foreach (DataRow card in cards_table.Rows) {
+                //richTextBox1.Text += card["Card_Name"]+" "+card["Card_Suit"];
+            }*/
         }
 
         void game_intro()
         {
+            //await Task.Delay(5000);
             //this.BackgroundImage = Image.FromFile("D:\\USE\\img\\project363\\Intro.png");
 
         }

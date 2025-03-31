@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "D:\\USE\\project363\\Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|D:\\USE\\project363\\Project\\project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D45FEE4-868F-4BFB-A6A8-E1CE28725619}|add_cards\\add_cards.csproj|d:\\use\\project363\\project\\add_cards\\add_cards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0D45FEE4-868F-4BFB-A6A8-E1CE28725619}|add_cards\\add_cards.csproj|D:\\USE\\project363\\Project\\add_cards\\add_cards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0D45FEE4-868F-4BFB-A6A8-E1CE28725619}|add_cards\\add_cards.csproj|solutionrelative:add_cards\\add_cards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "project\\project.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\project.cs",
               "RelativeToolTip": "project\\project.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAAKAAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAAAzwCMAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-31T09:51:06.588Z",
               "EditorCaption": ""
@@ -65,7 +65,7 @@
               "RelativeDocumentMoniker": "add_cards\\add_cards.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\add_cards\\add_cards.cs",
               "RelativeToolTip": "add_cards\\add_cards.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEcAAAALAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBkAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-31T09:50:43.383Z",
               "EditorCaption": ""

@@ -11,7 +11,6 @@ namespace add_cards
     {
         string conStr =
             "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\USE\\project363\\DB\\DB.mdb";
-        OleDbConnection conn;
 
         public add_cards()
         {
@@ -20,7 +19,7 @@ namespace add_cards
 
         void add_data_cards()
         {
-            conn = new OleDbConnection(conStr);
+            OleDbConnection conn = new OleDbConnection(conStr);
             conn.Open();
 
             string sql = "INSERT INTO Cards " +
