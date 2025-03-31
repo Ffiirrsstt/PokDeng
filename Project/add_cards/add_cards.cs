@@ -35,7 +35,7 @@ namespace add_cards
                 foreach (string rank in ranks)
                 {
                     string cardName = $"{rank} of {suit}";
-                    string imagePath = $"D:\\USE\\project363\\img\\card\\{cardName}.png"; // ไฟล์ภาพของไพ่
+                    string imagePath = $"D:\\USE\\project363\\img\\card_jpg\\{cardName}.jpg"; // ไฟล์ภาพของไพ่
                     //byte[] imageBytes = System.IO.File.Exists(imagePath) ? System.IO.File.ReadAllBytes(imagePath) : new byte[0];
                     byte[] imageBytes = System.IO.File.ReadAllBytes(imagePath);
 
@@ -54,7 +54,6 @@ namespace add_cards
 
         private void add_cards_Load(object sender, EventArgs e)
         {
-
             /*string conStr =
             "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\USE\\project363\\DB\\DB.mdb";
             OleDbConnection conn = new OleDbConnection(conStr);
@@ -68,6 +67,11 @@ namespace add_cards
             byte[] imgByte = (byte[])data.Tables["Pit"].Rows[0]["Card_Picture"];
             MemoryStream imgStream = new MemoryStream(imgByte);
             //pictureBox1.Image = Image.FromStream(imgStream);*/
+        }
+
+        private void add_cards_DB_Click(object sender, EventArgs e)
+        {
+            add_data_cards();
         }
     }
 }

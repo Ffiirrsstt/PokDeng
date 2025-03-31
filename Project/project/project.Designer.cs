@@ -69,6 +69,9 @@
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.pictureBox21 = new System.Windows.Forms.PictureBox();
+            this.pictureBox22 = new System.Windows.Forms.PictureBox();
+            this.pictureBox23 = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
             this.tabPage.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -94,6 +97,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -198,9 +204,9 @@
             this.label12.BackColor = System.Drawing.Color.Black;
             this.label12.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(767, 384);
+            this.label12.Location = new System.Drawing.Point(765, 384);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(64, 39);
+            this.label12.Size = new System.Drawing.Size(72, 39);
             this.label12.TabIndex = 17;
             this.label12.Text = "50K";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -213,9 +219,9 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(101)))), ((int)(((byte)(95)))));
             this.label10.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(609, 384);
+            this.label10.Location = new System.Drawing.Point(607, 384);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 39);
+            this.label10.Size = new System.Drawing.Size(71, 39);
             this.label10.TabIndex = 12;
             this.label10.Text = "10K";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -228,9 +234,9 @@
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(15)))), ((int)(((byte)(112)))));
             this.label9.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(462, 384);
+            this.label9.Location = new System.Drawing.Point(454, 384);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 39);
+            this.label9.Size = new System.Drawing.Size(72, 39);
             this.label9.TabIndex = 11;
             this.label9.Text = "5K";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -345,9 +351,9 @@
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(2)))), ((int)(((byte)(16)))));
             this.label8.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.label8.ForeColor = System.Drawing.Color.Transparent;
-            this.label8.Location = new System.Drawing.Point(313, 384);
+            this.label8.Location = new System.Drawing.Point(305, 384);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 39);
+            this.label8.Size = new System.Drawing.Size(70, 39);
             this.label8.TabIndex = 10;
             this.label8.Text = "2K";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -394,9 +400,12 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage3.BackgroundImage")));
             this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage3.Controls.Add(this.pictureBox23);
+            this.tabPage3.Controls.Add(this.pictureBox22);
+            this.tabPage3.Controls.Add(this.pictureBox21);
             this.tabPage3.Controls.Add(this.label13);
             this.tabPage3.Controls.Add(this.pictureBox17);
             this.tabPage3.Controls.Add(this.pictureBox16);
@@ -436,7 +445,7 @@
             // 
             // pictureBox17
             // 
-            this.pictureBox17.BackColor = System.Drawing.Color.Black;
+            this.pictureBox17.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox17.Location = new System.Drawing.Point(231, 59);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(100, 125);
@@ -445,7 +454,7 @@
             // 
             // pictureBox16
             // 
-            this.pictureBox16.BackColor = System.Drawing.Color.Black;
+            this.pictureBox16.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox16.Location = new System.Drawing.Point(104, 59);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(104, 125);
@@ -569,7 +578,7 @@
             // 
             // pictureBox19
             // 
-            this.pictureBox19.BackColor = System.Drawing.Color.White;
+            this.pictureBox19.BackColor = System.Drawing.Color.Black;
             this.pictureBox19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox19.BackgroundImage")));
             this.pictureBox19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox19.Location = new System.Drawing.Point(597, 510);
@@ -580,7 +589,7 @@
             // 
             // pictureBox18
             // 
-            this.pictureBox18.BackColor = System.Drawing.Color.White;
+            this.pictureBox18.BackColor = System.Drawing.Color.Black;
             this.pictureBox18.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox18.BackgroundImage")));
             this.pictureBox18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox18.Location = new System.Drawing.Point(508, 510);
@@ -588,6 +597,36 @@
             this.pictureBox18.Size = new System.Drawing.Size(121, 173);
             this.pictureBox18.TabIndex = 12;
             this.pictureBox18.TabStop = false;
+            // 
+            // pictureBox21
+            // 
+            this.pictureBox21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox21.BackgroundImage")));
+            this.pictureBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox21.Location = new System.Drawing.Point(644, 356);
+            this.pictureBox21.Name = "pictureBox21";
+            this.pictureBox21.Size = new System.Drawing.Size(136, 130);
+            this.pictureBox21.TabIndex = 15;
+            this.pictureBox21.TabStop = false;
+            // 
+            // pictureBox22
+            // 
+            this.pictureBox22.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox22.BackgroundImage")));
+            this.pictureBox22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox22.Location = new System.Drawing.Point(950, 465);
+            this.pictureBox22.Name = "pictureBox22";
+            this.pictureBox22.Size = new System.Drawing.Size(257, 280);
+            this.pictureBox22.TabIndex = 16;
+            this.pictureBox22.TabStop = false;
+            // 
+            // pictureBox23
+            // 
+            this.pictureBox23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox23.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox23.Image")));
+            this.pictureBox23.Location = new System.Drawing.Point(307, 312);
+            this.pictureBox23.Name = "pictureBox23";
+            this.pictureBox23.Size = new System.Drawing.Size(249, 357);
+            this.pictureBox23.TabIndex = 17;
+            this.pictureBox23.TabStop = false;
             // 
             // ST111
             // 
@@ -628,6 +667,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -673,6 +715,9 @@
         private System.Windows.Forms.PictureBox pictureBox20;
         private System.Windows.Forms.PictureBox pictureBox19;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.PictureBox pictureBox23;
+        private System.Windows.Forms.PictureBox pictureBox22;
+        private System.Windows.Forms.PictureBox pictureBox21;
     }
 }
 

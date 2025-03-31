@@ -17,7 +17,7 @@ namespace project
         DataSet data = new DataSet();
         */
 
-        object[] cards;
+        //object[] cards;
 
         public ST111()
         {
