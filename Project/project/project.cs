@@ -41,7 +41,6 @@ namespace project
             List<List<Cards>> cardCard_hands = cards_game.deal_cards(shuffleCards, 2);
             PokDeng pokdeng_game = new PokDeng();
             List<int> player_draw = new List<int> { 0,1 };
-
             cardCard_hands = cards_game.draw_additionalCard(cardCard_hands, player_draw, 1, shuffleCards);
 
             //admin
