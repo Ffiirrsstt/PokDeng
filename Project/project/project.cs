@@ -48,7 +48,6 @@ namespace project
 
             var result = pokdeng_game.much_cards_hand(new_cards_data[1]);
             richTextBox1.Text += "แต้ม : " + result.points_cards.ToString() + ", จ่ายกี่เท่า : " + result.times_pay.ToString() + " | เป็นไพ่ชนิดพิเศษไหม : " + result.special_hands.ToString() + " คือ " + result.special_hands_type.ToString() + "*มีใบที่สูงสุด คือ ไพ่ :" + result.hierarchy.ToString();
-            richTextBox1.BackColor = Color.White;
 
             //ผู้เล่น
             pictureBox14.Image = Image.FromStream(new MemoryStream(new_cards_data[0][0].picture)); //ผู้เล่นคนแรก , ไพ่ใบที่

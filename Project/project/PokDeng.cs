@@ -101,5 +101,7 @@ namespace project
 
             return (points_cards, times_pay, special_hands, special_hands_type, hierarchy);
         }
+   
+        //public void()
     }
 }

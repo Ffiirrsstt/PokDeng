@@ -150,10 +150,7 @@ namespace project
             else
             {
                 if (suit_firstCard != suit_currentCard)
-                {
-                    MessageBox.Show(suit_firstCard.ToString() + " | " + suit_currentCard.ToString());
                     suit_cards = false;
-                }
 
                 //คนละตัวแปลว่าไม่ตอง
                 if (rank_firstCard != rank_currentCard)
