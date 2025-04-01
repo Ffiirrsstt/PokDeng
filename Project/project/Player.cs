@@ -12,8 +12,10 @@ namespace project
         public int money { get; private set; } = 100000;
 
         //กี่เท่า, เดิมพัน
-        public void money_in(int times, int bet) => money = (times* bet)+ money;
-        public void money_out(int times, int bet) => money = money - ((times-1) * bet); //(times-1) เพราะตอนเริ่มเดิมพันหักส่วนเดิมพันไปแล้ว
+        // times-1 หรือ  times+1  เพราะตอนเริ่มเดิมพันหักส่วนเดิมพันไปแล้ว
+        public void money_in(int times, int bet) => money = ((times + 1) * bet) + money;
+        public void money_out(int times, int bet) => money = money - ((times-1) * bet); 
+
         public void refund_bet(int bet) => money += bet; //แปลว่าเสมอ
         public void deduct_bet(int bet) => money -= bet;//ลงเงินเดิมพัน
         public string display() => "$ " + money.ToString("N0"); // N0 หมายถึงไม่ต้องการทศนิยม แต่จะเพิ่มคอมม่า

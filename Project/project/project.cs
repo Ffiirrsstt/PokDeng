@@ -35,7 +35,7 @@ namespace project
         async Task fetchDataCards()
         {
             Player player = new Player();
-            money_player_label1.Text = player.display();
+            money_player_label.Text = player.display();
             int bet = 5000;
 
             player.deduct_bet(bet);
@@ -84,25 +84,27 @@ namespace project
             {
                 //ชนะ
                 int times_pay = resultUser.times_pay;
-                txt = "ได้รับ : " + times_pay;
+                txt = "ได้รับ : " + times_pay + "เท่า";
                 player.money_in(times_pay, bet);
+                MessageBox.Show(player.money.ToString());
             }
             else if (result == listResult[1])
             {
                 //แพ้
                 int times_pay = resultDealer.times_pay;
-                txt = "จ่าย : " + times_pay;
+                txt = "จ่าย : " + times_pay + "เท่า";
                 player.money_out(times_pay, bet);
+                MessageBox.Show(player.money.ToString());
             }
             else if (result == listResult[2])
             {
                 txt = "จ่าย : " + "ได้รับเงินคืน";
                 player.refund_bet(bet);
+                MessageBox.Show(player.money.ToString());
             }
 
             richTextBox3.Text = "ผล : " + result + Environment.NewLine + txt;
-
-            money_player_label1.Text = player.display();
+            money_player_label.Text = player.display();
 
 
 
