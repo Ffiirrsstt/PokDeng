@@ -20,14 +20,8 @@ namespace project
 
         int dic_hands_type(string special_hands_type)
         {
-            Dictionary<string, int> dic_special_hands_type = new Dictionary<string, int>
-            {
-                    { "three_kind", 3 },
-                    { "royal_cards", 2 },
-                    { "straight", 1 },
-            };
-
-            return dic_special_hands_type[special_hands_type];
+            dictionary_PokDeng dic = new dictionary_PokDeng();
+            return dic.Dic_SpecialHandsTypeReadOnly[special_hands_type];
         }
 
         //ไว้รวมให้เรียกง่าย ๆ
@@ -42,7 +36,8 @@ namespace project
         public string win_lose_draw(PokDeng hand_user, PokDeng hand_dealer)
         {
             //สร้าง list ให้แก้ง่าย ๆ น่ะ เวลาไม่อยากใช้คำว่า win lose draw
-            List<string> result = new List<string>{"win", "lose", "draw"}; //ออกแบบมุมผู้เล่น จะยึดฝั่งผู้เล่นว่าแพ้ ชนะ เสมอ
+            dictionary_PokDeng dic = new dictionary_PokDeng();
+            List<string> result = dic.list_result_game; //ออกแบบมุมผู้เล่น จะยึดฝั่งผู้เล่นว่าแพ้ ชนะ เสมอ
 
             //เช็กว่าเป็นไพ่พิเศษไหม - ตอง > เซียน > เรียง> แต้ม หรือก็คือ ไพ่พิเศษ > ไพ่ไม่พิเศษ
             if (hand_user.special_hands && !hand_dealer.special_hands)
@@ -67,6 +62,8 @@ namespace project
                 //สนศักดิ์คิง ควีนไรงี้ แต่เล่นแบบไม่สนดอก
                 return check_higher_value(hand_user.hierarchy, hand_dealer.hierarchy, result);
             }
+
+            return result[3];
         }
 
         //เช็กมากกว่า น้อยกว่า เท่ากับ - ชนะ แพ้ เสมอน่ะ

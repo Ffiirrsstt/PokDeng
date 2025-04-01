@@ -73,6 +73,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
             this.pictureBox22 = new System.Windows.Forms.PictureBox();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.tabControl.SuspendLayout();
             this.tabPage.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -403,6 +404,7 @@
             this.tabPage3.BackColor = System.Drawing.Color.White;
             this.tabPage3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage3.BackgroundImage")));
             this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage3.Controls.Add(this.richTextBox3);
             this.tabPage3.Controls.Add(this.pictureBox22);
             this.tabPage3.Controls.Add(this.pictureBox21);
             this.tabPage3.Controls.Add(this.richTextBox2);
@@ -640,6 +642,16 @@
             this.pictureBox22.TabIndex = 20;
             this.pictureBox22.TabStop = false;
             // 
+            // richTextBox3
+            // 
+            this.richTextBox3.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.richTextBox3.Location = new System.Drawing.Point(941, 368);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(400, 179);
+            this.richTextBox3.TabIndex = 21;
+            this.richTextBox3.Text = "";
+            // 
             // ST111
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -730,6 +742,7 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.PictureBox pictureBox22;
         private System.Windows.Forms.PictureBox pictureBox21;
+        private System.Windows.Forms.RichTextBox richTextBox3;
     }
 }
 

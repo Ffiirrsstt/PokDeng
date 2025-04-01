@@ -51,8 +51,8 @@ namespace project
             pictureBox17.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox21.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            var result = pokdeng_game.much_cards_hand(cardCard_hands[1]);
-            richTextBox1.Text += "แต้ม : " + result.points_cards.ToString() + ", จ่ายกี่เท่า : " + result.times_pay.ToString() + " | เป็นไพ่ชนิดพิเศษไหม : " + result.special_hands.ToString() + " คือ " + result.special_hands_type.ToString() + "*มีใบที่สูงสุด คือ ไพ่ :" + result.hierarchy.ToString();
+            PokDeng resultDealer = pokdeng_game.much_cards_hand(cardCard_hands[1]);
+            richTextBox1.Text += "แต้ม : " + resultDealer.points_cards.ToString() + ", จ่ายกี่เท่า : " + resultDealer.times_pay.ToString() + " | เป็นไพ่ชนิดพิเศษไหม : " + resultDealer.special_hands.ToString() + " คือ " + resultDealer.special_hands_type.ToString() + "*มีใบที่สูงสุด คือ ไพ่ :" + resultDealer.hierarchy.ToString();
 
             //ผู้เล่น
             pictureBox14.Image = Image.FromStream(new MemoryStream(cardCard_hands[0][0].picture)); //ผู้เล่นคนแรก , ไพ่ใบที่
@@ -62,8 +62,18 @@ namespace project
             pictureBox15.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox22.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            result = pokdeng_game.much_cards_hand(cardCard_hands[0]);
-            richTextBox2.Text += "แต้ม : " + result.points_cards.ToString() + ", จ่ายกี่เท่า : " + result.times_pay.ToString() + " | เป็นไพ่ชนิดพิเศษไหม : " + result.special_hands.ToString() + " คือ " + result.special_hands_type.ToString() + "*มีใบที่สูงสุด คือ ไพ่ :" + result.hierarchy.ToString();
+            PokDeng resultUser = pokdeng_game.much_cards_hand(cardCard_hands[0]);
+            richTextBox2.Text += "แต้ม : " + resultUser.points_cards.ToString() + ", จ่ายกี่เท่า : " + resultUser.times_pay.ToString() + " | เป็นไพ่ชนิดพิเศษไหม : " + resultUser.special_hands.ToString() + " คือ " + resultUser.special_hands_type.ToString() + "*มีใบที่สูงสุด คือ ไพ่ :" + resultUser.hierarchy.ToString();
+
+            dictionary_PokDeng dic = new dictionary_PokDeng();
+            List<string> listResult = dic.list_result_game;
+            string result = pokdeng_game.win_lose_draw(resultUser, resultDealer);
+            if (result == listResult[3]) MessageBox.Show("ตัวคำนวณผลแพ้-ชนะ Error น่ะ");
+            richTextBox3.Text = "ผล : " + result + Environment.NewLine +
+                    (result == listResult[1] ? "จ่าย : " + resultDealer.times_pay : "") +
+                    (result == listResult[0] ? "ได้รับ : " + resultUser.times_pay : "") + " เท่า";
+
+
             //(points_cards, times_pay, special_hands, special_hands_type, hierarchy)
 
             /*foreach (Cards card in cards_data) {
