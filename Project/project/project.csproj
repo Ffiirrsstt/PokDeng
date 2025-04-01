@@ -51,7 +51,8 @@
     <Compile Include="Cards_Games_Services.cs" />
     <Compile Include="Cards_Games_UI.cs" />
     <Compile Include="PokDeng.cs" />
-    <Compile Include="PokDeng_Services.cs" />
+    <Compile Include="PokDeng_Services_muchHand.cs" />
+    <Compile Include="PokDeng_Services_winLoseDraw.cs" />
     <Compile Include="project.cs">
       <SubType>Form</SubType>
     </Compile>
