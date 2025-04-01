@@ -50,6 +50,7 @@
     <Compile Include="Cards_Games.cs" />
     <Compile Include="Cards_Games_UI.cs" />
     <Compile Include="PokDeng.cs" />
+    <Compile Include="PokDeng_Services.cs" />
     <Compile Include="project.cs">
       <SubType>Form</SubType>
     </Compile>
