@@ -10,7 +10,7 @@ namespace project
     internal class Cards_Games
     {
         // การสับไพ่
-        public List<Cards> ShuffleCards(List<Cards> cards)
+        public List<Cards> shuffle_cards(List<Cards> cards)
         {
             Random rng = new Random();
             int n = cards.Count;

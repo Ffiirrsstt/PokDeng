@@ -49,6 +49,7 @@
     <Compile Include="Cards.cs" />
     <Compile Include="Cards_Games.cs" />
     <Compile Include="Cards_Games_UI.cs" />
+    <Compile Include="PokDeng.cs" />
     <Compile Include="project.cs">
       <SubType>Form</SubType>
     </Compile>

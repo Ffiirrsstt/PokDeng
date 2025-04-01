@@ -35,14 +35,14 @@ namespace project
 
             Cards_Games cards_game = new Cards_Games();
             //สับ
-            List<Cards> new_cards_data1 = cards_game.ShuffleCards(cards_data);
+            List<Cards> new_cards_data1 = cards_game.shuffle_cards(cards_data);
             //แจก
             List<List<Cards>> new_cards_data = cards_game.deal_cards(new_cards_data1, 2);
 
             pictureBox14.Image = Image.FromStream(new MemoryStream(new_cards_data[0][0].picture)); //ผู้เล่นคนแรก , ไพ่ใบที่
             pictureBox15.Image = Image.FromStream(new MemoryStream(new_cards_data[0][1].picture));
             pictureBox14.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox15.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox15.SizeMode = PictureBoxSizeMode.StretchImage; 
 
             //admin
             pictureBox16.Image = Image.FromStream(new MemoryStream(new_cards_data[1][0].picture));
@@ -56,7 +56,7 @@ namespace project
 
             Cards_Games cards_game = new Cards_Games();
 
-            List<Cards> new_cards_data = cards_game.ShuffleCards(cards_data);
+            List<Cards> new_cards_data = cards_game.shuffle_cards(cards_data);
             foreach (Cards card in new_cards_data)
             {
                 richTextBox2.Text += card.id + " " + card.name;
