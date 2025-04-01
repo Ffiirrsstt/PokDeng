@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace project
@@ -26,7 +27,7 @@ namespace project
             int points_cards = 0; //แต้มทั้งหมดบนมือ
 
             //same_cards ใช้เช็กว่ายังเหมือนกันไหม เช่น 2 2 | 3 3 เอาไว้เช็กว่า 2เด้งไหม หรือตองงี้
-            bool suit_cards = true, royal_cards = true,straight = true, same_cards = true;
+            bool suit_cards = true, royal_cards = true,straight = false, same_cards = true;
             //ดอกของใบแรก , ค่าใบของใบแรก
             string suit_firstCard = "", rank_firstCard = "";
             int max=-1, min=-1, mid=-1; //ตั้งไม่ให้ error เพราะของจริงมีตั้ง default ไว้ตอน cardIdx == 0
@@ -57,7 +58,7 @@ namespace project
 
                 //เอา points_card_number หาไพ่ max min mid เพื่อใช้ในการเช็กว่าเป็นไพ่เรียงไหม
                 //ยังให้ A = 1 ตรง ๆ ยังไม่แปลง A = 14 เรื่องนั้นไว้ใช้ตอนเช็กเรียงทีเดียว
-                (min, mid, max) = services.min_mid_max(cardIdx, points_card_number, straight, min, mid, max);
+                (min, mid, max) = services.min_mid_max(cardIdx, points_card_number, min, mid, max);
             }
 
             //ถ้า มีไพ่เหมือนกันหรือเซียน ไม่มีโอกาสเป็นเรียง - ดังนั้นต้องไม่ใช่เซียน ไม่ใช่ไพ่ซ้ำ เช่นตอง และต้องมีไพ่ถึงสามใบ จึงจะ 'มีโอกาส' เป็นเรียง
@@ -66,10 +67,11 @@ namespace project
 
             hierarchy = max; //max จะเป็น ..,13 อยู่แล้ว (A default 1 ก่อน ข้างล่างจุึงแปลง ดังนั้นจึงมากำหนดค่าศักดิ์ตรงนี้)
 
-            if (straight && royal_cards != true && cards_count == 3)
+            if ( royal_cards != true && cards_count == 3)
             {
                 // คำนวณมาเก็บจริง A ให้ 1 แต่ตอนคำนวณว่าเป็นเรียงไหมจะแปลง 1 เป็น 14 อีกที
                 straight = services.check_straight(min, mid, max);
+                MessageBox.Show(straight.ToString());
             }
 
 

@@ -115,13 +115,12 @@ namespace project
         }
 
         //เอา points_card หาไพ่ max min mid เพื่อใช้ในการเช็กว่าเป็นไพ่เรียงไหม
-        public (int min, int mid, int max) min_mid_max(int cardIdx, int points_card, bool straight, int min, int mid, int max)
+        public (int min, int mid, int max) min_mid_max(int cardIdx, int points_card, int min, int mid, int max)
         {
             //กำหนด defualt
-            //หมายเหตุถ้า straight == false ถือว่าไม่สนใจเช็กเรียงละ แปลว่ามันต้องมีไพ่ใบที่เป็นหน้าคนไปแล้ว
-            if (cardIdx == 0 && straight)
+            if (cardIdx == 0)
                 min = mid = max = points_card;
-            else if (cardIdx != 0 && straight)
+            else if (cardIdx != 0)
             {
                 if (points_card > max)
                     max = points_card;
