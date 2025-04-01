@@ -39,7 +39,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.money_player_label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -59,7 +59,7 @@
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.money_player_label = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -74,6 +74,8 @@
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
             this.pictureBox22 = new System.Windows.Forms.PictureBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.tabControl.SuspendLayout();
             this.tabPage.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -101,6 +103,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -147,12 +150,13 @@
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
             this.tabPage2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage2.BackgroundImage")));
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage2.Controls.Add(this.trackBar1);
             this.tabPage2.Controls.Add(this.pictureBox20);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.money_player_label1);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.pictureBox3);
             this.tabPage2.Controls.Add(this.pictureBox4);
@@ -242,20 +246,20 @@
             this.label9.Text = "5K";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // money_player_label1
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.money_player_label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(2)))), ((int)(((byte)(33)))));
-            this.label3.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(662, 755);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(243, 45);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "$ 0";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.money_player_label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(2)))), ((int)(((byte)(33)))));
+            this.money_player_label1.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.money_player_label1.ForeColor = System.Drawing.Color.White;
+            this.money_player_label1.Location = new System.Drawing.Point(662, 755);
+            this.money_player_label1.Name = "money_player_label1";
+            this.money_player_label1.Size = new System.Drawing.Size(243, 45);
+            this.money_player_label1.TabIndex = 6;
+            this.money_player_label1.Text = "$ 0";
+            this.money_player_label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -404,6 +408,7 @@
             this.tabPage3.BackColor = System.Drawing.Color.White;
             this.tabPage3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tabPage3.BackgroundImage")));
             this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage3.Controls.Add(this.label14);
             this.tabPage3.Controls.Add(this.richTextBox3);
             this.tabPage3.Controls.Add(this.pictureBox22);
             this.tabPage3.Controls.Add(this.pictureBox21);
@@ -415,7 +420,7 @@
             this.tabPage3.Controls.Add(this.pictureBox15);
             this.tabPage3.Controls.Add(this.pictureBox14);
             this.tabPage3.Controls.Add(this.pictureBox13);
-            this.tabPage3.Controls.Add(this.label4);
+            this.tabPage3.Controls.Add(this.money_player_label);
             this.tabPage3.Controls.Add(this.label5);
             this.tabPage3.Controls.Add(this.pictureBox5);
             this.tabPage3.Controls.Add(this.pictureBox6);
@@ -439,7 +444,7 @@
             this.label13.BackColor = System.Drawing.Color.Orange;
             this.label13.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(1213, 755);
+            this.label13.Location = new System.Drawing.Point(1047, 755);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(169, 64);
             this.label13.TabIndex = 14;
@@ -494,20 +499,20 @@
             this.pictureBox13.TabIndex = 7;
             this.pictureBox13.TabStop = false;
             // 
-            // label4
+            // money_player_label
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.money_player_label.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(2)))), ((int)(((byte)(33)))));
-            this.label4.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(662, 755);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(243, 45);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "$ 0";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.money_player_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(2)))), ((int)(((byte)(33)))));
+            this.money_player_label.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.money_player_label.ForeColor = System.Drawing.Color.White;
+            this.money_player_label.Location = new System.Drawing.Point(662, 755);
+            this.money_player_label.Name = "money_player_label";
+            this.money_player_label.Size = new System.Drawing.Size(243, 45);
+            this.money_player_label.TabIndex = 6;
+            this.money_player_label.Text = "$ 0";
+            this.money_player_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
@@ -646,11 +651,33 @@
             // 
             this.richTextBox3.BackColor = System.Drawing.SystemColors.HotTrack;
             this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.richTextBox3.Location = new System.Drawing.Point(941, 368);
+            this.richTextBox3.Location = new System.Drawing.Point(1018, 268);
             this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(400, 179);
+            this.richTextBox3.Size = new System.Drawing.Size(380, 179);
             this.richTextBox3.TabIndex = 21;
             this.richTextBox3.Text = "";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.BackColor = System.Drawing.Color.Gainsboro;
+            this.label14.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(1232, 755);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(169, 64);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "ไม่จั่ว";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(271, 289);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(593, 56);
+            this.trackBar1.TabIndex = 22;
             // 
             // ST111
             // 
@@ -658,7 +685,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1435, 894);
+            this.ClientSize = new System.Drawing.Size(1148, 715);
             this.Controls.Add(this.tabControl);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -669,6 +696,7 @@
             this.tabControl.ResumeLayout(false);
             this.tabPage.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -693,6 +721,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -708,14 +737,14 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label money_player_label;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label money_player_label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
@@ -743,6 +772,8 @@
         private System.Windows.Forms.PictureBox pictureBox22;
         private System.Windows.Forms.PictureBox pictureBox21;
         private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 

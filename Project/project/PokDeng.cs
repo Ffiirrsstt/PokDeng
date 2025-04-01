@@ -21,7 +21,7 @@ namespace project
         int dic_hands_type(string special_hands_type)
         {
             dictionary_PokDeng dic = new dictionary_PokDeng();
-            return dic.Dic_SpecialHandsTypeReadOnly[special_hands_type];
+            return dic.dic_special_hands_type[special_hands_type];
         }
 
         //ไว้รวมให้เรียกง่าย ๆ
@@ -37,7 +37,7 @@ namespace project
         {
             //สร้าง list ให้แก้ง่าย ๆ น่ะ เวลาไม่อยากใช้คำว่า win lose draw
             dictionary_PokDeng dic = new dictionary_PokDeng();
-            List<string> result = dic.list_result_game; //ออกแบบมุมผู้เล่น จะยึดฝั่งผู้เล่นว่าแพ้ ชนะ เสมอ
+            List<string> result = dic.result_game; //ออกแบบมุมผู้เล่น จะยึดฝั่งผู้เล่นว่าแพ้ ชนะ เสมอ
 
             //เช็กว่าเป็นไพ่พิเศษไหม - ตอง > เซียน > เรียง> แต้ม หรือก็คือ ไพ่พิเศษ > ไพ่ไม่พิเศษ
             if (hand_user.special_hands && !hand_dealer.special_hands)

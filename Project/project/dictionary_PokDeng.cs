@@ -8,16 +8,13 @@ namespace project
 {
     internal class dictionary_PokDeng
     {
-        Dictionary<string, int> dic_special_hands_type = new Dictionary<string, int>
+        public Dictionary<string, int> dic_special_hands_type { get; private set; }  = new Dictionary<string, int>
         {
-                    { "three_kind", 3 },
-                    { "royal_cards", 2 },
-                    { "straight", 1 },
+               { "three_kind", 3 },
+               { "royal_cards", 2 },
+               { "straight", 1 },
         };
-        List<string> result_game = new List<string> { "win", "lose", "draw", "error" };
 
-        //อ่านเท่านั้น
-        public IReadOnlyDictionary<string, int> Dic_SpecialHandsTypeReadOnly => dic_special_hands_type;
-        public List<string> list_result_game => result_game;
+        public List<string> result_game { get; private set; }  = new List<string> { "win", "lose", "draw", "error" };
     }
 }

@@ -7,32 +7,36 @@
       "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\pokdeng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\pokdeng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|D:\\USE\\project363\\Project\\project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|D:\\USE\\project363\\Project\\project\\cards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\cards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\dictionary_pokdeng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\dictionary_pokdeng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\pokdeng_services_muchhand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\pokdeng_services_muchhand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|D:\\USE\\project363\\Project\\project\\cards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\cards.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\pokdeng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\pokdeng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\pokdeng_muchhand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\pokdeng_muchhand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\pokdeng_services_winlosedraw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\pokdeng_services_winlosedraw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\pokdeng_muchhand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\pokdeng_muchhand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\pokdeng_services_muchhand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\pokdeng_services_muchhand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,20 +58,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
+              "Title": "Player.cs",
+              "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\Player.cs",
+              "RelativeDocumentMoniker": "project\\Player.cs",
+              "ToolTip": "D:\\USE\\project363\\Project\\project\\Player.cs",
+              "RelativeToolTip": "project\\Player.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAawBIAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T21:46:00.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "dictionary_PokDeng.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\dictionary_PokDeng.cs",
               "RelativeDocumentMoniker": "project\\dictionary_PokDeng.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\dictionary_PokDeng.cs",
               "RelativeToolTip": "project\\dictionary_PokDeng.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAAAsAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAuwBAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-01T21:20:14.444Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "PokDeng_muchHand.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\PokDeng_muchHand.cs",
               "RelativeDocumentMoniker": "project\\PokDeng_muchHand.cs",
@@ -80,7 +97,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "PokDeng_Services_winLoseDraw.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\PokDeng_Services_winLoseDraw.cs",
               "RelativeDocumentMoniker": "project\\PokDeng_Services_winLoseDraw.cs",
@@ -93,7 +110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "PokDeng_Services_muchHand.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\PokDeng_Services_muchHand.cs",
               "RelativeDocumentMoniker": "project\\PokDeng_Services_muchHand.cs",
@@ -106,13 +123,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Cards.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\Cards.cs",
               "RelativeDocumentMoniker": "project\\Cards.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\Cards.cs",
               "RelativeToolTip": "project\\Cards.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAWAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-31T17:51:28.961Z",
               "EditorCaption": ""
@@ -125,27 +142,27 @@
               "RelativeDocumentMoniker": "project\\project.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\project.cs",
               "RelativeToolTip": "project\\project.cs",
-              "ViewState": "AQIAAD0AAAAAAAAAAAAgwEcAAAAMAAAA",
+              "ViewState": "AQIAAB0AAAAAAAAAAAASwCUAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-31T09:51:06.588Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "PokDeng.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\PokDeng.cs",
               "RelativeDocumentMoniker": "project\\PokDeng.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\PokDeng.cs",
               "RelativeToolTip": "project\\PokDeng.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAACYAAAAMAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAA4wBcAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-01T10:50:52.173Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "project.cs [Design]",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\project.cs",
               "RelativeDocumentMoniker": "project\\project.cs",

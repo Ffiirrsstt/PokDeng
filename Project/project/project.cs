@@ -29,8 +29,17 @@ namespace project
             fetchDataCards();
         }
 
+        /*
+         อยากลืมทำยอดติดลบ ถ้าติดลบเชิญออก*/
+
         async Task fetchDataCards()
         {
+            Player player = new Player();
+            money_player_label1.Text = player.display();
+            int bet = 5000;
+
+            player.deduct_bet(bet);
+
             Cards cards = new Cards();
             List<Cards> cards_data = await cards.fetchDataCards();
 
@@ -66,12 +75,35 @@ namespace project
             richTextBox2.Text += "แต้ม : " + resultUser.points_cards.ToString() + ", จ่ายกี่เท่า : " + resultUser.times_pay.ToString() + " | เป็นไพ่ชนิดพิเศษไหม : " + resultUser.special_hands.ToString() + " คือ " + resultUser.special_hands_type.ToString() + "*มีใบที่สูงสุด คือ ไพ่ :" + resultUser.hierarchy.ToString();
 
             dictionary_PokDeng dic = new dictionary_PokDeng();
-            List<string> listResult = dic.list_result_game;
+            List<string> listResult = dic.result_game;
             string result = pokdeng_game.win_lose_draw(resultUser, resultDealer);
             if (result == listResult[3]) MessageBox.Show("ตัวคำนวณผลแพ้-ชนะ Error น่ะ");
-            richTextBox3.Text = "ผล : " + result + Environment.NewLine +
-                    (result == listResult[1] ? "จ่าย : " + resultDealer.times_pay : "") +
-                    (result == listResult[0] ? "ได้รับ : " + resultUser.times_pay : "") + " เท่า";
+
+            string txt="";
+            if (result == listResult[0])
+            {
+                //ชนะ
+                int times_pay = resultUser.times_pay;
+                txt = "ได้รับ : " + times_pay;
+                player.money_in(times_pay, bet);
+            }
+            else if (result == listResult[1])
+            {
+                //แพ้
+                int times_pay = resultDealer.times_pay;
+                txt = "จ่าย : " + times_pay;
+                player.money_out(times_pay, bet);
+            }
+            else if (result == listResult[2])
+            {
+                txt = "จ่าย : " + "ได้รับเงินคืน";
+                player.refund_bet(bet);
+            }
+
+            richTextBox3.Text = "ผล : " + result + Environment.NewLine + txt;
+
+            money_player_label1.Text = player.display();
+
 
 
             //(points_cards, times_pay, special_hands, special_hands_type, hierarchy)
@@ -103,7 +135,9 @@ namespace project
 
         private void pokdeng_game_Click(object sender, EventArgs e)
         {
+            Player player = new Player();
 
+            money_player_label1.Text = player.money.ToString(); 
         }
     }
 }
