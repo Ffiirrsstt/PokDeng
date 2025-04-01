@@ -40,12 +40,7 @@ namespace project
             //ตองจ่าย 5 เท่า
             if (same_cards && number_cards == 3) return 5;
             else if (royal_cards || straight) return 3;
-            //else if (suit_cards) return number_cards;
-            else if (suit_cards) 
-            {
-                MessageBox.Show(number_cards.ToString());
-                return number_cards;
-            }
+            else if (suit_cards) return number_cards;
             //ซ้ำสอง ไม่สนดอก เช่น 2 2 || 3 3 จ่าย 2 เท่า
             else if (same_cards && number_cards == 2) return 2;
 
@@ -141,27 +136,30 @@ namespace project
         }
 
         //เช็กดอกกับไพ่ว่าเหมือนกันมั้ย
-        public (bool suit_cards, bool same_cards) check_threeOfKind_Bonus(
+        public (string suit_firstCard,string rank_firstCard, bool suit_cards, bool same_cards) check_Bonus(
             List<Cards> cards_hand, int cardIdx, string suit_firstCard, string rank_firstCard, string rank_currentCard, bool suit_cards, bool same_cards)
         {
-            string suit_currentCardx = cards_hand[cardIdx].suit;
+            string suit_currentCard = cards_hand[cardIdx].suit;
             if (cardIdx == 0)
             {
-                suit_firstCard = suit_currentCardx;
+                suit_firstCard = suit_currentCard;
                 rank_firstCard = rank_currentCard;
             }
             //ถ้าใบอื่น ๆ ไม่เหมือนใบแรกจะมีการเปลี่ยนแปลงตั้งค่า
             //ดอกไม่เหมือนกัน แปลว่าไม่ใช่เด้ง
             else
             {
-                if (suit_firstCard != suit_currentCardx)
+                if (suit_firstCard != suit_currentCard)
+                {
+                    MessageBox.Show(suit_firstCard.ToString() + " | " + suit_currentCard.ToString());
                     suit_cards = false;
+                }
 
                 //คนละตัวแปลว่าไม่ตอง
                 if (rank_firstCard != rank_currentCard)
                     same_cards = false;
             }
-            return (suit_cards, same_cards);
+            return (suit_firstCard, rank_firstCard, suit_cards, same_cards);
         }
 
         //แปลงไพ่เป็นแต้ม เช็กว่ามีเป็นเซียนไหม แปลงเลขรูปแบบ points_card_number (1,...,13,14 สำหรับทำไพ่เรียง)

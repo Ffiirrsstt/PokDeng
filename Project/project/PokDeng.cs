@@ -28,6 +28,7 @@ namespace project
 
             //same_cards ใช้เช็กว่ายังเหมือนกันไหม เช่น 2 2 | 3 3 เอาไว้เช็กว่า 2เด้งไหม หรือตองงี้
             bool suit_cards = true, royal_cards = true,straight = false, same_cards = true;
+
             //ดอกของใบแรก , ค่าใบของใบแรก
             string suit_firstCard = "", rank_firstCard = "";
             int max=-1, min=-1, mid=-1; //ตั้งไม่ให้ error เพราะของจริงมีตั้ง default ไว้ตอน cardIdx == 0
@@ -49,7 +50,7 @@ namespace project
                 string rank_currentCard = cards_hand[cardIdx].rank;
 
                 //เช็กดอกกับไพ่ว่าเหมือนกันมั้ย - ถ้าเหมือนกัน 2 ใบ = 2 เด้ง เช่น 3 3 , ถ้าเหมือนกัน 3 ใบเรียกตอง
-                (suit_cards, same_cards) = services.check_threeOfKind_Bonus(cards_hand, cardIdx, suit_firstCard, rank_firstCard, rank_currentCard, suit_cards, same_cards);
+                (suit_firstCard, rank_firstCard, suit_cards, same_cards) = services.check_Bonus(cards_hand, cardIdx, suit_firstCard, rank_firstCard, rank_currentCard, suit_cards, same_cards);
 
                 //แปลงไพ่เป็นแต้มแล้วรวมแบบ total
                 //เช็กว่ามีเป็นเซียนไหม
@@ -66,6 +67,12 @@ namespace project
             //check_straight ไม่มีเช็กว่าไพ่ซ้ำก็ได้ แต่ที่ใส่เช็ก เพื่อที่ถ้าซ้ำจะได้ไม่ไปคำนวณอย่างอื่นต่อ ให้ออก check_straight น่ะ
 
             hierarchy = max; //max จะเป็น ..,13 อยู่แล้ว (A default 1 ก่อน ข้างล่างจุึงแปลง ดังนั้นจึงมากำหนดค่าศักดิ์ตรงนี้)
+
+            if (cards_count != 3)
+            {
+                //สองใบไม่เรียกเซียน - ในกรณีที่สองใบเป็นหน้าคนน่ะ ; กำหนดตรงนี้แหละ ข้างล่างมันมีไปคำนวณต่อว่าจ่ายกี่เท่า และเป็นไพ่ชนิดอะไรเพื่อคืนค่ากลับ
+                royal_cards = false;
+            }
 
             if ( royal_cards != true && cards_count == 3)
             {
