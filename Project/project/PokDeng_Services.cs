@@ -50,27 +50,6 @@ namespace project
 
 
         //เช็กว่าเรียงไหม
-        /*
-         * ความน่าจะเป็นในการเรียง 3! = 3*2 = 6
-         * min , mid , max
-         * min , max , mid
-         * 
-         * mid , min , max
-         * mid , max , min
-         * 
-         * max , min , mid
-         * max , mid , min
-         * 
-         * เรียงให้เขียนโค้ดง่ายขึ้น
-         * min , mid , max - min < mid < max || max <mid < min 
-         * max , mid , min - แปลงให้ถูกไวยากรณ์ (min < mid && mid < max) || (max < mid && mid < min)
-         * 
-         * min , max , mid - (min < max && max < mid) || (mid < max && max < min)
-         * mid , max , min
-         * 
-         * mid , min , max - (mid < min && min < max) || (max < min && min < mid)
-         * max , min , mid
-         */
         public bool check_straight(int min, int mid, int max)
         {
             //มีซ้ำกันถือว่าไม่เรียง check_straight return false ไปเลย ไม่คำนวณต่อ
@@ -105,12 +84,20 @@ namespace project
             return check_order(min, mid, max);
         }
 
+        /*
         //เช็กว่าเรียงไหมน่ะ
         public bool check_order(int min, int mid, int max)
         {
             if ((min < mid && mid < max) || (max < mid && mid < min) ||
                 (min < max && max < mid) || (mid < max && max < min) ||
                 (mid < min && min < max) || (max < min && min < mid))
+                return true;
+            return false;
+        }*/
+
+        bool check_order(int min, int mid, int max)
+        {
+            if (mid - 1 == min && mid + 1 == max)
                 return true;
             return false;
         }

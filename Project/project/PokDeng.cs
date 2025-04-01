@@ -75,11 +75,8 @@ namespace project
             }
 
             if ( royal_cards != true && cards_count == 3)
-            {
                 // คำนวณมาเก็บจริง A ให้ 1 แต่ตอนคำนวณว่าเป็นเรียงไหมจะแปลง 1 เป็น 14 อีกที
                 straight = services.check_straight(min, mid, max);
-                MessageBox.Show(straight.ToString());
-            }
 
 
             //เช็กว่าจ่ายกี่เทา

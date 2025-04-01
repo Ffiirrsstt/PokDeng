@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace project
 {
@@ -35,27 +36,34 @@ namespace project
 
             Cards_Games cards_game = new Cards_Games();
             //สับ
-            List<Cards> new_cards_data1 = cards_game.shuffle_cards(cards_data);
+            List<Cards> shuffleCards = cards_game.shuffle_cards(cards_data);
             //แจก
-            List<List<Cards>> new_cards_data = cards_game.deal_cards(new_cards_data1, 2);
+            List<List<Cards>> cardCard_hands = cards_game.deal_cards(shuffleCards, 2);
             PokDeng pokdeng_game = new PokDeng();
+            List<int> player_draw = new List<int> { 0,1 };
+
+            cardCard_hands = cards_game.draw_additionalCard(cardCard_hands, player_draw, 1, shuffleCards);
 
             //admin
-            pictureBox16.Image = Image.FromStream(new MemoryStream(new_cards_data[1][0].picture));
-            pictureBox17.Image = Image.FromStream(new MemoryStream(new_cards_data[1][1].picture));
+            pictureBox16.Image = Image.FromStream(new MemoryStream(cardCard_hands[1][0].picture));
+            pictureBox17.Image = Image.FromStream(new MemoryStream(cardCard_hands[1][1].picture));
+            pictureBox21.Image = Image.FromStream(new MemoryStream(cardCard_hands[1][2].picture));
             pictureBox16.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox17.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox21.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            var result = pokdeng_game.much_cards_hand(new_cards_data[1]);
+            var result = pokdeng_game.much_cards_hand(cardCard_hands[1]);
             richTextBox1.Text += "แต้ม : " + result.points_cards.ToString() + ", จ่ายกี่เท่า : " + result.times_pay.ToString() + " | เป็นไพ่ชนิดพิเศษไหม : " + result.special_hands.ToString() + " คือ " + result.special_hands_type.ToString() + "*มีใบที่สูงสุด คือ ไพ่ :" + result.hierarchy.ToString();
 
             //ผู้เล่น
-            pictureBox14.Image = Image.FromStream(new MemoryStream(new_cards_data[0][0].picture)); //ผู้เล่นคนแรก , ไพ่ใบที่
-            pictureBox15.Image = Image.FromStream(new MemoryStream(new_cards_data[0][1].picture));
+            pictureBox14.Image = Image.FromStream(new MemoryStream(cardCard_hands[0][0].picture)); //ผู้เล่นคนแรก , ไพ่ใบที่
+            pictureBox15.Image = Image.FromStream(new MemoryStream(cardCard_hands[0][1].picture));
+            pictureBox22.Image = Image.FromStream(new MemoryStream(cardCard_hands[0][2].picture));
             pictureBox14.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox15.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox22.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            result = pokdeng_game.much_cards_hand(new_cards_data[0]);
+            result = pokdeng_game.much_cards_hand(cardCard_hands[0]);
             richTextBox2.Text += "แต้ม : " + result.points_cards.ToString() + ", จ่ายกี่เท่า : " + result.times_pay.ToString() + " | เป็นไพ่ชนิดพิเศษไหม : " + result.special_hands.ToString() + " คือ " + result.special_hands_type.ToString() + "*มีใบที่สูงสุด คือ ไพ่ :" + result.hierarchy.ToString();
             //(points_cards, times_pay, special_hands, special_hands_type, hierarchy)
 

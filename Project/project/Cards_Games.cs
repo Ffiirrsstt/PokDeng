@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,34 +40,22 @@ namespace project
             }
 
             int cardIdx = 0;
-            return cardData_to_list(hands, deck, cardIdx, cardsPerPlayer, count_player);
+
+            Cards_Games_Services services = new Cards_Games_Services();
+            return services.cardData_to_list(hands, deck, cardIdx, cardsPerPlayer, count_player);
         }
 
         //hands ไพ่ทั้งหมดบนมือที่ถูกแจกไปก่อนหน้านี้ของทั้งสองฝ่าย | deck คือกองไพ่ที่จะใช้จั่ว - กองกลาง
-        public List<List<Cards>> draw_additionalCard(List<List<Cards>> hands, int count_addCardsPerPlayer, List<Cards> deck)
+        //รูปแบบจั่วไพ่แบบใครอยากจั่ว - idx_playerWants_draw | จั่วกี่ใบ - count_addCardsPerPlayer
+        //(ออกแบบ : มีคนอยากจั่วพร้อมกันหลายคนได้ แต่ต้องจั่วจำนวนเท่ากัน)
+        public List<List<Cards>> draw_additionalCard(List<List<Cards>> hands,List<int> idx_playerWants_draw, int count_addCardsPerPlayer, List<Cards> deck)
         {
             int count_player = hands.Count; //จำนวนผู้เล่น รวมเจ้ามือ
             //ถ้าใช้ไปแล้ว 4 ใบจากในกอง (0-3) แปลว่าใบถัดไปที่จะถูกใช้คือใบที่ 4 
             //ใช้ไป 5 ใบแล้ว (0-4) แปลว่าจั่วใบถัดไปต้องเป้นใบที่ 5
             int cardIdx = hands.Sum(hand => hand.Count);
-
-            return cardData_to_list(hands, deck, cardIdx, count_addCardsPerPlayer, count_player);
-        }
-
-        //drawn_cardsPerPlayer , count_player| รวมเจ้ามือ
-        List<List<Cards>> cardData_to_list(List<List<Cards>> hands, List<Cards> deck, int cardIdx, int drawn_cardsPerPlayer, int count_player)
-        {
-            
-            for (int round = 0; round < drawn_cardsPerPlayer; round++)
-            {
-                for (int i = 0; i < count_player; i++) 
-                {
-                    hands[i].Add(deck[cardIdx]);
-                    cardIdx++;
-                }
-            }
-
-            return hands;
+            Cards_Games_Services services = new Cards_Games_Services();
+            return services.cardData_to_list(hands, deck, cardIdx, count_addCardsPerPlayer, count_player, idx_playerWants_draw);
         }
     }
 }

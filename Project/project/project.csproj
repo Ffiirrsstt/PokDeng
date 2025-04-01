@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Cards.cs" />
     <Compile Include="Cards_Games.cs" />
+    <Compile Include="Cards_Games_Services.cs" />
     <Compile Include="Cards_Games_UI.cs" />
     <Compile Include="PokDeng.cs" />
     <Compile Include="PokDeng_Services.cs" />
