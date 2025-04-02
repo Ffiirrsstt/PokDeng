@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Reflection.Emit;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace project
 {
@@ -16,7 +20,10 @@ namespace project
         Picture pic;
         Player player;
         Calculate cal = new Calculate();
+        Cards_Games cards_game;
         Cards cards;
+        List<Cards> cards_data;
+        PokDeng pokdeng;
 
         int bet_default = 100000; //วงเงินเดิมพันเริ่มต้นของผู้เล่น - ก็คือแจกเงินตอนแรกอะแหละ
         double bet=2000; //เงินที่เดิมพันในแต่ละตา 
@@ -30,6 +37,7 @@ namespace project
             //ออกแบบ dic ให้แก้ง่ายหน่อย
             tab = new Tab(tabControl, dic_tab());
             pic = new Picture(dic_pic());
+            cards_game = new Cards_Games();
 
         }
 
@@ -64,7 +72,7 @@ namespace project
         async Task fetch_data_cards()
         {
             cards = new Cards();
-            List<Cards> cards_data = await cards.fetchDataCards();
+            cards_data = await cards.fetchDataCards();
         }
         void game_intro()
         {
@@ -96,6 +104,9 @@ namespace project
 
 
 
+
+
+
         private void ST111_Load(object sender, EventArgs e)
         {
             fetch_data_cards();
@@ -122,11 +133,90 @@ namespace project
             displayTXT_display_bet_start(bet_start);
         }
 
-        void pokdeng_game()
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            /*foreach (var obj in objects)
+            {
+                if (!started[obj.Key]) continue; // ข้ามถ้ายังไม่เริ่มเคลื่อนที่
+
+                var (targetX, targetY, _) = obj.Value;
+                var (x, y) = positions[obj.Key];
+
+                if (x < targetX) x += speed;
+                if (y < targetY) y += speed;
+
+                positions[obj.Key] = (x, y);
+            */
+
+            this.Invalidate();
+        }
+
+        private Dictionary<int, (PictureBox pic, Point loc, Point loc_target, bool display, bool start_move)> dic_deck;
+
+        (PictureBox pic, Point loc, Point loc_target, bool display, bool start_move) //dis=true,bool move=false | เช่น รอหนึ่งเสร็จ สองค่อยขยับ
+            tuple_dic_deck(PictureBox pic, int x, int y,bool dis=true,bool move=false) => (pic, deck.Location, new Point(x, y),dis,move);
+
+        //ป็อกเด้งเริ่มต้นแจกสองอะสิ
+        void animation_deal_default(List<List<Cards>> card_hands)
+        {
+            dic_deck = new Dictionary<int, (PictureBox pic, Point loc, Point loc_target,bool display,bool start_move)>
+            {
+                {0,tuple_dic_deck(deck_first,508,510,true,true)  },
+                {0,tuple_dic_deck(deck_second,508, 146)  },
+                {0,tuple_dic_deck(deck_third,597, 510)  },
+                {0,tuple_dic_deck(deck_fourth,597, 146)  },
+                {0,tuple_dic_deck(deck_fifth,684, 510,false)  }, //ยังไม่จั่วอะนะ
+                {0,tuple_dic_deck(deck_sixth,684, 146,false)  },
+            };
+
+            timer.Start();
+            /*int cards_per_player = 2, count_player =2; //การ์ดสองใบต่อคน , ผู้เล่นสองคน-รวมเจ้ามืออะนะ
+            Point card_coordinates_start = deck.Location;
+
+            for (int round = 0; round < cards_per_player; round++)
+            {
+                for (int i = 0; i < count_player; i++)
+                {
+                    deck_first
+                }
+            }*/
+
+
+        }
+
+        void animation_move_dealCard()
+        {
+        }
+
+
+
+        void setting_page_pokdengBasic()
         {
             //แสดงยอดเงินหลังหักเดิมพันเรียบร้อยแล้ว
-            money_player_label.Text= player.display();
+            money_player_label.Text = player.display();
             tab.play_pokdeng_game();
+            btn_draw_card.Hide();
+            btn_not_draw_card.Hide();
+        }
+
+
+        void pokdeng_game()
+        {
+            //pokdeng = new PokDeng();
+
+            setting_page_pokdengBasic();
+
+            //สับไพ่แบบข้อมูล
+            List<Cards> shuffleCards = cards_game.shuffle_cards(cards_data);
+            //แจกไพ่แบบข้อมูล
+            List<List<Cards>> card_hands = cards_game.deal_cards(shuffleCards, 2);
+            animation_deal(card_hands);
+
+            /*PictureBox card1 = pictureBoxes["card1"];
+            MessageBox.Show(card1.Name);*/
+
+            //List<int> player_draw = new List<int> { 0, 1 }; //ใครเลือกจั่วบ้าง ใส่ index คนที่จั่ว ที่นี่เล่นสองคน มี 0,1 โดย 1 เป็นเจ้ามือ
+            //cardCard_hands = cards_game.draw_additionalCard(cardCard_hands, player_draw, 1, shuffleCards);
 
             //อนิเมชันไพ่สองใบ - ผู้เล่น | เจ้ามือ
         }
