@@ -587,6 +587,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_not_draw_card.BackColor = System.Drawing.Color.Gainsboro;
+            this.btn_not_draw_card.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_not_draw_card.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btn_not_draw_card.ForeColor = System.Drawing.Color.Black;
             this.btn_not_draw_card.Location = new System.Drawing.Point(1232, 755);
@@ -602,6 +603,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_draw_card.BackColor = System.Drawing.Color.Orange;
+            this.btn_draw_card.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_draw_card.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btn_draw_card.ForeColor = System.Drawing.Color.Black;
             this.btn_draw_card.Location = new System.Drawing.Point(1047, 755);

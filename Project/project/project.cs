@@ -22,6 +22,7 @@ namespace project
         List<Cards> cards_data;
         PokDeng pokdeng;
         List<List<Cards>> card_hands;
+        Cards_Games_UI_deal cards_ui;
         int speed = 5; //ความไวไพ่ (ความไวเคลื่อนที่ของไพ่อะแหละจ้ะ)
 
         int bet_default = 100000; //วงเงินเดิมพันเริ่มต้นของผู้เล่น - ก็คือแจกเงินตอนแรกอะแหละ
@@ -37,6 +38,7 @@ namespace project
             tab = new Tab(tabControl, dic_tab());
             pic = new Picture(dic_pic());
             cards_game = new Cards_Games();
+            cards_ui = new Cards_Games_UI_deal();
 
         }
 
@@ -134,16 +136,22 @@ namespace project
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            animation_deal();
+
+        }
+
+        void animation_deal()
+        {
             int card_number_change = 0; //ไว้แก้อะนะ มันไปแก้ใน if ข้างในไม่ได้ เพราะเปลี่ยนแปลงข้อมูล dic ขณะวน loop อยู่ไม่ได้
             foreach (var card in dic_deck)
             {
-                var (pic, loc_target, display, start_move) = card.Value;
-                int card_number= card.Key;
+                var (pic, loc_target, _, start_move) = card.Value;
+                int card_number = card.Key;
                 int current_X = pic.Location.X, current_Y = pic.Location.Y;
-                
-                //ถ้าใบที่ 1 2 3 ถึงที่หมายแล้ว ให้ใบถัดไปแจกต่ออะนะ เหมือนเวลาแจกไพ่ทีละใบอะแหละ
-                //ส่วนต่อจากใบที่ 4 จะเป็น 5 ซึ่ง 5 กับ 6 มันเป็นใบที่แล้วแต่คนว่าอยากจั่วป่าวน่ะ
-                if (current_X<= loc_target.X && current_Y >= loc_target.Y && (card_number == 1|| card_number == 2|| card_number == 3))
+
+                /*ถ้าใบที่ 1 2 3 ถึงที่หมายแล้ว ให้ใบถัดไปแจกต่ออะนะ เหมือนเวลาแจกไพ่ทีละใบอะแหละ
+                //ส่วนต่อจากใบที่ 4 จะเป็น 5 ซึ่ง 5 กับ 6 มันเป็นใบที่แล้วแต่คนว่าอยากจั่วป่าวน่ะ*/
+                if (current_X <= loc_target.X && current_Y >= loc_target.Y && (card_number == 1 || card_number == 2 || card_number == 3))
                 {
                     card_number_change = card_number + 1;
                     continue;
@@ -160,26 +168,17 @@ namespace project
                 this.Invalidate();
             }
 
-            if(card_number_change!=0) 
-                dic_deck[card_number_change] = (dic_deck[card_number_change].pic, dic_deck[card_number_change].loc_target, dic_deck[card_number_change].display, true);
+            dic_deck = cards_ui.setting_deal_default(dic_deck, timer, card_number_change,startGame_deal, btn_draw_card, btn_not_draw_card, richTextBox1);
 
-            //จะเช็กว่าแจกเริ่มต้นคนละสองใบเสร็จหรือยังอะแหละ
+            /*//จะเช็กว่าแจกเริ่มต้นคนละสองใบเสร็จหรือยังอะแหละ
             //เช็กที่ใบที่สี่ เพราะทำทีละใบ ถ้าใบที่สี่เสร็จ แปลว่าแจกคนละสองใบเสร็จละ
-            Point loc_card_number_fourth = dic_deck[4].pic.Location; 
+            //มี startGame_deal ด้วย ให้รู้ว่าเป็น timer ที่ให้เริ่มทำเพราะอยากแจกคนละสองใบ ไม่ใช่ timer ที่ให้ทำเพื่อให้จั่วเพิ่ม(กรณีให้สิทธิ์จั่ว) - ไม่งั้นกลายเป็นหยุดจับเวลา ทั้ง ๆ ที่ไพ่ใบที่จั่วเพิ่มยังแจกไม่เสร็จ เพราะไปเช็กพบว่าไพ่ที่ต้องแจกคนละสองใบแจกเสร็จแล้ว เลยหยุดจับเวลาอะนะ*/
+            Point loc_card_number_fourth = dic_deck[4].pic.Location;
             Point target_card_number_fourth = dic_deck[4].loc_target;
-            //มี startGame_deal ด้วย ให้รู้ว่าเป็น timer ที่ให้เริ่มทำเพราะอยากแจกคนละสองใบ ไม่ใช่ timer ที่ให้ทำเพื่อให้จั่วเพิ่ม(กรณีให้สิทธิ์จั่ว) - ไม่งั้นกลายเป็นหยุดจับเวลา ทั้ง ๆ ที่ไพ่ใบที่จั่วเพิ่มยังแจกไม่เสร็จ เพราะไปเช็กพบว่าไพ่ที่ต้องแจกคนละสองใบแจกเสร็จแล้ว เลยหยุดจับเวลาอะนะ
-            if (startGame_deal && loc_card_number_fourth.X <= target_card_number_fourth.X && loc_card_number_fourth.Y >= target_card_number_fourth.Y)
-            {
-                PictureBox pic_player_num1 = dic_deck[1].pic;
-                PictureBox pic_player_num2 = dic_deck[3].pic; //dic_deck[3] เพราะแจกสลับ ดังนั้นใบที่สองเป็นของดีลเลอร์ ซึ่งไม่แสดงไพ่ดีลเลอร์จนกว่าจะถึงเวลาเปิดไพ่
-                pic_player_num1.Image = Image.FromStream(new MemoryStream(card_hands[0][0].picture)); //นอกจากหยุดจับเวลาก็มาแสดงไพ่ให้ผู้เล่นเห็นด้วยว่าแจกได้ไร
-                //card_hands[0][2].picture - คนที่ 0 คือ ผู้เล่น | ถ้าคนที่ 1 คือดีลเลอร์ และ 1 คือ ไพ่ใบที่สองอะนะ
-                pic_player_num2.Image = Image.FromStream(new MemoryStream(card_hands[0][1].picture));
 
-                setting_pic_Stretch(pic_player_num1);
-                setting_pic_Stretch(pic_player_num2);
-                timer.Stop(); //หยุดจำเวลาชั่วคราว - จนกว่าจะ start ใหม่อะแหละนะ
-            }
+            cards_ui.dealing_cards_each_player
+            (player, dic_deck, card_hands, timer, startGame_deal, btn_draw_card, btn_not_draw_card, bet, money_player_label ,loc_card_number_fourth, target_card_number_fourth);
+
 
         }
 
@@ -201,18 +200,15 @@ namespace project
             /*pictureBox12.Image = Image.FromStream(new MemoryStream(card_hands[0][2].picture));
             pictureBox11.Image = Image.FromStream(new MemoryStream(card_hands[1][2].picture));*/
 
-            setting_pic_Stretch(pictureBox18);
-            setting_pic_Stretch(pictureBox9);
-            setting_pic_Stretch(pictureBox19);
-            setting_pic_Stretch(pictureBox10);
-            setting_pic_Stretch(pictureBox12);
-            setting_pic_Stretch(pictureBox11);
+            pic.setting_pic_list_Stretch(new List<PictureBox>{ pictureBox18,pictureBox9,pictureBox19,pictureBox10,pictureBox12,pictureBox11});
         }
 
         //ป็อกเด้งเริ่มต้นแจกสองอะสิ
         void animation_deal_default(List<List<Cards>> card_hands)
         {
+            startGame_deal = true;
             test_();
+
             dic_deck = new Dictionary<int, (PictureBox pic, Point loc_target,bool display,bool start_move)>
             {
                 //การแก้ key จะส่งผลต่อเมธอดที่ใช้แจกไพ่นะ

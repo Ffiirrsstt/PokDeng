@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -22,6 +23,12 @@ namespace project
         {
             dictionary_PokDeng dic = new dictionary_PokDeng();
             return dic.dic_special_hands_type[special_hands_type];
+        }
+
+        public (bool, (PokDeng, PokDeng)) check_pok_All(Dictionary<int, (PictureBox pic, Point loc_target, bool display, bool start_move)> dic_deck, List<List<Cards>> hands, Label draw, Label not_draw)
+        {
+            PokDeng_OpenCard decide = new PokDeng_OpenCard();
+            return decide.decide_reveal_hide(dic_deck,hands, draw, not_draw);
         }
 
         //ไว้รวมให้เรียกง่าย ๆ
@@ -67,7 +74,7 @@ namespace project
         }
 
         //เช็กมากกว่า น้อยกว่า เท่ากับ - ชนะ แพ้ เสมอน่ะ
-        string check_higher_value(int user,int dealer,List<string> result)
+        public string check_higher_value(int user,int dealer,List<string> result)
         {
             if (user > dealer)
                 return result[0];
@@ -78,5 +85,7 @@ namespace project
             //ไม่มากกว่า ไม่น้อยกว่า ดังนั้นเหลือแค่เท่ากับ - if(user == dealer)
             return result[2];
         }
+
+       
     }
 }

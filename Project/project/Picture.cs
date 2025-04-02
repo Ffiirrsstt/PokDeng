@@ -11,7 +11,7 @@ namespace project
     internal class Picture
     {
         Dictionary<int, Tuple<PictureBox, Point, Size>> _chips;
-        public Picture(Dictionary<int, Tuple<PictureBox, Point, Size>> chips)
+        public Picture(Dictionary<int, Tuple<PictureBox, Point, Size>> chips = null)
         {
             _chips = chips; 
         }
@@ -43,6 +43,12 @@ namespace project
 
                 resize_location_pic(pic, size.Width, size.Height, point.X , point.Y );
             }
+        }
+
+        public void setting_pic_Stretch(PictureBox pic) => pic.SizeMode = PictureBoxSizeMode.StretchImage;
+
+        public void setting_pic_list_Stretch(List<PictureBox> pic_list) { 
+            foreach (PictureBox pic in pic_list) setting_pic_Stretch(pic); 
         }
 
     }
