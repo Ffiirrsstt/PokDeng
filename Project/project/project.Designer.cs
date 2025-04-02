@@ -57,6 +57,12 @@
             this.bet_5K = new System.Windows.Forms.PictureBox();
             this.bet_10K = new System.Windows.Forms.PictureBox();
             this.page_play_pokdeng = new System.Windows.Forms.TabPage();
+            this.deck_first = new System.Windows.Forms.PictureBox();
+            this.deck_second = new System.Windows.Forms.PictureBox();
+            this.deck_third = new System.Windows.Forms.PictureBox();
+            this.deck_fourth = new System.Windows.Forms.PictureBox();
+            this.deck_fifth = new System.Windows.Forms.PictureBox();
+            this.deck_sixth = new System.Windows.Forms.PictureBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btn_not_draw_card = new System.Windows.Forms.Label();
             this.btn_draw_card = new System.Windows.Forms.Label();
@@ -68,19 +74,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.deck_sixth = new System.Windows.Forms.PictureBox();
-            this.deck_second = new System.Windows.Forms.PictureBox();
-            this.deck_fifth = new System.Windows.Forms.PictureBox();
-            this.deck_fourth = new System.Windows.Forms.PictureBox();
-            this.deck_third = new System.Windows.Forms.PictureBox();
-            this.deck_first = new System.Windows.Forms.PictureBox();
+            this.pictureBox18 = new System.Windows.Forms.PictureBox();
+            this.pictureBox19 = new System.Windows.Forms.PictureBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
             this.page_main.SuspendLayout();
             this.page_newgame_pokdeng.SuspendLayout();
@@ -95,23 +95,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.bet_5K)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bet_10K)).BeginInit();
             this.page_play_pokdeng.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.deck_first)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deck_second)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deck_third)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deck_fourth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deck_fifth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deck_sixth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deck_sixth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deck_second)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deck_fifth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deck_fourth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deck_third)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deck_first)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -492,7 +492,6 @@
             this.page_play_pokdeng.Controls.Add(this.deck_fourth);
             this.page_play_pokdeng.Controls.Add(this.deck_fifth);
             this.page_play_pokdeng.Controls.Add(this.deck_sixth);
-            this.page_play_pokdeng.Controls.Add(this.richTextBox1);
             this.page_play_pokdeng.Controls.Add(this.btn_not_draw_card);
             this.page_play_pokdeng.Controls.Add(this.btn_draw_card);
             this.page_play_pokdeng.Controls.Add(this.deck);
@@ -505,6 +504,7 @@
             this.page_play_pokdeng.Controls.Add(this.pictureBox8);
             this.page_play_pokdeng.Controls.Add(this.pictureBox19);
             this.page_play_pokdeng.Controls.Add(this.pictureBox18);
+            this.page_play_pokdeng.Controls.Add(this.richTextBox1);
             this.page_play_pokdeng.Location = new System.Drawing.Point(4, 25);
             this.page_play_pokdeng.Name = "page_play_pokdeng";
             this.page_play_pokdeng.Padding = new System.Windows.Forms.Padding(3);
@@ -512,12 +512,72 @@
             this.page_play_pokdeng.TabIndex = 3;
             this.page_play_pokdeng.Text = "ป็อกเด้ง";
             // 
+            // deck_first
+            // 
+            this.deck_first.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deck_first.BackgroundImage")));
+            this.deck_first.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.deck_first.Location = new System.Drawing.Point(987, 59);
+            this.deck_first.Name = "deck_first";
+            this.deck_first.Size = new System.Drawing.Size(95, 130);
+            this.deck_first.TabIndex = 28;
+            this.deck_first.TabStop = false;
+            // 
+            // deck_second
+            // 
+            this.deck_second.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deck_second.BackgroundImage")));
+            this.deck_second.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.deck_second.Location = new System.Drawing.Point(987, 59);
+            this.deck_second.Name = "deck_second";
+            this.deck_second.Size = new System.Drawing.Size(95, 130);
+            this.deck_second.TabIndex = 25;
+            this.deck_second.TabStop = false;
+            // 
+            // deck_third
+            // 
+            this.deck_third.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deck_third.BackgroundImage")));
+            this.deck_third.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.deck_third.Location = new System.Drawing.Point(987, 59);
+            this.deck_third.Name = "deck_third";
+            this.deck_third.Size = new System.Drawing.Size(95, 130);
+            this.deck_third.TabIndex = 27;
+            this.deck_third.TabStop = false;
+            // 
+            // deck_fourth
+            // 
+            this.deck_fourth.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deck_fourth.BackgroundImage")));
+            this.deck_fourth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.deck_fourth.Location = new System.Drawing.Point(987, 59);
+            this.deck_fourth.Name = "deck_fourth";
+            this.deck_fourth.Size = new System.Drawing.Size(95, 130);
+            this.deck_fourth.TabIndex = 26;
+            this.deck_fourth.TabStop = false;
+            // 
+            // deck_fifth
+            // 
+            this.deck_fifth.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deck_fifth.BackgroundImage")));
+            this.deck_fifth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.deck_fifth.Location = new System.Drawing.Point(987, 59);
+            this.deck_fifth.Name = "deck_fifth";
+            this.deck_fifth.Size = new System.Drawing.Size(95, 130);
+            this.deck_fifth.TabIndex = 25;
+            this.deck_fifth.TabStop = false;
+            // 
+            // deck_sixth
+            // 
+            this.deck_sixth.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deck_sixth.BackgroundImage")));
+            this.deck_sixth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.deck_sixth.Location = new System.Drawing.Point(987, 59);
+            this.deck_sixth.Name = "deck_sixth";
+            this.deck_sixth.Size = new System.Drawing.Size(95, 130);
+            this.deck_sixth.TabIndex = 24;
+            this.deck_sixth.TabStop = false;
+            // 
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(410, 415);
+            this.richTextBox1.Size = new System.Drawing.Size(481, 800);
             this.richTextBox1.TabIndex = 23;
             this.richTextBox1.Text = "";
             // 
@@ -648,101 +708,52 @@
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             // 
-            // pictureBox19
+            // timer
             // 
-            this.pictureBox19.BackColor = System.Drawing.Color.Black;
-            this.pictureBox19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox19.BackgroundImage")));
-            this.pictureBox19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox19.Location = new System.Drawing.Point(597, 510);
-            this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(113, 173);
-            this.pictureBox19.TabIndex = 13;
-            this.pictureBox19.TabStop = false;
+            this.timer.Interval = 10;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // pictureBox18
             // 
             this.pictureBox18.BackColor = System.Drawing.Color.Black;
             this.pictureBox18.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox18.BackgroundImage")));
             this.pictureBox18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox18.Location = new System.Drawing.Point(508, 510);
+            this.pictureBox18.Location = new System.Drawing.Point(61, 510);
             this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(121, 173);
+            this.pictureBox18.Size = new System.Drawing.Size(130, 173);
             this.pictureBox18.TabIndex = 12;
             this.pictureBox18.TabStop = false;
             // 
-            // timer
+            // pictureBox19
             // 
-            this.timer.Interval = 20;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            this.pictureBox19.BackColor = System.Drawing.Color.Black;
+            this.pictureBox19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox19.BackgroundImage")));
+            this.pictureBox19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox19.Location = new System.Drawing.Point(214, 510);
+            this.pictureBox19.Name = "pictureBox19";
+            this.pictureBox19.Size = new System.Drawing.Size(109, 173);
+            this.pictureBox19.TabIndex = 13;
+            this.pictureBox19.TabStop = false;
             // 
-            // deck_sixth
+            // pictureBox12
             // 
-            this.deck_sixth.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deck_sixth.BackgroundImage")));
-            this.deck_sixth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deck_sixth.Location = new System.Drawing.Point(987, 59);
-            this.deck_sixth.Name = "deck_sixth";
-            this.deck_sixth.Size = new System.Drawing.Size(95, 130);
-            this.deck_sixth.TabIndex = 24;
-            this.deck_sixth.TabStop = false;
-            // 
-            // deck_second
-            // 
-            this.deck_second.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deck_second.BackgroundImage")));
-            this.deck_second.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deck_second.Location = new System.Drawing.Point(987, 59);
-            this.deck_second.Name = "deck_second";
-            this.deck_second.Size = new System.Drawing.Size(95, 130);
-            this.deck_second.TabIndex = 25;
-            this.deck_second.TabStop = false;
-            // 
-            // deck_fifth
-            // 
-            this.deck_fifth.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deck_fifth.BackgroundImage")));
-            this.deck_fifth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deck_fifth.Location = new System.Drawing.Point(987, 59);
-            this.deck_fifth.Name = "deck_fifth";
-            this.deck_fifth.Size = new System.Drawing.Size(95, 130);
-            this.deck_fifth.TabIndex = 25;
-            this.deck_fifth.TabStop = false;
-            // 
-            // deck_fourth
-            // 
-            this.deck_fourth.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deck_fourth.BackgroundImage")));
-            this.deck_fourth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deck_fourth.Location = new System.Drawing.Point(987, 59);
-            this.deck_fourth.Name = "deck_fourth";
-            this.deck_fourth.Size = new System.Drawing.Size(95, 130);
-            this.deck_fourth.TabIndex = 26;
-            this.deck_fourth.TabStop = false;
-            // 
-            // deck_third
-            // 
-            this.deck_third.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deck_third.BackgroundImage")));
-            this.deck_third.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deck_third.Location = new System.Drawing.Point(987, 59);
-            this.deck_third.Name = "deck_third";
-            this.deck_third.Size = new System.Drawing.Size(95, 130);
-            this.deck_third.TabIndex = 27;
-            this.deck_third.TabStop = false;
-            // 
-            // deck_first
-            // 
-            this.deck_first.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("deck_first.BackgroundImage")));
-            this.deck_first.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deck_first.Location = new System.Drawing.Point(987, 59);
-            this.deck_first.Name = "deck_first";
-            this.deck_first.Size = new System.Drawing.Size(95, 130);
-            this.deck_first.TabIndex = 28;
-            this.deck_first.TabStop = false;
+            this.pictureBox12.BackColor = System.Drawing.Color.Black;
+            this.pictureBox12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox12.BackgroundImage")));
+            this.pictureBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox12.Location = new System.Drawing.Point(348, 510);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(106, 173);
+            this.pictureBox12.TabIndex = 32;
+            this.pictureBox12.TabStop = false;
             // 
             // pictureBox9
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.Black;
             this.pictureBox9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox9.BackgroundImage")));
             this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox9.Location = new System.Drawing.Point(508, 146);
+            this.pictureBox9.Location = new System.Drawing.Point(61, 146);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(121, 170);
+            this.pictureBox9.Size = new System.Drawing.Size(130, 170);
             this.pictureBox9.TabIndex = 29;
             this.pictureBox9.TabStop = false;
             // 
@@ -751,9 +762,9 @@
             this.pictureBox10.BackColor = System.Drawing.Color.Black;
             this.pictureBox10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox10.BackgroundImage")));
             this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox10.Location = new System.Drawing.Point(597, 146);
+            this.pictureBox10.Location = new System.Drawing.Point(214, 146);
             this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(113, 170);
+            this.pictureBox10.Size = new System.Drawing.Size(109, 170);
             this.pictureBox10.TabIndex = 30;
             this.pictureBox10.TabStop = false;
             // 
@@ -762,22 +773,11 @@
             this.pictureBox11.BackColor = System.Drawing.Color.Black;
             this.pictureBox11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox11.BackgroundImage")));
             this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox11.Location = new System.Drawing.Point(684, 146);
+            this.pictureBox11.Location = new System.Drawing.Point(348, 146);
             this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(123, 170);
+            this.pictureBox11.Size = new System.Drawing.Size(106, 170);
             this.pictureBox11.TabIndex = 31;
             this.pictureBox11.TabStop = false;
-            // 
-            // pictureBox12
-            // 
-            this.pictureBox12.BackColor = System.Drawing.Color.Black;
-            this.pictureBox12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox12.BackgroundImage")));
-            this.pictureBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox12.Location = new System.Drawing.Point(684, 510);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(123, 173);
-            this.pictureBox12.TabIndex = 32;
-            this.pictureBox12.TabStop = false;
             // 
             // ST111
             // 
@@ -809,23 +809,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.bet_5K)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bet_10K)).EndInit();
             this.page_play_pokdeng.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.deck_first)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deck_second)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deck_third)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deck_fourth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deck_fifth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deck_sixth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deck)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deck_sixth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deck_second)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deck_fifth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deck_fourth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deck_third)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deck_first)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -862,9 +862,7 @@
         private System.Windows.Forms.PictureBox bet_50K;
         private System.Windows.Forms.Label btn_bet_all_in;
         private System.Windows.Forms.PictureBox deck;
-        private System.Windows.Forms.PictureBox pictureBox18;
         private System.Windows.Forms.PictureBox pictureBox20;
-        private System.Windows.Forms.PictureBox pictureBox19;
         private System.Windows.Forms.Label btn_draw_card;
         private System.Windows.Forms.Label btn_not_draw_card;
         private System.Windows.Forms.TrackBar trackBar1;
@@ -883,6 +881,8 @@
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.PictureBox pictureBox19;
+        private System.Windows.Forms.PictureBox pictureBox18;
     }
 }
 

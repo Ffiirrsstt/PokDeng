@@ -24,6 +24,7 @@ namespace project
         Cards cards;
         List<Cards> cards_data;
         PokDeng pokdeng;
+        int speed = 5; //ความไวไพ่ (ความไวเคลื่อนที่ของไพ่อะแหละจ้ะ)
 
         int bet_default = 100000; //วงเงินเดิมพันเริ่มต้นของผู้เล่น - ก็คือแจกเงินตอนแรกอะแหละ
         double bet=2000; //เงินที่เดิมพันในแต่ละตา 
@@ -135,38 +136,64 @@ namespace project
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            /*foreach (var obj in objects)
+            int card_number_change = 0; //ไว้แก้อะนะ มันไปแก้ใน if ข้างในไม่ได้ เพราะเปลี่ยนแปลงข้อมูล dic ขณะวน loop อยู่ไม่ได้
+            foreach (var card in dic_deck)
             {
-                if (!started[obj.Key]) continue; // ข้ามถ้ายังไม่เริ่มเคลื่อนที่
+                var (pic, loc_target, display, start_move) = card.Value;
+                int card_number= card.Key;
+                int current_X = pic.Location.X, current_Y = pic.Location.Y;
+                
+                //ถ้าใบที่ 1 2 3 ถึงที่หมายแล้ว ให้ใบถัดไปแจกต่ออะนะ เหมือนเวลาแจกไพ่ทีละใบอะแหละ
+                //ส่วนต่อจากใบที่ 4 จะเป็น 5 ซึ่ง 5 กับ 6 มันเป็นใบที่แล้วแต่คนว่าอยากจั่วป่าวน่ะ
+                if (current_X<= loc_target.X && current_Y >= loc_target.Y && (card_number == 1|| card_number == 2|| card_number == 3))
+                {
+                    card_number_change = card_number + 1;
+                    continue;
+                }
+                if (!start_move) continue; // ข้ามถ้ายังไม่ต้องเคลื่อนที่ - ยังไม่แสดงอนิเมชันแจกอะแหละ
 
-                var (targetX, targetY, _) = obj.Value;
-                var (x, y) = positions[obj.Key];
+                //ในที่นี้ค่าราว ๆ x = 742 y = 46 || เป้าหมายโซน x 375 , y บน150 ล่าง 450
+                if (current_X > loc_target.X) current_X -= speed;
+                if (current_Y < loc_target.Y) current_Y += speed;
 
-                if (x < targetX) x += speed;
-                if (y < targetY) y += speed;
+                pic.Location = new Point(current_X, current_Y);
 
-                positions[obj.Key] = (x, y);
-            */
 
-            this.Invalidate();
+                this.Invalidate();
+            }
+
+            if(card_number_change!=0) 
+                dic_deck[card_number_change] = (dic_deck[card_number_change].pic, dic_deck[card_number_change].loc_target, dic_deck[card_number_change].display, true);
+
+            //จะเช็กว่าแจกเริ่มต้นคนละสองใบเสร็จหรือยังอะแหละ
+            //เช็กที่ใบที่สี่ เพราะทำทีละใบ ถ้าใบที่สี่เสร็จ แปลว่าแจกคนละสองใบเสร็จละ
+            Point loc_card_number_fourth = dic_deck[4].pic.Location; 
+            Point target_card_number_fourth = dic_deck[4].loc_target;
+            //มี startGame_deal ด้วย ให้รู้ว่าเป็น timer ที่ให้เริ่มทำเพราะอยากแจกคนละสองใบ ไม่ใช่ timer ที่ให้ทำเพื่อให้จั่วเพิ่ม(กรณีให้สิทธิ์จั่ว) - ไม่งั้นกลายเป็นหยุดจับเวลา ทั้ง ๆ ที่ไพ่ใบที่จั่วเพิ่มยังแจกไม่เสร็จ เพราะไปเช็กพบว่าไพ่ที่ต้องแจกคนละสองใบแจกเสร็จแล้ว เลยหยุดจับเวลาอะนะ
+            if (startGame_deal && loc_card_number_fourth.X <= target_card_number_fourth.X && loc_card_number_fourth.Y >= target_card_number_fourth.Y)
+                timer.Stop(); //หยุดจำเวลาชั่วคราว - จนกว่าจะ start ใหม่อะแหละนะ
+
         }
 
-        private Dictionary<int, (PictureBox pic, Point loc, Point loc_target, bool display, bool start_move)> dic_deck;
+        bool startGame_deal = false; //เอาไว้เช็กเพื่อจะหยุด timer น่ะ ไม่ให้มันจับตลอดเวลา
 
-        (PictureBox pic, Point loc, Point loc_target, bool display, bool start_move) //dis=true,bool move=false | เช่น รอหนึ่งเสร็จ สองค่อยขยับ
-            tuple_dic_deck(PictureBox pic, int x, int y,bool dis=true,bool move=false) => (pic, deck.Location, new Point(x, y),dis,move);
+        private Dictionary<int, (PictureBox pic, Point loc_target, bool display, bool start_move)> dic_deck;
+
+        (PictureBox pic, Point loc_target, bool display, bool start_move) //dis=true,bool move=false | เช่น รอหนึ่งเสร็จ สองค่อยขยับ
+            tuple_dic_deck(PictureBox pic, int x, int y,bool dis=true,bool move=false) => (pic, new Point(x, y),dis,move);
 
         //ป็อกเด้งเริ่มต้นแจกสองอะสิ
         void animation_deal_default(List<List<Cards>> card_hands)
         {
-            dic_deck = new Dictionary<int, (PictureBox pic, Point loc, Point loc_target,bool display,bool start_move)>
+            dic_deck = new Dictionary<int, (PictureBox pic, Point loc_target,bool display,bool start_move)>
             {
-                {0,tuple_dic_deck(deck_first,508,510,true,true)  },
-                {0,tuple_dic_deck(deck_second,508, 146)  },
-                {0,tuple_dic_deck(deck_third,597, 510)  },
-                {0,tuple_dic_deck(deck_fourth,597, 146)  },
-                {0,tuple_dic_deck(deck_fifth,684, 510,false)  }, //ยังไม่จั่วอะนะ
-                {0,tuple_dic_deck(deck_sixth,684, 146,false)  },
+                //การแก้ key จะส่งผลต่อเมธอดที่ใช้แจกไพ่นะ
+                {1,tuple_dic_deck(deck_first,375,450,true,true)  },
+                {2,tuple_dic_deck(deck_second,375, 150)  },
+                {3,tuple_dic_deck(deck_third,450, 450)  },
+                {4,tuple_dic_deck(deck_fourth,450, 150)  },
+                {5,tuple_dic_deck(deck_fifth,525, 450,false)  }, //ยังไม่จั่วอะนะ
+                {6,tuple_dic_deck(deck_sixth,525, 150,false)  },
             };
 
             timer.Start();
@@ -183,12 +210,6 @@ namespace project
 
 
         }
-
-        void animation_move_dealCard()
-        {
-        }
-
-
 
         void setting_page_pokdengBasic()
         {
@@ -210,7 +231,7 @@ namespace project
             List<Cards> shuffleCards = cards_game.shuffle_cards(cards_data);
             //แจกไพ่แบบข้อมูล
             List<List<Cards>> card_hands = cards_game.deal_cards(shuffleCards, 2);
-            animation_deal(card_hands);
+            animation_deal_default(card_hands);
 
             /*PictureBox card1 = pictureBoxes["card1"];
             MessageBox.Show(card1.Name);*/
