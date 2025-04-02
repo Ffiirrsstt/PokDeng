@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace project
 {
@@ -176,10 +177,11 @@ namespace project
             Point loc_card_number_fourth = dic_deck[4].pic.Location;
             Point target_card_number_fourth = dic_deck[4].loc_target;
 
-            cards_ui.dealing_cards_each_player
-            (player, dic_deck, card_hands, timer, startGame_deal, btn_draw_card, btn_not_draw_card, bet, money_player_label ,loc_card_number_fourth, target_card_number_fourth);
+            var (check_pok,result, (result_hand_player, result_hand_dealer)) = cards_ui.dealing_cards_each_player
+            (dic_deck, card_hands, timer, startGame_deal, btn_draw_card, btn_not_draw_card ,loc_card_number_fourth, target_card_number_fourth);
 
-
+            if (check_pok) cards_ui.result_ui(player, card_hands, result, result_hand_player.times_pay, result_hand_dealer.times_pay,
+            bet, money_player_label);
         }
 
         void setting_pic_Stretch(PictureBox pic) => pic.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -220,7 +222,7 @@ namespace project
                 {6,tuple_dic_deck(deck_sixth,525, 150,false)  },
             };
 
-            timer.Start();
+            timer.Enabled = true;
             /*int cards_per_player = 2, count_player =2; //การ์ดสองใบต่อคน , ผู้เล่นสองคน-รวมเจ้ามืออะนะ
             Point card_coordinates_start = deck.Location;
 

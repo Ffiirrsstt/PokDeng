@@ -16,7 +16,8 @@ namespace project
         dictionary_PokDeng dic = new dictionary_PokDeng();
 
         // แจกไพ่ - ปุ่มมันมีขอบขาว ไม่สวย เลยใช้ label เอาน่ะ....
-        public Dictionary<int, (PictureBox pic, Point loc_target, bool display, bool start_move)> setting_deal_default
+        public Dictionary<int, (PictureBox pic, Point loc_target, bool display, bool start_move)> 
+            setting_deal_default
             (Dictionary<int, (PictureBox pic, Point loc_target, bool display, bool start_move)>  dic_deck, Timer timer, int card_number_change,bool startGame_deal,Label btn_draw_card, Label btn_not_draw_card,RichTextBox richTextBox1)
         {
             //setting ให้เริ่มต้นแจกใบถัดไปอะแหละ
@@ -28,9 +29,10 @@ namespace project
             return dic_deck;
         }
 
-        public void dealing_cards_each_player
-            (Player player, Dictionary<int, (PictureBox pic, Point loc_target, bool display, bool start_move)>  dic_deck, List<List<Cards>> card_hands, Timer timer, bool startGame_deal,
-            Label draw_card, Label not_draw_card, double bet_current, Label money_player_label, Point loc_card_number_fourth, Point target_card_number_fourth)
+        //return เจอป็อกมั้ยอะแหละ(t-เจอ/f-ไม่) , ผล(แพ้-ชนะ-เสมอ) , ดึงข้อมูลต่าง ๆ ของการ์ดบนมือ (ฝั่งผู้เล่น , ฝั่งดีลเลอร์)
+        public (bool,string,(PokDeng,PokDeng)) dealing_cards_each_player
+            (Dictionary<int, (PictureBox pic, Point loc_target, bool display, bool start_move)>  dic_deck, List<List<Cards>> card_hands, Timer timer, bool startGame_deal,
+            Label draw_card, Label not_draw_card, Point loc_card_number_fourth, Point target_card_number_fourth)
         {
             if (startGame_deal && loc_card_number_fourth.X <= target_card_number_fourth.X && loc_card_number_fourth.Y >= target_card_number_fourth.Y)
             {
@@ -46,34 +48,40 @@ namespace project
 
                 pic.setting_pic_list_Stretch(new List<PictureBox> { pic_player_num1, pic_player_num2 });
 
+                timer.Enabled = false; //หยุดจำเวลาชั่วคราว - จนกว่าจะ start ใหม่อะแหละนะ
                 //ถ้าเจอป็อกแล้วคือเปิดไพ่อะแหละ ดังนั้นไปหาว่าใครชนะ
                 if (check_pok)
-                    check_player_win(player, card_hands, result_player, result_dealer, bet_current, money_player_label);
+                {
+                    string result = pokdeng.win_lose_draw(result_player, result_dealer);
+                    return (true,result,(result_player, result_dealer)); 
+                }
 
-
-                timer.Stop(); //หยุดจำเวลาชั่วคราว - จนกว่าจะ start ใหม่อะแหละนะ
+                return (false, "", (result_player, result_dealer));
             }
+
+            return (false, "", (new PokDeng(), new PokDeng()));
         }
 
-        void check_player_win(Player player , List<List<Cards>> hands,PokDeng hand_player, PokDeng hand_dealer, double bet,Label money_player_label)
+        //ประกาศผลชนะ แพ้ เสมอ
+         public void result_ui
+            (Player player , List<List<Cards>> hands, string result, int player_times_pay, int dealer_times_pay , 
+            double bet,Label money_player_label)
         {
             List<string> result_list = dic.result_game; //ออกแบบมุมผู้เล่น จะยึดฝั่งผู้เล่นว่าแพ้ ชนะ เสมอ
-            string result = pokdeng.win_lose_draw(hand_player, hand_dealer);
+            string txt="";
 
             if (result == result_list[3]) MessageBox.Show("ขออภัย ระบบขัดข้อง");
 
-            string txt = "";
-
             if (result == result_list[0]) //ชนะ
             {
-                int times_pay = hand_player.times_pay;
+                int times_pay = player_times_pay;
                 txt = "ได้รับ : " + times_pay + " เท่า";
                 player.money_in(times_pay, bet);
             }
             else if (result == result_list[1])
             {
                 //แพ้
-                int times_pay = hand_dealer.times_pay;
+                int times_pay = dealer_times_pay;
                 txt = "จ่าย : " + times_pay + " เท่า";
                 player.money_out(times_pay, bet);
             }
