@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculate.cs" />
     <Compile Include="Cards.cs" />
     <Compile Include="Cards_Games.cs" />
     <Compile Include="Cards_Games_Services.cs" />
@@ -64,6 +65,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tab.cs" />
     <EmbeddedResource Include="project.resx">
       <DependentUpon>project.cs</DependentUpon>
     </EmbeddedResource>

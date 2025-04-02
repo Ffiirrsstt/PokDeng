@@ -16,7 +16,6 @@ namespace project
 
         public string conStr =
             "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\\USE\\project363\\DB\\DB.mdb";
-        OleDbConnection conn;
 
         DataSet data = new DataSet();
 
