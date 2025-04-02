@@ -36,10 +36,10 @@
             this.page_newgame_pokdeng = new System.Windows.Forms.TabPage();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.pictureBox20 = new System.Windows.Forms.PictureBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.btn_bet_all_in = new System.Windows.Forms.Label();
+            this.bet_50K_txt = new System.Windows.Forms.Label();
+            this.bet_10K_txt = new System.Windows.Forms.Label();
+            this.bet_5K_txt = new System.Windows.Forms.Label();
             this.money_player_waitBet = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -47,12 +47,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.btn_start_bet = new System.Windows.Forms.Label();
+            this.bet_2K_txt = new System.Windows.Forms.Label();
+            this.bet_2K = new System.Windows.Forms.PictureBox();
+            this.bet_50K = new System.Windows.Forms.PictureBox();
+            this.bet_5K = new System.Windows.Forms.PictureBox();
+            this.bet_10K = new System.Windows.Forms.PictureBox();
             this.page_play_pokdeng = new System.Windows.Forms.TabPage();
             this.label14 = new System.Windows.Forms.Label();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
@@ -78,6 +78,7 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.textbox_bet_start = new System.Windows.Forms.TextBox();
             this.display_bet_start = new System.Windows.Forms.Label();
+            this.textbox_display_bet = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.page_main.SuspendLayout();
             this.page_newgame_pokdeng.SuspendLayout();
@@ -87,10 +88,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bet_2K)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bet_50K)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bet_5K)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bet_10K)).BeginInit();
             this.page_play_pokdeng.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
@@ -121,7 +122,7 @@
             // 
             // page_main
             // 
-            this.page_main.BackColor = System.Drawing.Color.DarkGray;
+            this.page_main.BackColor = System.Drawing.Color.Transparent;
             this.page_main.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("page_main.BackgroundImage")));
             this.page_main.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.page_main.Controls.Add(this.display_bet_start);
@@ -132,7 +133,7 @@
             this.page_main.Padding = new System.Windows.Forms.Padding(3);
             this.page_main.Size = new System.Drawing.Size(1407, 843);
             this.page_main.TabIndex = 0;
-            this.page_main.Text = "tabPage1";
+            this.page_main.Text = "หน้าหลัก";
             // 
             // btn_pokdeng_game
             // 
@@ -154,12 +155,13 @@
             this.page_newgame_pokdeng.BackColor = System.Drawing.Color.Transparent;
             this.page_newgame_pokdeng.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("page_newgame_pokdeng.BackgroundImage")));
             this.page_newgame_pokdeng.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.page_newgame_pokdeng.Controls.Add(this.textbox_display_bet);
             this.page_newgame_pokdeng.Controls.Add(this.trackBar1);
             this.page_newgame_pokdeng.Controls.Add(this.pictureBox20);
-            this.page_newgame_pokdeng.Controls.Add(this.label11);
-            this.page_newgame_pokdeng.Controls.Add(this.label12);
-            this.page_newgame_pokdeng.Controls.Add(this.label10);
-            this.page_newgame_pokdeng.Controls.Add(this.label9);
+            this.page_newgame_pokdeng.Controls.Add(this.btn_bet_all_in);
+            this.page_newgame_pokdeng.Controls.Add(this.bet_50K_txt);
+            this.page_newgame_pokdeng.Controls.Add(this.bet_10K_txt);
+            this.page_newgame_pokdeng.Controls.Add(this.bet_5K_txt);
             this.page_newgame_pokdeng.Controls.Add(this.money_player_waitBet);
             this.page_newgame_pokdeng.Controls.Add(this.label2);
             this.page_newgame_pokdeng.Controls.Add(this.pictureBox3);
@@ -167,18 +169,18 @@
             this.page_newgame_pokdeng.Controls.Add(this.label1);
             this.page_newgame_pokdeng.Controls.Add(this.pictureBox2);
             this.page_newgame_pokdeng.Controls.Add(this.pictureBox1);
-            this.page_newgame_pokdeng.Controls.Add(this.label7);
-            this.page_newgame_pokdeng.Controls.Add(this.label8);
-            this.page_newgame_pokdeng.Controls.Add(this.pictureBox9);
-            this.page_newgame_pokdeng.Controls.Add(this.pictureBox12);
-            this.page_newgame_pokdeng.Controls.Add(this.pictureBox10);
-            this.page_newgame_pokdeng.Controls.Add(this.pictureBox11);
+            this.page_newgame_pokdeng.Controls.Add(this.btn_start_bet);
+            this.page_newgame_pokdeng.Controls.Add(this.bet_2K_txt);
+            this.page_newgame_pokdeng.Controls.Add(this.bet_2K);
+            this.page_newgame_pokdeng.Controls.Add(this.bet_50K);
+            this.page_newgame_pokdeng.Controls.Add(this.bet_5K);
+            this.page_newgame_pokdeng.Controls.Add(this.bet_10K);
             this.page_newgame_pokdeng.Location = new System.Drawing.Point(4, 25);
             this.page_newgame_pokdeng.Name = "page_newgame_pokdeng";
             this.page_newgame_pokdeng.Padding = new System.Windows.Forms.Padding(3);
-            this.page_newgame_pokdeng.Size = new System.Drawing.Size(1424, 843);
+            this.page_newgame_pokdeng.Size = new System.Drawing.Size(1407, 843);
             this.page_newgame_pokdeng.TabIndex = 1;
-            this.page_newgame_pokdeng.Text = "tabPage2";
+            this.page_newgame_pokdeng.Text = "ป็อกเด้ง";
             // 
             // trackBar1
             // 
@@ -197,65 +199,73 @@
             this.pictureBox20.TabIndex = 21;
             this.pictureBox20.TabStop = false;
             // 
-            // label11
+            // btn_bet_all_in
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_bet_all_in.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.BackColor = System.Drawing.Color.Silver;
-            this.label11.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(883, 288);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(265, 41);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "หมดหน้าตัก";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_bet_all_in.BackColor = System.Drawing.Color.Silver;
+            this.btn_bet_all_in.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_bet_all_in.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btn_bet_all_in.ForeColor = System.Drawing.Color.Black;
+            this.btn_bet_all_in.Location = new System.Drawing.Point(883, 344);
+            this.btn_bet_all_in.Name = "btn_bet_all_in";
+            this.btn_bet_all_in.Size = new System.Drawing.Size(248, 35);
+            this.btn_bet_all_in.TabIndex = 19;
+            this.btn_bet_all_in.Text = "หมดหน้าตัก";
+            this.btn_bet_all_in.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_bet_all_in.Click += new System.EventHandler(this.btn_bet_all_in_Click);
             // 
-            // label12
+            // bet_50K_txt
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.bet_50K_txt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.BackColor = System.Drawing.Color.Black;
-            this.label12.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(765, 384);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 39);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "50K";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bet_50K_txt.BackColor = System.Drawing.Color.Black;
+            this.bet_50K_txt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bet_50K_txt.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.bet_50K_txt.ForeColor = System.Drawing.Color.White;
+            this.bet_50K_txt.Location = new System.Drawing.Point(756, 384);
+            this.bet_50K_txt.Name = "bet_50K_txt";
+            this.bet_50K_txt.Size = new System.Drawing.Size(85, 39);
+            this.bet_50K_txt.TabIndex = 17;
+            this.bet_50K_txt.Text = "50K";
+            this.bet_50K_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bet_50K_txt.Click += new System.EventHandler(this.bet_50K_txt_Click);
             // 
-            // label10
+            // bet_10K_txt
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.bet_10K_txt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(101)))), ((int)(((byte)(95)))));
-            this.label10.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(607, 384);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 39);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "10K";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bet_10K_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(101)))), ((int)(((byte)(95)))));
+            this.bet_10K_txt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bet_10K_txt.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.bet_10K_txt.ForeColor = System.Drawing.Color.White;
+            this.bet_10K_txt.Location = new System.Drawing.Point(602, 384);
+            this.bet_10K_txt.Name = "bet_10K_txt";
+            this.bet_10K_txt.Size = new System.Drawing.Size(83, 39);
+            this.bet_10K_txt.TabIndex = 12;
+            this.bet_10K_txt.Text = "10K";
+            this.bet_10K_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bet_10K_txt.Click += new System.EventHandler(this.bet_10K_txt_Click);
             // 
-            // label9
+            // bet_5K_txt
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.bet_5K_txt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(15)))), ((int)(((byte)(112)))));
-            this.label9.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(454, 384);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(72, 39);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "5K";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bet_5K_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(15)))), ((int)(((byte)(112)))));
+            this.bet_5K_txt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bet_5K_txt.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.bet_5K_txt.ForeColor = System.Drawing.Color.White;
+            this.bet_5K_txt.Location = new System.Drawing.Point(454, 384);
+            this.bet_5K_txt.Name = "bet_5K_txt";
+            this.bet_5K_txt.Size = new System.Drawing.Size(69, 39);
+            this.bet_5K_txt.TabIndex = 11;
+            this.bet_5K_txt.Text = "5K";
+            this.bet_5K_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bet_5K_txt.Click += new System.EventHandler(this.bet_5K_txt_Click);
             // 
             // money_player_waitBet
             // 
@@ -267,7 +277,7 @@
             this.money_player_waitBet.ForeColor = System.Drawing.Color.White;
             this.money_player_waitBet.Location = new System.Drawing.Point(662, 755);
             this.money_player_waitBet.Name = "money_player_waitBet";
-            this.money_player_waitBet.Size = new System.Drawing.Size(243, 45);
+            this.money_player_waitBet.Size = new System.Drawing.Size(226, 45);
             this.money_player_waitBet.TabIndex = 6;
             this.money_player_waitBet.Text = "$ 0";
             this.money_player_waitBet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -282,7 +292,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(662, 700);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(243, 45);
+            this.label2.Size = new System.Drawing.Size(226, 45);
             this.label2.TabIndex = 5;
             this.label2.Text = "Player";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -318,7 +328,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(662, 70);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(246, 114);
+            this.label1.Size = new System.Drawing.Size(229, 114);
             this.label1.TabIndex = 2;
             this.label1.Text = "Dealer";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -344,75 +354,87 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label7
+            // btn_start_bet
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_start_bet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label7.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(883, 344);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(265, 114);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "เดิมพัน";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_start_bet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn_start_bet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_start_bet.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btn_start_bet.ForeColor = System.Drawing.Color.Black;
+            this.btn_start_bet.Location = new System.Drawing.Point(883, 384);
+            this.btn_start_bet.Name = "btn_start_bet";
+            this.btn_start_bet.Size = new System.Drawing.Size(248, 74);
+            this.btn_start_bet.TabIndex = 9;
+            this.btn_start_bet.Text = "เดิมพัน";
+            this.btn_start_bet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_start_bet.Click += new System.EventHandler(this.btn_start_bet_Click);
             // 
-            // label8
+            // bet_2K_txt
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.bet_2K_txt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(2)))), ((int)(((byte)(16)))));
-            this.label8.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label8.ForeColor = System.Drawing.Color.Transparent;
-            this.label8.Location = new System.Drawing.Point(305, 384);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 39);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "2K";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bet_2K_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(2)))), ((int)(((byte)(16)))));
+            this.bet_2K_txt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bet_2K_txt.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.bet_2K_txt.ForeColor = System.Drawing.Color.Transparent;
+            this.bet_2K_txt.Location = new System.Drawing.Point(305, 384);
+            this.bet_2K_txt.Name = "bet_2K_txt";
+            this.bet_2K_txt.Size = new System.Drawing.Size(73, 39);
+            this.bet_2K_txt.TabIndex = 10;
+            this.bet_2K_txt.Text = "2K";
+            this.bet_2K_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bet_2K_txt.Click += new System.EventHandler(this.bet_2K_txt_Click);
             // 
-            // pictureBox9
+            // bet_2K
             // 
-            this.pictureBox9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox9.BackgroundImage")));
-            this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox9.Location = new System.Drawing.Point(271, 344);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(136, 114);
-            this.pictureBox9.TabIndex = 14;
-            this.pictureBox9.TabStop = false;
+            this.bet_2K.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bet_2K.BackgroundImage")));
+            this.bet_2K.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bet_2K.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bet_2K.Location = new System.Drawing.Point(271, 344);
+            this.bet_2K.Name = "bet_2K";
+            this.bet_2K.Size = new System.Drawing.Size(136, 114);
+            this.bet_2K.TabIndex = 14;
+            this.bet_2K.TabStop = false;
+            this.bet_2K.Click += new System.EventHandler(this.bet_2K_Click);
             // 
-            // pictureBox12
+            // bet_50K
             // 
-            this.pictureBox12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox12.BackgroundImage")));
-            this.pictureBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox12.Location = new System.Drawing.Point(728, 344);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(136, 114);
-            this.pictureBox12.TabIndex = 18;
-            this.pictureBox12.TabStop = false;
+            this.bet_50K.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bet_50K.BackgroundImage")));
+            this.bet_50K.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bet_50K.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bet_50K.Location = new System.Drawing.Point(728, 344);
+            this.bet_50K.Name = "bet_50K";
+            this.bet_50K.Size = new System.Drawing.Size(136, 114);
+            this.bet_50K.TabIndex = 18;
+            this.bet_50K.TabStop = false;
+            this.bet_50K.Click += new System.EventHandler(this.bet_50K_Click);
             // 
-            // pictureBox10
+            // bet_5K
             // 
-            this.pictureBox10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox10.BackgroundImage")));
-            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox10.Location = new System.Drawing.Point(424, 344);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(130, 114);
-            this.pictureBox10.TabIndex = 15;
-            this.pictureBox10.TabStop = false;
+            this.bet_5K.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bet_5K.BackgroundImage")));
+            this.bet_5K.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bet_5K.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bet_5K.Location = new System.Drawing.Point(424, 344);
+            this.bet_5K.Name = "bet_5K";
+            this.bet_5K.Size = new System.Drawing.Size(130, 114);
+            this.bet_5K.TabIndex = 15;
+            this.bet_5K.TabStop = false;
+            this.bet_5K.Click += new System.EventHandler(this.bet_5K_Click);
             // 
-            // pictureBox11
+            // bet_10K
             // 
-            this.pictureBox11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox11.BackgroundImage")));
-            this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox11.Location = new System.Drawing.Point(574, 344);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(136, 114);
-            this.pictureBox11.TabIndex = 16;
-            this.pictureBox11.TabStop = false;
+            this.bet_10K.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bet_10K.BackgroundImage")));
+            this.bet_10K.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bet_10K.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bet_10K.Location = new System.Drawing.Point(574, 344);
+            this.bet_10K.Name = "bet_10K";
+            this.bet_10K.Size = new System.Drawing.Size(136, 114);
+            this.bet_10K.TabIndex = 16;
+            this.bet_10K.TabStop = false;
+            this.bet_10K.Click += new System.EventHandler(this.bet_10K_Click);
             // 
             // page_play_pokdeng
             // 
@@ -443,9 +465,9 @@
             this.page_play_pokdeng.Location = new System.Drawing.Point(4, 25);
             this.page_play_pokdeng.Name = "page_play_pokdeng";
             this.page_play_pokdeng.Padding = new System.Windows.Forms.Padding(3);
-            this.page_play_pokdeng.Size = new System.Drawing.Size(1424, 843);
+            this.page_play_pokdeng.Size = new System.Drawing.Size(1407, 843);
             this.page_play_pokdeng.TabIndex = 3;
-            this.page_play_pokdeng.Text = "tabPage3";
+            this.page_play_pokdeng.Text = "ป็อกเด้ง";
             // 
             // label14
             // 
@@ -457,7 +479,7 @@
             this.label14.ForeColor = System.Drawing.Color.Black;
             this.label14.Location = new System.Drawing.Point(1232, 755);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(169, 64);
+            this.label14.Size = new System.Drawing.Size(152, 64);
             this.label14.TabIndex = 22;
             this.label14.Text = "ไม่จั่ว";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -521,7 +543,7 @@
             this.label13.ForeColor = System.Drawing.Color.Black;
             this.label13.Location = new System.Drawing.Point(1047, 755);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(169, 64);
+            this.label13.Size = new System.Drawing.Size(152, 64);
             this.label13.TabIndex = 14;
             this.label13.Text = "จั่ว";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -584,7 +606,7 @@
             this.money_player_label.ForeColor = System.Drawing.Color.White;
             this.money_player_label.Location = new System.Drawing.Point(662, 755);
             this.money_player_label.Name = "money_player_label";
-            this.money_player_label.Size = new System.Drawing.Size(243, 45);
+            this.money_player_label.Size = new System.Drawing.Size(226, 45);
             this.money_player_label.TabIndex = 6;
             this.money_player_label.Text = "$ 0";
             this.money_player_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -599,7 +621,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(662, 700);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(243, 45);
+            this.label5.Size = new System.Drawing.Size(226, 45);
             this.label5.TabIndex = 5;
             this.label5.Text = "Player";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -635,7 +657,7 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(662, 70);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(246, 114);
+            this.label6.Size = new System.Drawing.Size(229, 114);
             this.label6.TabIndex = 2;
             this.label6.Text = "Dealer";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -686,11 +708,14 @@
             // textbox_bet_start
             // 
             this.textbox_bet_start.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textbox_bet_start.Location = new System.Drawing.Point(961, 595);
+            this.textbox_bet_start.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.textbox_bet_start.Location = new System.Drawing.Point(961, 624);
             this.textbox_bet_start.Multiline = true;
             this.textbox_bet_start.Name = "textbox_bet_start";
-            this.textbox_bet_start.Size = new System.Drawing.Size(429, 67);
+            this.textbox_bet_start.Size = new System.Drawing.Size(412, 49);
             this.textbox_bet_start.TabIndex = 2;
+            this.textbox_bet_start.Text = "100000";
+            this.textbox_bet_start.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textbox_bet_start.TextChanged += new System.EventHandler(this.textbox_bet_start_TextChanged);
             // 
             // display_bet_start
@@ -698,19 +723,31 @@
             this.display_bet_start.BackColor = System.Drawing.Color.Transparent;
             this.display_bet_start.Font = new System.Drawing.Font("TH Sarabun New", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.display_bet_start.ForeColor = System.Drawing.Color.Transparent;
-            this.display_bet_start.Location = new System.Drawing.Point(961, 533);
+            this.display_bet_start.Location = new System.Drawing.Point(961, 562);
             this.display_bet_start.Name = "display_bet_start";
-            this.display_bet_start.Size = new System.Drawing.Size(429, 59);
+            this.display_bet_start.Size = new System.Drawing.Size(412, 59);
             this.display_bet_start.TabIndex = 3;
             this.display_bet_start.Text = "เงินเดิมพันเริ่มต้น : ";
+            // 
+            // textbox_display_bet
+            // 
+            this.textbox_display_bet.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textbox_display_bet.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.textbox_display_bet.Location = new System.Drawing.Point(882, 289);
+            this.textbox_display_bet.Multiline = true;
+            this.textbox_display_bet.Name = "textbox_display_bet";
+            this.textbox_display_bet.Size = new System.Drawing.Size(249, 41);
+            this.textbox_display_bet.TabIndex = 23;
+            this.textbox_display_bet.Text = "2K";
+            this.textbox_display_bet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ST111
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1460, 886);
+            this.ClientSize = new System.Drawing.Size(1488, 927);
             this.Controls.Add(this.tabControl);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -729,10 +766,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bet_2K)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bet_50K)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bet_5K)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bet_10K)).EndInit();
             this.page_play_pokdeng.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
@@ -774,16 +811,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.PictureBox pictureBox12;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label btn_start_bet;
+        private System.Windows.Forms.Label bet_2K_txt;
+        private System.Windows.Forms.Label bet_10K_txt;
+        private System.Windows.Forms.Label bet_5K_txt;
+        private System.Windows.Forms.PictureBox bet_5K;
+        private System.Windows.Forms.PictureBox bet_2K;
+        private System.Windows.Forms.Label bet_50K_txt;
+        private System.Windows.Forms.PictureBox bet_10K;
+        private System.Windows.Forms.PictureBox bet_50K;
+        private System.Windows.Forms.Label btn_bet_all_in;
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.PictureBox pictureBox16;
@@ -802,6 +839,7 @@
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label display_bet_start;
         private System.Windows.Forms.TextBox textbox_bet_start;
+        private System.Windows.Forms.TextBox textbox_display_bet;
     }
 }
 

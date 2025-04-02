@@ -52,6 +52,7 @@
     <Compile Include="Cards_Games_Services.cs" />
     <Compile Include="Cards_Games_UI.cs" />
     <Compile Include="dictionary_PokDeng.cs" />
+    <Compile Include="Picture.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PokDeng.cs" />
     <Compile Include="PokDeng_muchHand.cs" />

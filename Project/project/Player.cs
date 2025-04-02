@@ -12,7 +12,7 @@ namespace project
         private double _money;
         Calculate cal = new Calculate();
 
-        public Player(double money )
+        public Player(double money)
         {
             _money = money;
         }
@@ -25,6 +25,8 @@ namespace project
         public void refund_bet(double bet) => _money += bet; //แปลว่าเสมอ
         public void deduct_bet(double bet) => _money -= bet;//ลงเงินเดิมพัน
         public string display() => "$ " + cal.display_money(_money);
+
+        public double get_money() => _money;
 
     }
 }

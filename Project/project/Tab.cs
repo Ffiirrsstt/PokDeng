@@ -12,6 +12,7 @@ namespace project
     {
         TabControl _tabCtr;
         Dictionary<int, TabPage> _tab_dic;
+        int page_1 = 0, page_2 = 1, page_3 = 3;
 
         public Tab(TabControl tabCtr, Dictionary<int, TabPage> tab_dic)
         {
@@ -35,10 +36,11 @@ namespace project
             hide(dic_key_tab);
             _tabCtr.TabPages.Add(_tab_dic[dic_key_tab]);
         }
-        public void new_pokdeng_game(int page_2)
+        public void new_pokdeng_game()
         {
             show(page_2);
             select_tab(page_2);
+            hide(page_3); //ปิดเกมที่เล่นทิ้งไว้ พอดีเมธอดนี้ใช้ร่วมกับเวลาจบเกมแล้วเริ่มเล่นใหม่น่ะ
         }
 
         TabPage _findValue_tabDic_Idx(int dic_key_tab) => _tab_dic.Values.ElementAt(dic_key_tab);
