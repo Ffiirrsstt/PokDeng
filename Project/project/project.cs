@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Reflection.Emit;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace project
 {
@@ -24,6 +21,7 @@ namespace project
         Cards cards;
         List<Cards> cards_data;
         PokDeng pokdeng;
+        List<List<Cards>> card_hands;
         int speed = 5; //ความไวไพ่ (ความไวเคลื่อนที่ของไพ่อะแหละจ้ะ)
 
         int bet_default = 100000; //วงเงินเดิมพันเริ่มต้นของผู้เล่น - ก็คือแจกเงินตอนแรกอะแหละ
@@ -171,9 +169,21 @@ namespace project
             Point target_card_number_fourth = dic_deck[4].loc_target;
             //มี startGame_deal ด้วย ให้รู้ว่าเป็น timer ที่ให้เริ่มทำเพราะอยากแจกคนละสองใบ ไม่ใช่ timer ที่ให้ทำเพื่อให้จั่วเพิ่ม(กรณีให้สิทธิ์จั่ว) - ไม่งั้นกลายเป็นหยุดจับเวลา ทั้ง ๆ ที่ไพ่ใบที่จั่วเพิ่มยังแจกไม่เสร็จ เพราะไปเช็กพบว่าไพ่ที่ต้องแจกคนละสองใบแจกเสร็จแล้ว เลยหยุดจับเวลาอะนะ
             if (startGame_deal && loc_card_number_fourth.X <= target_card_number_fourth.X && loc_card_number_fourth.Y >= target_card_number_fourth.Y)
+            {
+                PictureBox pic_player_num1 = dic_deck[1].pic;
+                PictureBox pic_player_num2 = dic_deck[3].pic; //dic_deck[3] เพราะแจกสลับ ดังนั้นใบที่สองเป็นของดีลเลอร์ ซึ่งไม่แสดงไพ่ดีลเลอร์จนกว่าจะถึงเวลาเปิดไพ่
+                pic_player_num1.Image = Image.FromStream(new MemoryStream(card_hands[0][0].picture)); //นอกจากหยุดจับเวลาก็มาแสดงไพ่ให้ผู้เล่นเห็นด้วยว่าแจกได้ไร
+                //card_hands[0][2].picture - คนที่ 0 คือ ผู้เล่น | ถ้าคนที่ 1 คือดีลเลอร์ และ 1 คือ ไพ่ใบที่สองอะนะ
+                pic_player_num2.Image = Image.FromStream(new MemoryStream(card_hands[0][1].picture));
+
+                setting_pic_Stretch(pic_player_num1);
+                setting_pic_Stretch(pic_player_num2);
                 timer.Stop(); //หยุดจำเวลาชั่วคราว - จนกว่าจะ start ใหม่อะแหละนะ
+            }
 
         }
+
+        void setting_pic_Stretch(PictureBox pic) => pic.SizeMode = PictureBoxSizeMode.StretchImage;
 
         bool startGame_deal = false; //เอาไว้เช็กเพื่อจะหยุด timer น่ะ ไม่ให้มันจับตลอดเวลา
 
@@ -182,9 +192,27 @@ namespace project
         (PictureBox pic, Point loc_target, bool display, bool start_move) //dis=true,bool move=false | เช่น รอหนึ่งเสร็จ สองค่อยขยับ
             tuple_dic_deck(PictureBox pic, int x, int y,bool dis=true,bool move=false) => (pic, new Point(x, y),dis,move);
 
+        void test_()
+        {
+            pictureBox18.Image = Image.FromStream(new MemoryStream(card_hands[0][0].picture));
+            pictureBox9.Image = Image.FromStream(new MemoryStream(card_hands[1][0].picture));
+            pictureBox19.Image = Image.FromStream(new MemoryStream(card_hands[0][1].picture));
+            pictureBox10.Image = Image.FromStream(new MemoryStream(card_hands[1][1].picture));
+            /*pictureBox12.Image = Image.FromStream(new MemoryStream(card_hands[0][2].picture));
+            pictureBox11.Image = Image.FromStream(new MemoryStream(card_hands[1][2].picture));*/
+
+            setting_pic_Stretch(pictureBox18);
+            setting_pic_Stretch(pictureBox9);
+            setting_pic_Stretch(pictureBox19);
+            setting_pic_Stretch(pictureBox10);
+            setting_pic_Stretch(pictureBox12);
+            setting_pic_Stretch(pictureBox11);
+        }
+
         //ป็อกเด้งเริ่มต้นแจกสองอะสิ
         void animation_deal_default(List<List<Cards>> card_hands)
         {
+            test_();
             dic_deck = new Dictionary<int, (PictureBox pic, Point loc_target,bool display,bool start_move)>
             {
                 //การแก้ key จะส่งผลต่อเมธอดที่ใช้แจกไพ่นะ
@@ -230,7 +258,7 @@ namespace project
             //สับไพ่แบบข้อมูล
             List<Cards> shuffleCards = cards_game.shuffle_cards(cards_data);
             //แจกไพ่แบบข้อมูล
-            List<List<Cards>> card_hands = cards_game.deal_cards(shuffleCards, 2);
+            card_hands = cards_game.deal_cards(shuffleCards, 2);
             animation_deal_default(card_hands);
 
             /*PictureBox card1 = pictureBoxes["card1"];
