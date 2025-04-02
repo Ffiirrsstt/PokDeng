@@ -42,6 +42,13 @@ namespace project
             select_tab(page_2);
             hide(page_3); //ปิดเกมที่เล่นทิ้งไว้ พอดีเมธอดนี้ใช้ร่วมกับเวลาจบเกมแล้วเริ่มเล่นใหม่น่ะ
         }
+        
+        public void play_pokdeng_game()
+        {
+            show(page_3);
+            select_tab(page_3);
+            hide(page_2); //ขณะเล่น ปิดหน้าตอนวางเดิมพัน
+        }
 
         TabPage _findValue_tabDic_Idx(int dic_key_tab) => _tab_dic.Values.ElementAt(dic_key_tab);
         int _findIdx_select_key(int dic_key_tab)

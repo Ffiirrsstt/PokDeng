@@ -19,7 +19,7 @@ namespace project
         Cards cards;
 
         int bet_default = 100000; //วงเงินเดิมพันเริ่มต้นของผู้เล่น - ก็คือแจกเงินตอนแรกอะแหละ
-        double bet; //เงินที่เดิมพันในแต่ละตา
+        double bet=2000; //เงินที่เดิมพันในแต่ละตา 
         int page_1 = 0, page_2 = 1, page_3 = 3;
         int pic_1 = 0, pic_2 = 1,pic_3= 2,pic_4 = 3;
 
@@ -90,6 +90,8 @@ namespace project
         void testSystem()
         {
             player = new Player(10000);
+            money_player_label.Text = player.display();
+            money_player_waitBet.Text= player.display();
         }
 
 
@@ -120,17 +122,32 @@ namespace project
             displayTXT_display_bet_start(bet_start);
         }
 
+        void pokdeng_game()
+        {
+            //แสดงยอดเงินหลังหักเดิมพันเรียบร้อยแล้ว
+            money_player_label.Text= player.display();
+            tab.play_pokdeng_game();
+
+            //อนิเมชันไพ่สองใบ - ผู้เล่น | เจ้ามือ
+        }
+
         //กดปุ่มเริ่มเดิมพัน
         private void btn_start_bet_Click(object sender, EventArgs e)
         {
-            
+            //เช็กว่ายอดเงินพอจากที่อื่นแล้ว ตรงนี้เลยไม่ได้เช็กเพิ่มน่ะ
+            player.deduct_bet(bet);
+            pokdeng_game();
         }
 
         void select_bet2K()
         {
+            double old_bet = bet;
             bet = 2000;
             if (!setting_select_betBasic(bet))
+            {
+                bet = old_bet;
                 return;
+            }
 
             pic.restore_size_chip();
             pic.resize_chip(bet_2K);
@@ -138,9 +155,13 @@ namespace project
 
         void select_bet5K()
         {
+            double old_bet = bet;
             bet = 5000;
             if (!setting_select_betBasic(bet))
+            {
+                bet = old_bet;
                 return;
+            }
 
             pic.restore_size_chip();
             pic.resize_chip(bet_5K);
@@ -148,9 +169,13 @@ namespace project
 
         void select_bet10K()
         {
+            double old_bet = bet;
             bet = 10000;
             if (!setting_select_betBasic(bet))
+            {
+                bet = old_bet;
                 return;
+            }
 
             pic.restore_size_chip();
             pic.resize_chip(bet_10K);
@@ -158,9 +183,13 @@ namespace project
 
         void select_bet50K()
         {
+            double old_bet = bet; //เผื่อชิปใหม่ที่เลือก เงินไม่พอ จะให้ย้อนกลับไปเลือกชิปเก่าน่ะ
             bet = 50000;
             if (!setting_select_betBasic(bet))
+            {
+                bet = old_bet;
                 return;
+            }
 
             pic.restore_size_chip();
             pic.resize_chip(bet_50K);
