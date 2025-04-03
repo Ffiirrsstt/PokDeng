@@ -217,25 +217,25 @@ namespace project
         void select_bet2K(object sender, EventArgs e)
         {
             int betK = 2000;
-            bet_services.select_betK(player, pic, bet_2K, bet, betK, textbox_display_bet);
+            bet = bet_services.select_betK(player, pic, bet_2K, bet, betK, textbox_display_bet);
         }
 
         void select_bet5K(object sender, EventArgs e)
         {
             int betK = 5000;
-            bet_services.select_betK(player, pic, bet_5K, bet, betK, textbox_display_bet);
+            bet =bet_services.select_betK(player, pic, bet_5K, bet, betK, textbox_display_bet);
         }
 
         void select_bet10K(object sender, EventArgs e)
         {
             int betK = 10000;
-            bet_services.select_betK(player, pic, bet_10K, bet, betK, textbox_display_bet);
+            bet = bet_services.select_betK(player, pic, bet_10K, bet, betK, textbox_display_bet);
         }
 
         void select_bet50K(object sender, EventArgs e)
         {
             int betK = 50000;
-            bet_services.select_betK(player, pic,bet_50K, bet, betK, textbox_display_bet);
+            bet = bet_services.select_betK(player, pic,bet_50K, bet, betK, textbox_display_bet);
 
         }
 
@@ -243,7 +243,7 @@ namespace project
         {
             bet = player.get_money();
             //ใช้ bet, bet เพราะเดิมพันเงินทั้งหมด ไม่มีคำว่าเงินไม่พอ มีแต่จะได้หมดหรือเสียหมดอะแหละ - ตัวแรกเงินเดิมพันเก่าว่าเคยเดิมพันไรไว้ | ตัวสองเงินที่อยากเดิมพัน
-            bet_services.select_betK(player, pic, null, bet, bet, textbox_display_bet);
+            bet = bet_services.select_betK(player, pic, null, bet, bet, textbox_display_bet);
 
         }
 

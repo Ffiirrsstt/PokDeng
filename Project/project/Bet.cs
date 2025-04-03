@@ -25,18 +25,18 @@ namespace project
             return false; //เงินไม่พอ ไม่ให้เดิมพัน
         }
 
-        public void select_betK(Player player, Picture pic,PictureBox picturebox, double bet, double betK ,TextBox textbox_display_bet,bool allin=false)
+        public double select_betK(Player player, Picture pic,PictureBox picturebox, double bet, double betK ,TextBox textbox_display_bet,bool allin=false)
         {
             double old_bet = bet; //เผื่อชิปใหม่ที่เลือก เงินไม่พอ จะให้ย้อนกลับไปเลือกชิปเก่าน่ะ
             bet = betK;
             if (!setting_select_betBasic(player, bet,  textbox_display_bet))
             {
-                bet = old_bet;
-                return;
+                return old_bet;
             }
 
             pic.restore_size_chip();
             if(!allin)pic.resize_chip(picturebox);
+            return bet;
         }
     }
 }
