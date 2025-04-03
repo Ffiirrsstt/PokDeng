@@ -11,12 +11,12 @@ namespace project
     internal class Picture
     {
         Dictionary<int, Tuple<PictureBox, Point, Size>> _chips;
+        double num = 0.95;
         public Picture(Dictionary<int, Tuple<PictureBox, Point, Size>> chips = null)
         {
             _chips = chips; 
         }
 
-        double num = 0.95;
         public void resize_chip(PictureBox pictureBox)
         {
             //Image original_image = pictureBox.BackgroundImage;

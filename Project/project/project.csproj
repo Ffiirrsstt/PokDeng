@@ -46,10 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bet.cs" />
     <Compile Include="Calculate.cs" />
     <Compile Include="Cards.cs" />
     <Compile Include="Cards_Games.cs" />
     <Compile Include="Cards_Games_Services.cs" />
+    <Compile Include="Cards_Games_UI.cs" />
     <Compile Include="Cards_Games_UI_deal.cs" />
     <Compile Include="dictionary_PokDeng.cs" />
     <Compile Include="Picture.cs" />

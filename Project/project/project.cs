@@ -10,45 +10,41 @@ namespace project
 {
     public partial class ST111 : Form
     {
-        /*
-         ถ้ายอดเงินต่ำกว่า 2000 ไล่เลย ถือว่าไม่พอเล่นละ
-         */
         List<TabPage> tab_list;
         Tab tab;
         Picture pic;
         Player player;
-        Calculate cal = new Calculate();
-        Cards_Games cards_game;
         Cards cards;
         List<Cards> cards_data;
         PokDeng pokdeng;
         List<List<Cards>> card_hands;
-        Cards_Games_UI_deal cards_ui;
-        Picture_move pic_move;
+        Bet bet_services = new Bet();
         Dictionary<int, Picture_move> dic_deck;
+        Calculate cal = new Calculate();
+        Cards_Games cards_game = new Cards_Games();
+        Cards_Games_UI_deal cards_ui_deal = new Cards_Games_UI_deal();
+        Cards_Games_UI cards_ui = new Cards_Games_UI();
+        Picture_move pic_move = new Picture_move();
 
-        bool startGame_deal = false; //เอาไว้เช็กเพื่อจะหยุด timer น่ะ ไม่ให้มันจับตลอดเวลา
         int speed = 5; //ความไวไพ่ (ความไวเคลื่อนที่ของไพ่อะแหละจ้ะ)
-
         int bet_default = 100000; //วงเงินเดิมพันเริ่มต้นของผู้เล่น - ก็คือแจกเงินตอนแรกอะแหละ
         double bet=2000; //เงินที่เดิมพันในแต่ละตา 
+
+        bool startGame_deal = false; //เอาไว้เช็กเพื่อจะหยุด timer น่ะ ไม่ให้มันจับตลอดเวลา
         int page_1 = 0, page_2 = 1, page_3 = 3;
         int pic_1 = 0, pic_2 = 1,pic_3= 2,pic_4 = 3;
 
         public ST111()
         {
             InitializeComponent();
+
             this.TransparencyKey = Color.Empty;
 
             tab_list = new List<TabPage> { page_main, page_newgame_pokdeng, page_play_pokdeng };
             //ออกแบบ dic ให้แก้ง่ายหน่อย
             tab = new Tab(tabControl, dic_tab());
             pic = new Picture(dic_pic());
-            cards_game = new Cards_Games();
-            cards_ui = new Cards_Games_UI_deal();
-            pic_move = new Picture_move();
-
-
+            handler_bet_chip();
         }
 
         Dictionary<int, TabPage> dic_tab()
@@ -75,10 +71,6 @@ namespace project
             };
         }
 
-        /*
-         อยากลืมทำยอดติดลบ ถ้าติดลบเชิญออก*/
-
-
         async Task fetch_data_cards()
         {
             cards = new Cards();
@@ -91,15 +83,13 @@ namespace project
 
         }
 
-        void displayTXT_display_bet_start(double bet) => display_bet_start.Text = "เงินเดิมพันเริ่มต้น : $ " + cal.display_money(bet);
-
-
         void new_game_pokdeng()
         {
+            int betK = 2000; //เงินเดิมพันเริ่มต้น
             //แสดงเงินปัจจุบัน
             money_player_waitBet.Text = player.display();
             //ตั้งค่า default ว่าเลือก chip 2k
-            set_select_bet2K_default();
+            bet_services.select_betK(player, pic, bet_2K, betK, betK, textbox_display_bet);
 
             tab.new_pokdeng_game();
             pic.restore_size_chip(); //จัดการชิปให้เข้าที่และขนาดเท่ากัน
@@ -124,7 +114,7 @@ namespace project
             //tab.hide_start_program();
             testSystem();
 
-            displayTXT_display_bet_start(bet_default);
+            cards_ui.displayTXT_display_bet_start(display_bet_start,bet_default);
             textbox_bet_start.Text = bet_default.ToString();
         }
 
@@ -142,61 +132,27 @@ namespace project
         private void textbox_bet_start_TextChanged(object sender, EventArgs e)
         {
             double bet_start = cal.string_ToDouble(textbox_bet_start.Text, false);
-            displayTXT_display_bet_start(bet_start);
+            cards_ui.displayTXT_display_bet_start(display_bet_start,bet_start);
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            animation_deal();
-
+            cards_ui_deal.animation_deal(this, player,  dic_deck, card_hands, timer, speed, startGame_deal, btn_draw_card, btn_not_draw_card, bet, money_player_label);
         }
 
-        void animation_deal()
+        Dictionary<int, Picture_move> dic_data_deck()
         {
-            int card_number_change = 0; //ไว้แก้อะนะ มันไปแก้ใน if ข้างในไม่ได้ เพราะเปลี่ยนแปลงข้อมูล dic ขณะวน loop อยู่ไม่ได้
-            foreach (var card in dic_deck)
+            return new Dictionary<int, Picture_move>
             {
-                var (pic, loc,loc_target, _, start_move) = card.Value;
-                int card_number = card.Key;
-                int current_X = loc.X,current_Y = loc.Y;
-
-                /*ถ้าใบที่ 1 2 3 ถึงที่หมายแล้ว ให้ใบถัดไปแจกต่ออะนะ เหมือนเวลาแจกไพ่ทีละใบอะแหละ
-                //ส่วนต่อจากใบที่ 4 จะเป็น 5 ซึ่ง 5 กับ 6 มันเป็นใบที่แล้วแต่คนว่าอยากจั่วป่าวน่ะ*/
-                if (current_X <= loc_target.X && current_Y >= loc_target.Y && (card_number == 1 || card_number == 2 || card_number == 3))
-                {
-                    card_number_change = card_number + 1;
-                    continue;
-                }
-                if (!start_move) continue; // ข้ามถ้ายังไม่ต้องเคลื่อนที่ - ยังไม่แสดงอนิเมชันแจกอะแหละ
-
-                //ในที่นี้ค่าราว ๆ x = 742 y = 46 || เป้าหมายโซน x 375 , y บน150 ล่าง 450
-                if (current_X > loc_target.X) current_X -= speed;
-                
-                if (current_Y < loc_target.Y) current_Y += speed;
-                
-
-                pic.Location = new Point(current_X, current_Y);
-                dic_deck[card_number].loc = new Point(current_X, current_Y);
-
-
-                this.Invalidate();
-            }
-
-            dic_deck = cards_ui.setting_deal_default(dic_deck, timer, card_number_change,startGame_deal, btn_draw_card, btn_not_draw_card, richTextBox1);
-
-            /*//จะเช็กว่าแจกเริ่มต้นคนละสองใบเสร็จหรือยังอะแหละ
-            //เช็กที่ใบที่สี่ เพราะทำทีละใบ ถ้าใบที่สี่เสร็จ แปลว่าแจกคนละสองใบเสร็จละ
-            //มี startGame_deal ด้วย ให้รู้ว่าเป็น timer ที่ให้เริ่มทำเพราะอยากแจกคนละสองใบ ไม่ใช่ timer ที่ให้ทำเพื่อให้จั่วเพิ่ม(กรณีให้สิทธิ์จั่ว) - ไม่งั้นกลายเป็นหยุดจับเวลา ทั้ง ๆ ที่ไพ่ใบที่จั่วเพิ่มยังแจกไม่เสร็จ เพราะไปเช็กพบว่าไพ่ที่ต้องแจกคนละสองใบแจกเสร็จแล้ว เลยหยุดจับเวลาอะนะ*/
-            Point loc_card_number_fourth = dic_deck[4].pic.Location;
-            Point target_card_number_fourth = dic_deck[4].loc_target;
-
-            var (check_pok,result, (result_hand_player, result_hand_dealer)) = cards_ui.dealing_cards_each_player
-            (dic_deck, card_hands, timer, startGame_deal, btn_draw_card, btn_not_draw_card ,loc_card_number_fourth, target_card_number_fourth);
-
-            if (check_pok) cards_ui.result_ui(player, card_hands, result, result_hand_player.times_pay, result_hand_dealer.times_pay,
-            bet, money_player_label);
+                //การแก้ key จะส่งผลต่อเมธอดที่ใช้แจกไพ่นะ - หมายเลขจุดเริ่มต้นจำเป็นนะ ไว้ใช้ตอนเริ่มเกมใหม่อะ
+                {1,pic_move.tuple_dic_deck(deck_first, 375,450,true,true)  },
+                {2,pic_move.tuple_dic_deck(deck_second, 375, 150)  },
+                {3,pic_move.tuple_dic_deck(deck_third,450, 450)  },
+                {4,pic_move.tuple_dic_deck(deck_fourth, 450, 150)  },
+                {5,pic_move.tuple_dic_deck(deck_fifth, 525, 450,false)  }, //ยังไม่จั่วอะนะ
+                {6,pic_move.tuple_dic_deck(deck_sixth, 525, 150,false)  },
+            };
         }
-
         void test_()
         {
             pictureBox18.Image = Image.FromStream(new MemoryStream(card_hands[0][0].picture));
@@ -215,16 +171,8 @@ namespace project
             startGame_deal = true;
             test_();
 
-            dic_deck = new Dictionary<int, Picture_move>
-            {
-                //การแก้ key จะส่งผลต่อเมธอดที่ใช้แจกไพ่นะ - หมายเลขจุดเริ่มต้นจำเป็นนะ ไว้ใช้ตอนเริ่มเกมใหม่อะ
-                {1,pic_move.tuple_dic_deck(deck_first,deck, 375,450,true,true)  },
-                {2,pic_move.tuple_dic_deck(deck_second,deck, 375, 150)  },
-                {3,pic_move.tuple_dic_deck(deck_third,deck, 450, 450)  },
-                {4,pic_move.tuple_dic_deck(deck_fourth,deck, 450, 150)  },
-                {5,pic_move.tuple_dic_deck(deck_fifth,deck, 525, 450,false)  }, //ยังไม่จั่วอะนะ
-                {6,pic_move.tuple_dic_deck(deck_sixth,deck, 525, 150,false)  },
-            };
+            dic_deck = dic_data_deck();
+            pic_move.dic_To_back_deck(dic_deck, deck.Location);
 
             timer.Enabled = true;
         }
@@ -238,18 +186,16 @@ namespace project
             btn_not_draw_card.Hide();
         }
 
-
         void pokdeng_game()
         {
             //pokdeng = new PokDeng();
-
             setting_page_pokdengBasic();
 
             //สับไพ่แบบข้อมูล
             List<Cards> shuffleCards = cards_game.shuffle_cards(cards_data);
             //แจกไพ่แบบข้อมูล
             card_hands = cards_game.deal_cards(shuffleCards, 2);
-            animation_deal_default(card_hands);
+            animation_deal_default(card_hands); //แจกไพ่แบบอนิเมชัน
 
             /*PictureBox card1 = pictureBoxes["card1"];
             MessageBox.Show(card1.Name);*/
@@ -268,128 +214,50 @@ namespace project
             pokdeng_game();
         }
 
-        void select_bet2K()
+        void select_bet2K(object sender, EventArgs e)
         {
-            double old_bet = bet;
-            set_select_bet2K_default(old_bet);
+            int betK = 2000;
+            bet_services.select_betK(player, pic, bet_2K, bet, betK, textbox_display_bet);
         }
 
-        void set_select_bet2K_default(double old_bet = 2000)
+        void select_bet5K(object sender, EventArgs e)
         {
-            bet = 2000;
-            if (!setting_select_betBasic(bet))
-            {
-                bet = old_bet;
-                return;
-            }
-
-            pic.restore_size_chip();
-            pic.resize_chip(bet_2K);
+            int betK = 5000;
+            bet_services.select_betK(player, pic, bet_5K, bet, betK, textbox_display_bet);
         }
 
-        void select_bet5K()
+        void select_bet10K(object sender, EventArgs e)
         {
-            double old_bet = bet;
-            bet = 5000;
-            if (!setting_select_betBasic(bet))
-            {
-                bet = old_bet;
-                return;
-            }
-
-            pic.restore_size_chip();
-            pic.resize_chip(bet_5K);
+            int betK = 10000;
+            bet_services.select_betK(player, pic, bet_10K, bet, betK, textbox_display_bet);
         }
 
-        void select_bet10K()
+        void select_bet50K(object sender, EventArgs e)
         {
-            double old_bet = bet;
-            bet = 10000;
-            if (!setting_select_betBasic(bet))
-            {
-                bet = old_bet;
-                return;
-            }
+            int betK = 50000;
+            bet_services.select_betK(player, pic,bet_50K, bet, betK, textbox_display_bet);
 
-            pic.restore_size_chip();
-            pic.resize_chip(bet_10K);
-        }
-
-        void select_bet50K()
-        {
-            double old_bet = bet; //เผื่อชิปใหม่ที่เลือก เงินไม่พอ จะให้ย้อนกลับไปเลือกชิปเก่าน่ะ
-            bet = 50000;
-            if (!setting_select_betBasic(bet))
-            {
-                bet = old_bet;
-                return;
-            }
-
-            pic.restore_size_chip();
-            pic.resize_chip(bet_50K);
         }
 
         private void btn_bet_all_in_Click(object sender, EventArgs e)
         {
             bet = player.get_money();
-            if(!setting_select_betBasic(bet))
-                return;
-            pic.restore_size_chip();
+            //ใช้ bet, bet เพราะเดิมพันเงินทั้งหมด ไม่มีคำว่าเงินไม่พอ มีแต่จะได้หมดหรือเสียหมดอะแหละ - ตัวแรกเงินเดิมพันเก่าว่าเคยเดิมพันไรไว้ | ตัวสองเงินที่อยากเดิมพัน
+            bet_services.select_betK(player, pic, null, bet, bet, textbox_display_bet);
+
         }
 
-        bool setting_select_betBasic(double bet)
-        {
-            double money_current = player.get_money();
-            if (money_current >= bet)
-            {
-                textbox_display_bet.Text = cal.display_money(bet);
-                return true; //ผ่าน
-            }
-
-            MessageBox.Show("ยอดเงินปัจจุบันของคุณ คือ " + cal.display_money(money_current) + Environment.NewLine +
-                "ซึ่งไม่เพียงพอสำหรับการเดิมพัน : " + cal.display_money(bet));
-            return false; //เงินไม่พอ ไม่ให้เดิมพัน
+        void handler_bet_chip() {
+            bet_2K.Click += select_bet2K;
+            bet_2K_txt.Click += select_bet2K;
+            bet_5K.Click += select_bet5K;
+            bet_5K_txt.Click += select_bet5K;
+            bet_10K.Click += select_bet10K;
+            bet_10K_txt.Click += select_bet10K;
+            bet_50K.Click += select_bet50K;
+            bet_50K_txt.Click += select_bet50K;
         }
 
-        private void bet_2K_Click(object sender, EventArgs e)
-        {
-            select_bet2K();
-        }
-
-        private void bet_2K_txt_Click(object sender, EventArgs e)
-        {
-            select_bet2K();
-        }
-
-        private void bet_5K_Click(object sender, EventArgs e)
-        {
-            select_bet5K();
-        }
-
-        private void bet_5K_txt_Click(object sender, EventArgs e)
-        {
-            select_bet5K();
-        }
-
-        private void bet_10K_Click(object sender, EventArgs e)
-        {
-            select_bet10K();
-        }
-
-        private void bet_10K_txt_Click(object sender, EventArgs e)
-        {
-            select_bet10K();
-        }
-
-        private void bet_50K_Click(object sender, EventArgs e)
-        {
-            select_bet50K();
-        }
-
-        private void bet_50K_txt_Click(object sender, EventArgs e)
-        {
-            select_bet50K();
-        }
 
     }
 }

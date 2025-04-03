@@ -273,7 +273,6 @@
             this.bet_50K_txt.TabIndex = 17;
             this.bet_50K_txt.Text = "50K";
             this.bet_50K_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bet_50K_txt.Click += new System.EventHandler(this.bet_50K_txt_Click);
             // 
             // bet_10K_txt
             // 
@@ -290,7 +289,6 @@
             this.bet_10K_txt.TabIndex = 12;
             this.bet_10K_txt.Text = "10K";
             this.bet_10K_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bet_10K_txt.Click += new System.EventHandler(this.bet_10K_txt_Click);
             // 
             // bet_5K_txt
             // 
@@ -307,7 +305,6 @@
             this.bet_5K_txt.TabIndex = 11;
             this.bet_5K_txt.Text = "5K";
             this.bet_5K_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bet_5K_txt.Click += new System.EventHandler(this.bet_5K_txt_Click);
             // 
             // money_player_waitBet
             // 
@@ -429,7 +426,6 @@
             this.bet_2K_txt.TabIndex = 10;
             this.bet_2K_txt.Text = "2K";
             this.bet_2K_txt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bet_2K_txt.Click += new System.EventHandler(this.bet_2K_txt_Click);
             // 
             // bet_2K
             // 
@@ -442,7 +438,6 @@
             this.bet_2K.Size = new System.Drawing.Size(136, 114);
             this.bet_2K.TabIndex = 14;
             this.bet_2K.TabStop = false;
-            this.bet_2K.Click += new System.EventHandler(this.bet_2K_Click);
             // 
             // bet_50K
             // 
@@ -455,7 +450,6 @@
             this.bet_50K.Size = new System.Drawing.Size(136, 114);
             this.bet_50K.TabIndex = 18;
             this.bet_50K.TabStop = false;
-            this.bet_50K.Click += new System.EventHandler(this.bet_50K_Click);
             // 
             // bet_5K
             // 
@@ -468,7 +462,6 @@
             this.bet_5K.Size = new System.Drawing.Size(130, 114);
             this.bet_5K.TabIndex = 15;
             this.bet_5K.TabStop = false;
-            this.bet_5K.Click += new System.EventHandler(this.bet_5K_Click);
             // 
             // bet_10K
             // 
@@ -481,7 +474,6 @@
             this.bet_10K.Size = new System.Drawing.Size(136, 114);
             this.bet_10K.TabIndex = 16;
             this.bet_10K.TabStop = false;
-            this.bet_10K.Click += new System.EventHandler(this.bet_10K_Click);
             // 
             // page_play_pokdeng
             // 
@@ -784,7 +776,7 @@
             // 
             // timer
             // 
-            this.timer.Interval = 10;
+            this.timer.Interval = 5;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // ST111

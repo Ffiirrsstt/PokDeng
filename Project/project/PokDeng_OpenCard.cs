@@ -41,7 +41,7 @@ namespace project
             //เจอป็อก เปิดไพ่ - ผู้เล่นเปิดละ งั้นเปิดของเจ้ามือเพิ่ม (2-4-6 ต้องดูอีกทีอะนะ ซึ่งเป็นเลขคู่)
             foreach (var card in dic_deck)
             {
-                var (pic, loc,loc_target, display, start_move) = card.Value;
+                var (pic,loc_target, display, start_move) = card.Value;
                 int key = card.Key;
                 if (key % 2 == 0) //จริง ๆ เขียนเงื่อนไข ==2 || ==4 ก็ได้แหละ...
                 {
