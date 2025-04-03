@@ -24,6 +24,10 @@ namespace project
         PokDeng pokdeng;
         List<List<Cards>> card_hands;
         Cards_Games_UI_deal cards_ui;
+        Picture_move pic_move;
+        Dictionary<int, Picture_move> dic_deck;
+
+        bool startGame_deal = false; //เอาไว้เช็กเพื่อจะหยุด timer น่ะ ไม่ให้มันจับตลอดเวลา
         int speed = 5; //ความไวไพ่ (ความไวเคลื่อนที่ของไพ่อะแหละจ้ะ)
 
         int bet_default = 100000; //วงเงินเดิมพันเริ่มต้นของผู้เล่น - ก็คือแจกเงินตอนแรกอะแหละ
@@ -34,12 +38,16 @@ namespace project
         public ST111()
         {
             InitializeComponent();
+            this.TransparencyKey = Color.Empty;
+
             tab_list = new List<TabPage> { page_main, page_newgame_pokdeng, page_play_pokdeng };
             //ออกแบบ dic ให้แก้ง่ายหน่อย
             tab = new Tab(tabControl, dic_tab());
             pic = new Picture(dic_pic());
             cards_game = new Cards_Games();
             cards_ui = new Cards_Games_UI_deal();
+            pic_move = new Picture_move();
+
 
         }
 
@@ -91,7 +99,7 @@ namespace project
             //แสดงเงินปัจจุบัน
             money_player_waitBet.Text = player.display();
             //ตั้งค่า default ว่าเลือก chip 2k
-            select_bet2K();
+            set_select_bet2K_default();
 
             tab.new_pokdeng_game();
             pic.restore_size_chip(); //จัดการชิปให้เข้าที่และขนาดเท่ากัน
@@ -126,6 +134,8 @@ namespace project
             //แปลว่ามีข้อผิดพลาดเกิดขึ้น - อย่าพึ่งเข้าหน้าเปิดเกม
             if (bet_start == -1) return;
 
+            timer.Enabled = false;
+
             player = new Player(bet_start); //เริ่มใหม่ทุกครั้งที่กดเริ่มเกมใหม่น่ะ
             new_game_pokdeng();
         }
@@ -146,9 +156,9 @@ namespace project
             int card_number_change = 0; //ไว้แก้อะนะ มันไปแก้ใน if ข้างในไม่ได้ เพราะเปลี่ยนแปลงข้อมูล dic ขณะวน loop อยู่ไม่ได้
             foreach (var card in dic_deck)
             {
-                var (pic, loc_target, _, start_move) = card.Value;
+                var (pic, loc,loc_target, _, start_move) = card.Value;
                 int card_number = card.Key;
-                int current_X = pic.Location.X, current_Y = pic.Location.Y;
+                int current_X = loc.X,current_Y = loc.Y;
 
                 /*ถ้าใบที่ 1 2 3 ถึงที่หมายแล้ว ให้ใบถัดไปแจกต่ออะนะ เหมือนเวลาแจกไพ่ทีละใบอะแหละ
                 //ส่วนต่อจากใบที่ 4 จะเป็น 5 ซึ่ง 5 กับ 6 มันเป็นใบที่แล้วแต่คนว่าอยากจั่วป่าวน่ะ*/
@@ -161,9 +171,12 @@ namespace project
 
                 //ในที่นี้ค่าราว ๆ x = 742 y = 46 || เป้าหมายโซน x 375 , y บน150 ล่าง 450
                 if (current_X > loc_target.X) current_X -= speed;
+                
                 if (current_Y < loc_target.Y) current_Y += speed;
+                
 
                 pic.Location = new Point(current_X, current_Y);
+                dic_deck[card_number].loc = new Point(current_X, current_Y);
 
 
                 this.Invalidate();
@@ -184,15 +197,6 @@ namespace project
             bet, money_player_label);
         }
 
-        void setting_pic_Stretch(PictureBox pic) => pic.SizeMode = PictureBoxSizeMode.StretchImage;
-
-        bool startGame_deal = false; //เอาไว้เช็กเพื่อจะหยุด timer น่ะ ไม่ให้มันจับตลอดเวลา
-
-        private Dictionary<int, (PictureBox pic, Point loc_target, bool display, bool start_move)> dic_deck;
-
-        (PictureBox pic, Point loc_target, bool display, bool start_move) //dis=true,bool move=false | เช่น รอหนึ่งเสร็จ สองค่อยขยับ
-            tuple_dic_deck(PictureBox pic, int x, int y,bool dis=true,bool move=false) => (pic, new Point(x, y),dis,move);
-
         void test_()
         {
             pictureBox18.Image = Image.FromStream(new MemoryStream(card_hands[0][0].picture));
@@ -211,30 +215,18 @@ namespace project
             startGame_deal = true;
             test_();
 
-            dic_deck = new Dictionary<int, (PictureBox pic, Point loc_target,bool display,bool start_move)>
+            dic_deck = new Dictionary<int, Picture_move>
             {
-                //การแก้ key จะส่งผลต่อเมธอดที่ใช้แจกไพ่นะ
-                {1,tuple_dic_deck(deck_first,375,450,true,true)  },
-                {2,tuple_dic_deck(deck_second,375, 150)  },
-                {3,tuple_dic_deck(deck_third,450, 450)  },
-                {4,tuple_dic_deck(deck_fourth,450, 150)  },
-                {5,tuple_dic_deck(deck_fifth,525, 450,false)  }, //ยังไม่จั่วอะนะ
-                {6,tuple_dic_deck(deck_sixth,525, 150,false)  },
+                //การแก้ key จะส่งผลต่อเมธอดที่ใช้แจกไพ่นะ - หมายเลขจุดเริ่มต้นจำเป็นนะ ไว้ใช้ตอนเริ่มเกมใหม่อะ
+                {1,pic_move.tuple_dic_deck(deck_first,deck, 375,450,true,true)  },
+                {2,pic_move.tuple_dic_deck(deck_second,deck, 375, 150)  },
+                {3,pic_move.tuple_dic_deck(deck_third,deck, 450, 450)  },
+                {4,pic_move.tuple_dic_deck(deck_fourth,deck, 450, 150)  },
+                {5,pic_move.tuple_dic_deck(deck_fifth,deck, 525, 450,false)  }, //ยังไม่จั่วอะนะ
+                {6,pic_move.tuple_dic_deck(deck_sixth,deck, 525, 150,false)  },
             };
 
             timer.Enabled = true;
-            /*int cards_per_player = 2, count_player =2; //การ์ดสองใบต่อคน , ผู้เล่นสองคน-รวมเจ้ามืออะนะ
-            Point card_coordinates_start = deck.Location;
-
-            for (int round = 0; round < cards_per_player; round++)
-            {
-                for (int i = 0; i < count_player; i++)
-                {
-                    deck_first
-                }
-            }*/
-
-
         }
 
         void setting_page_pokdengBasic()
@@ -279,6 +271,11 @@ namespace project
         void select_bet2K()
         {
             double old_bet = bet;
+            set_select_bet2K_default(old_bet);
+        }
+
+        void set_select_bet2K_default(double old_bet = 2000)
+        {
             bet = 2000;
             if (!setting_select_betBasic(bet))
             {

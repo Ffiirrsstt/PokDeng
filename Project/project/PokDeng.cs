@@ -25,7 +25,7 @@ namespace project
             return dic.dic_special_hands_type[special_hands_type];
         }
 
-        public (bool, (PokDeng, PokDeng)) check_pok_All(Dictionary<int, (PictureBox pic, Point loc_target, bool display, bool start_move)> dic_deck, List<List<Cards>> hands, Label draw, Label not_draw)
+        public (bool, (PokDeng, PokDeng)) check_pok_All(Dictionary<int, Picture_move> dic_deck, List<List<Cards>> hands, Label draw, Label not_draw)
         {
             PokDeng_OpenCard decide = new PokDeng_OpenCard();
             return decide.decide_reveal_hide(dic_deck,hands, draw, not_draw);

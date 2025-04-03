@@ -23,7 +23,7 @@ namespace project
         }
 
         //return ต้องเปิดไพ่ไหม หรือยังไปว่าจะจั่วไหม - true(เปิด) | false(ปิด) และ แต้มของผู้เล่นกับดีลเลอร์
-        public (bool, (PokDeng,PokDeng)) decide_reveal_hide(Dictionary<int, (PictureBox pic, Point loc_target, bool display, bool start_move)> dic_deck, List<List<Cards>> hands, Label draw, Label not_draw)
+        public (bool, (PokDeng,PokDeng)) decide_reveal_hide(Dictionary<int, Picture_move> dic_deck, List<List<Cards>> hands, Label draw, Label not_draw)
         {
             List<Cards> hand_player = hands[0]; //แค่ตั้งให้สื่อน่ะ
             List<Cards> hand_dealer = hands[1]; //แค่ตั้งให้สื่อน่ะ
@@ -41,7 +41,7 @@ namespace project
             //เจอป็อก เปิดไพ่ - ผู้เล่นเปิดละ งั้นเปิดของเจ้ามือเพิ่ม (2-4-6 ต้องดูอีกทีอะนะ ซึ่งเป็นเลขคู่)
             foreach (var card in dic_deck)
             {
-                var (pic, loc_target, display, start_move) = card.Value;
+                var (pic, loc,loc_target, display, start_move) = card.Value;
                 int key = card.Key;
                 if (key % 2 == 0) //จริง ๆ เขียนเงื่อนไข ==2 || ==4 ก็ได้แหละ...
                 {

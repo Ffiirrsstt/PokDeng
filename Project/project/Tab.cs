@@ -21,9 +21,9 @@ namespace project
         }
 
         //เวลาแก้เช่นเพิ่มหรือลด index ได้ไม่ต้องคอยแก้ index
-        public void select_tab(int dic_key_tab) =>_tabCtr.SelectedIndex = _findIdx_select_key(dic_key_tab); 
+        public void select_tab(int dic_key_tab) =>_tabCtr.SelectedIndex = _findIdx_select_key(dic_key_tab);
 
-        public void hide(int dic_key_tab) => _tabCtr.TabPages.Remove(_tab_dic[dic_key_tab]);
+        async Task hide(int dic_key_tab) => _tabCtr.TabPages.Remove(_tab_dic[dic_key_tab]);
 
         public void hide_start_program() {
             for (int idx = 0;idx < _tab_dic.Keys.Count;idx++)
@@ -31,16 +31,17 @@ namespace project
                 _tabCtr.TabPages.Remove(_findValue_tabDic_Idx(idx)); //value จาก index
         }
 
-        public void show(int dic_key_tab) {
+        async Task show(int dic_key_tab) {
             //เผื่อเปิดค้างไว้ ต้องปิดให้เรียบร้อยก่อนน่ะ
             hide(dic_key_tab);
             _tabCtr.TabPages.Add(_tab_dic[dic_key_tab]);
         }
-        public void new_pokdeng_game()
+        public async void new_pokdeng_game()
         {
-            show(page_2);
-            select_tab(page_2);
+            //ในแสดงจะมีให้ปิดไปก่อน (กรณีแบบกันเปิดซ้ำกันน่ะ แต่ที่นี่ถ้าไม่ใช้ await บางทีคำสั่งเลือกแสดงหน้ามันเสร็จก่อนจะแสดงหน้าสองน่ะ ซึ่งทำให้มันไม่แสดงผลเลือกหน้าที่สองตามที่ต้องการ)
+            await show(page_2); 
             hide(page_3); //ปิดเกมที่เล่นทิ้งไว้ พอดีเมธอดนี้ใช้ร่วมกับเวลาจบเกมแล้วเริ่มเล่นใหม่น่ะ
+            select_tab(page_2);
         }
         
         public void play_pokdeng_game()

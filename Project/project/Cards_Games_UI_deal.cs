@@ -16,14 +16,14 @@ namespace project
         dictionary_PokDeng dic = new dictionary_PokDeng();
 
         // แจกไพ่ - ปุ่มมันมีขอบขาว ไม่สวย เลยใช้ label เอาน่ะ....
-        public Dictionary<int, (PictureBox pic, Point loc_target, bool display, bool start_move)> 
+        public Dictionary<int, Picture_move> 
             setting_deal_default
-            (Dictionary<int, (PictureBox pic, Point loc_target, bool display, bool start_move)>  dic_deck, Timer timer, int card_number_change,bool startGame_deal,Label btn_draw_card, Label btn_not_draw_card,RichTextBox richTextBox1)
+            (Dictionary<int, Picture_move>  dic_deck, Timer timer, int card_number_change,bool startGame_deal,Label btn_draw_card, Label btn_not_draw_card,RichTextBox richTextBox1)
         {
             //setting ให้เริ่มต้นแจกใบถัดไปอะแหละ
             if (card_number_change != 0)
             {
-                dic_deck[card_number_change] = (dic_deck[card_number_change].pic, dic_deck[card_number_change].loc_target, dic_deck[card_number_change].display, true);
+                dic_deck[card_number_change].start_move = true;
                 return dic_deck;
             }
             return dic_deck;
@@ -31,7 +31,7 @@ namespace project
 
         //return เจอป็อกมั้ยอะแหละ(t-เจอ/f-ไม่) , ผล(แพ้-ชนะ-เสมอ) , ดึงข้อมูลต่าง ๆ ของการ์ดบนมือ (ฝั่งผู้เล่น , ฝั่งดีลเลอร์)
         public (bool,string,(PokDeng,PokDeng)) dealing_cards_each_player
-            (Dictionary<int, (PictureBox pic, Point loc_target, bool display, bool start_move)>  dic_deck, List<List<Cards>> card_hands, Timer timer, bool startGame_deal,
+            (Dictionary<int, Picture_move>  dic_deck, List<List<Cards>> card_hands, Timer timer, bool startGame_deal,
             Label draw_card, Label not_draw_card, Point loc_card_number_fourth, Point target_card_number_fourth)
         {
             if (startGame_deal && loc_card_number_fourth.X <= target_card_number_fourth.X && loc_card_number_fourth.Y >= target_card_number_fourth.Y)
