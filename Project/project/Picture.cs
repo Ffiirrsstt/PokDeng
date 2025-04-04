@@ -11,16 +11,15 @@ namespace project
 {
     internal class Picture
     {
-        Dictionary<int, Tuple<PictureBox, Point, Size>> _chips;
+        Dictionary<int, (PictureBox pic,Point point,Size size)> _chips;
         double num = 0.95;
-        public Picture(Dictionary<int, Tuple<PictureBox, Point, Size>> chips = null)
+        public Picture(Dictionary<int, (PictureBox pic, Point point, Size size)> chips = null)
         {
             _chips = chips; 
         }
 
         public void resize_chip(PictureBox pictureBox)
         {
-            //Image original_image = pictureBox.BackgroundImage;
             int new_width = (int)(pictureBox.Width * num); 
             int new_height = (int)(pictureBox.Height * num);
             int move = 5;
@@ -38,9 +37,9 @@ namespace project
 
         public void restore_size_chip() {
             foreach (var chip in _chips) { 
-                PictureBox pic = chip.Value.Item1; //pictureBox
-                Point point = chip.Value.Item2; //x,y
-                Size size = chip.Value.Item3; //w,h
+                PictureBox pic = chip.Value.pic; //pictureBox
+                Point point = chip.Value.point; //x,y
+                Size size = chip.Value.size; //w,h
 
                 resize_location_pic(pic, size.Width, size.Height, point.X , point.Y );
             }

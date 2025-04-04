@@ -35,7 +35,7 @@
             // add_cards_DB
             // 
             this.add_cards_DB.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_cards_DB.Location = new System.Drawing.Point(516, 310);
+            this.add_cards_DB.Location = new System.Drawing.Point(473, 337);
             this.add_cards_DB.Name = "add_cards_DB";
             this.add_cards_DB.Size = new System.Drawing.Size(272, 75);
             this.add_cards_DB.TabIndex = 0;
@@ -56,12 +56,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 360);
+            this.ClientSize = new System.Drawing.Size(806, 460);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.add_cards_DB);
             this.Name = "add_cards";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.add_cards_Load);
             this.ResumeLayout(false);
 
         }

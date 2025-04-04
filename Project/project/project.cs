@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace project
 {
@@ -63,11 +59,11 @@ namespace project
             };
         }
 
-        Tuple<PictureBox, Point, Size> tuple_bet_chip(PictureBox chip) => Tuple.Create(chip, chip.Location, chip.Size);
+        (PictureBox pic, Point point, Size size) tuple_bet_chip(PictureBox chip) => (chip, chip.Location, chip.Size);
 
-        Dictionary<int, Tuple<PictureBox, Point, Size>> dic_pic()
+        Dictionary<int, (PictureBox pic, Point point, Size size)> dic_pic()
         {
-            return new Dictionary<int, Tuple<PictureBox, Point,Size>>
+            return new Dictionary<int, (PictureBox pic, Point point, Size size)>
             {
                 { pic_1, tuple_bet_chip(bet_2K) },
                 { pic_2, tuple_bet_chip(bet_5K) },
@@ -288,7 +284,6 @@ namespace project
             bet_50K.Click += select_bet50K;
             bet_50K_txt.Click += select_bet50K;
         }
-
 
     }
 }
