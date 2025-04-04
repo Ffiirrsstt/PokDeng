@@ -16,7 +16,7 @@ namespace add_cards
         {
             InitializeComponent();
         }
-
+         
         void add_data_cards()
         {
             OleDbConnection conn = new OleDbConnection(conStr);
