@@ -47,7 +47,7 @@ namespace project
 
         //return 1.เช็กว่าเงื่อนไขนี้ทำไหม ถ้าทำให้ return จบการเช็กรอบนี้ , 2. startGame_player_draw 3. startGame_dealer_draw
         (bool, bool, bool, Dictionary<int, Picture_move>, List<List<Cards>>) check_after_5th(Player player, Dictionary<int, Picture_move> dic_deck,
-            bool startGame_player_draw, bool startGame_dealer_draw, int point_dealer_2Card, List<List<Cards>> card_hands, List<Cards> deck, Timer timer, double bet, Label money_player_label)
+            bool startGame_player_draw, bool startGame_dealer_draw, int point_dealer_2Card, List<List<Cards>> card_hands, List<Cards> deck, Timer timer, double bet, Label money_player_label,Label display,ProgressBar loader,Tab tab)
         { //return แรกบอกว่าจบการ return ของ animation_deal_draw ไหม
             Point loc_card_number_fifth = dic_deck[5].pic.Location;
             Point target_card_number_fifth = dic_deck[5].loc_target;
@@ -69,7 +69,7 @@ namespace project
                     picture.show_card(dic_deck, card_hands, 2, 1);
                     //จัดการเรื่องแจกไรเรียบร้อยแล้วมาหาเรื่องผลลัพธ์
                     dic_deck[5].pic.Image = Image.FromStream(new MemoryStream(card_hands[0][2].picture)); //ดึงรูปของผู้เล่น ใบที่ 3
-                    ui.cal_display_resultUI(player, card_hands, bet, money_player_label);
+                    ui.cal_display_resultUI(player, card_hands, bet, money_player_label, display, loader,tab);
 
                     //จริง ๆ จบเกมไม่ได้ใช้ทำไรแล้วตรง return นี้
                     return (true, false, false, dic_deck, card_hands);
@@ -79,7 +79,7 @@ namespace project
         }
 
         (bool, bool, bool, Dictionary<int, Picture_move>, List<List<Cards>>) check_after_6th(Player player, Dictionary<int, Picture_move> dic_deck,
-            bool startGame_player_draw, bool startGame_dealer_draw, List<List<Cards>> card_hands, List<Cards> deck, double bet, Label money_player_label,Timer timer)
+            bool startGame_player_draw, bool startGame_dealer_draw, List<List<Cards>> card_hands, List<Cards> deck, double bet, Label money_player_label,Timer timer,Label display,ProgressBar loader,Tab tab)
         {
             Point loc_card_number_sixth = dic_deck[6].pic.Location;
             Point target_card_number_sixth = dic_deck[6].loc_target;
@@ -93,25 +93,25 @@ namespace project
 
                 picture.show_card(dic_deck, card_hands, 3,1); //เปิดไพ่ดีลเลอร์ทั้งหมด
 
-                ui.cal_display_resultUI(player, card_hands, bet, money_player_label);
+                ui.cal_display_resultUI(player, card_hands, bet, money_player_label, display, loader,tab);
                 return (true, false, false, dic_deck, card_hands);
             }
             return (false, startGame_player_draw, startGame_dealer_draw, dic_deck, card_hands);
         }
 
         //สำหรับแจกใบที่5 และ 6 รวมทั้งแสดงผล ui ชนะไรงี้ | return สองตัวแรก คือ startGame_player_draw, startGame_dealer_draw
-        public (bool, bool, Dictionary<int, Picture_move>, List<List<Cards>>) animation_deal_draw(Form form, Player player, Dictionary<int, Picture_move> dic_deck, List<List<Cards>> card_hands, Timer timer, int speed, bool startGame_player_draw, bool startGame_dealer_draw, Label draw_card, Label not_draw_card, double bet, Label money_player_label, int point_dealer_2Card, List<Cards> deck, RichTextBox r)
+        public (bool, bool, Dictionary<int, Picture_move>, List<List<Cards>>) animation_deal_draw(Form form, Player player, Dictionary<int, Picture_move> dic_deck, List<List<Cards>> card_hands, Timer timer, int speed, bool startGame_player_draw, bool startGame_dealer_draw, Label draw_card, Label not_draw_card, double bet, Label money_player_label, int point_dealer_2Card, List<Cards> deck, Label display, ProgressBar loader,Tab tab)
         {
             bool result_return; //เก็บผลลัพธ์การเข้าเงื่อนไขน่ะ
 
             ui_deal.move_deal(form, dic_deck, 0, speed); //0 คือ card_number_change ในที่นี้ไม่ได้ใช้ เพราะไม่ได้จะแก้ข้อมูล dic_deck
 
             (result_return, startGame_player_draw, startGame_dealer_draw, dic_deck, card_hands) = check_after_5th(player, dic_deck,
-             startGame_player_draw, startGame_dealer_draw, point_dealer_2Card, card_hands, deck, timer, bet, money_player_label);
+             startGame_player_draw, startGame_dealer_draw, point_dealer_2Card, card_hands, deck, timer, bet, money_player_label, display,loader,tab);
             if (result_return) return (startGame_player_draw, startGame_dealer_draw, dic_deck, card_hands); //เช็กเข้าเงื่อนไขใน check_after_5th ไหม ถ้าเข้าแล้ว ไม่ต้องไปทำอันอื่นน่ะ
 
 
-            (result_return, startGame_player_draw, startGame_dealer_draw, dic_deck, card_hands) = check_after_6th(player, dic_deck, startGame_player_draw, startGame_dealer_draw, card_hands, deck, bet, money_player_label, timer);
+            (result_return, startGame_player_draw, startGame_dealer_draw, dic_deck, card_hands) = check_after_6th(player, dic_deck, startGame_player_draw, startGame_dealer_draw, card_hands, deck, bet, money_player_label, timer, display, loader,tab);
             if (result_return) return (startGame_player_draw, startGame_dealer_draw, dic_deck, card_hands);
 
             //ถ้าไม่เข้าเงื่อนไขไรเลย ให้ return startGame_player_draw, startGame_dealer_draw [ไม่ได้ setting เปลี่ยนไร]

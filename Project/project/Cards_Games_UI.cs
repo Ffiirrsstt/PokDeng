@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace project
 {
@@ -28,7 +31,7 @@ namespace project
 
         //คำนวณและแสดงผลลัพธ์
 
-        public void cal_display_resultUI(Player player,List<List<Cards>>card_hands,double bet,Label money_player_label)
+        public void cal_display_resultUI(Player player,List<List<Cards>>card_hands,double bet,Label money_player_label, Label display,ProgressBar loader,Tab tab)
         {
             List<Cards> hand_player = card_hands[0];
             List<Cards> hand_dealer = card_hands[1];
@@ -37,40 +40,61 @@ namespace project
 
             string result = pokdeng.win_lose_draw(result_player, result_dealer);
 
-            result_ui(player, card_hands, result, result_player.times_pay, result_dealer.times_pay, bet, money_player_label);
+            result_ui(player, card_hands, result, result_player.times_pay, result_dealer.times_pay, bet, money_player_label , display,loader,tab);
         }
 
         //ประกาศผลชนะ แพ้ เสมอ
-        public void result_ui
+        public async Task result_ui
            (Player player, List<List<Cards>> hands, string result, int player_times_pay, int dealer_times_pay,
-           double bet, Label money_player_label)
+           double bet, Label money_player_label,Label display,ProgressBar progress,Tab tab)
+        {
+            await Task.Delay(500); //อยากให้ดีเลย์สักนิด ไม่ให้ข้อความขึ้นไวไป
+            display.Text = text_display_ui(player, result, player_times_pay, dealer_times_pay, bet);
+            money_player_label.Text = player.display();
+
+            await loading(progress);
+            tab.new_pokdeng_game();
+        }
+
+        async Task loading(ProgressBar progress)
+        {
+            progress.Value = 0;
+            progress.Visible = true; //แสดง
+            for (int i = 1; i <= 100; i++)
+            {
+                await Task.Delay(100); //1000 รอ 1 วินาที
+                progress.Value = i;
+            }
+        }
+
+        string text_display_ui(Player player,string result, int player_times_pay, int dealer_times_pay,double bet)
         {
             List<string> result_list = dic.result_game; //ออกแบบมุมผู้เล่น จะยึดฝั่งผู้เล่นว่าแพ้ ชนะ เสมอ
-            string txt = "";
 
-            if (result == result_list[3]) MessageBox.Show("ขออภัย ระบบขัดข้อง");
+            if (result == result_list[3]) return "ขออภัย ระบบขัดข้อง";
 
             if (result == result_list[0]) //ชนะ
             {
                 int times_pay = player_times_pay;
-                txt = "ได้รับ : " + times_pay + " เท่า";
                 player.money_in(times_pay, bet);
+                return "WIN รับเงิน " + times_pay + " เท่า!";
             }
-            else if (result == result_list[1])
+
+            if (result == result_list[1])
             {
                 //แพ้
                 int times_pay = dealer_times_pay;
-                txt = "จ่าย : " + times_pay + " เท่า";
                 player.money_out(times_pay, bet);
-            }
-            else if (result == result_list[2])
-            {
-                txt = "จ่าย : " + "ได้รับเงินคืน";
-                player.refund_bet(bet);
+                return "LOSE จ่าย " + times_pay + " เท่า!";
             }
 
-            money_player_label.Text = player.display();
-            MessageBox.Show("ผล : " + result + Environment.NewLine + txt);
+            if (result == result_list[2])
+            {
+                player.refund_bet(bet);
+                return "DRAW ได้รับเงินคืน!";
+            }
+
+            return "";
         }
 
     }

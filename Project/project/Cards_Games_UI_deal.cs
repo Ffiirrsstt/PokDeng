@@ -85,17 +85,17 @@ namespace project
         //return แรกคือ startGame_deal - เป็นการแจกไพ่สี่ใบแรกสุดหรือเปล่าน่ะ เอาไว้เช็กเพื่อปิด timer น่ะ
         //เฉพาะแจก 4 ใบแรก
         public (bool, (string result,PokDeng result_hand_player, PokDeng result_hand_dealer)) animation_deal_default
-            (Form form,Player player, Dictionary<int, Picture_move>  dic_deck, List<List<Cards>> card_hands, Timer timer, int speed,bool startGame_deal, Label draw_card, Label not_draw_card,double bet,Label money_player_label, RichTextBox r)
+            (Form form,Player player, Dictionary<int, Picture_move>  dic_deck, List<List<Cards>> card_hands, Timer timer, int speed,bool startGame_deal, Label draw_card, Label not_draw_card,double bet,Label money_player_label, Label display,ProgressBar loader, Tab tab)
         {
             int card_number_change = 0; //ไว้แก้อะนะ มันไปแก้ใน if ข้างในไม่ได้ เพราะเปลี่ยนแปลงข้อมูล dic ขณะวน loop อยู่ไม่ได้
 
             card_number_change = move_deal(form,dic_deck,card_number_change,speed);
 
-            return deal_fourCard(player,card_hands,dic_deck, timer, card_number_change,  startGame_deal,  draw_card, not_draw_card, bet , money_player_label);
+            return deal_fourCard(player,card_hands,dic_deck, timer, card_number_change,  startGame_deal,  draw_card, not_draw_card, bet , money_player_label, display, loader,tab);
         }
 
         (bool ,(string result,PokDeng result_hand_player, PokDeng result_hand_dealer)) deal_fourCard(Player player, List<List<Cards>> card_hands, Dictionary<int, Picture_move> dic_deck,Timer timer,
-            int card_number_change,bool startGame_deal, Label draw_card, Label not_draw_card, double bet, Label money_player_label)
+            int card_number_change,bool startGame_deal, Label draw_card, Label not_draw_card, double bet, Label money_player_label, Label display, ProgressBar loader,Tab tab)
         {
             //ถ้าใบแรกเคลื่อนที่ถึงที่หมาย ใบถัดไปเคลื่อนที่ จนครบสี่ใบแรก
             dic_deck = setting_deal_default(dic_deck, timer, card_number_change, startGame_deal, draw_card, not_draw_card);
@@ -110,7 +110,7 @@ namespace project
             (dic_deck, card_hands, timer, startGame_deal, draw_card, not_draw_card, loc_card_number_fourth, target_card_number_fourth);
 
             if (check_pok) ui.result_ui(player, card_hands, result, result_hand_player.times_pay, result_hand_dealer.times_pay,
-            bet, money_player_label);
+            bet, money_player_label, display, loader,tab);
 
             return (result_startGame_deal, (result, result_hand_player, result_hand_dealer));
         }

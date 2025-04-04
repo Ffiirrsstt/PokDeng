@@ -57,10 +57,6 @@
             this.bet_5K = new System.Windows.Forms.PictureBox();
             this.bet_10K = new System.Windows.Forms.PictureBox();
             this.page_play_pokdeng = new System.Windows.Forms.TabPage();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.deck_first = new System.Windows.Forms.PictureBox();
             this.deck_second = new System.Windows.Forms.PictureBox();
             this.deck_third = new System.Windows.Forms.PictureBox();
@@ -77,10 +73,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.pictureBox18 = new System.Windows.Forms.PictureBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.display_result = new System.Windows.Forms.Label();
+            this.loader_new_game = new System.Windows.Forms.ProgressBar();
             this.tabControl.SuspendLayout();
             this.page_main.SuspendLayout();
             this.page_newgame_pokdeng.SuspendLayout();
@@ -95,10 +90,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bet_5K)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bet_10K)).BeginInit();
             this.page_play_pokdeng.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deck_first)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deck_second)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deck_third)).BeginInit();
@@ -110,8 +101,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -124,6 +113,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1415, 872);
             this.tabControl.TabIndex = 1;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // page_main
             // 
@@ -481,10 +471,7 @@
             this.page_play_pokdeng.BackColor = System.Drawing.Color.White;
             this.page_play_pokdeng.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("page_play_pokdeng.BackgroundImage")));
             this.page_play_pokdeng.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.page_play_pokdeng.Controls.Add(this.pictureBox12);
-            this.page_play_pokdeng.Controls.Add(this.pictureBox11);
-            this.page_play_pokdeng.Controls.Add(this.pictureBox10);
-            this.page_play_pokdeng.Controls.Add(this.pictureBox9);
+            this.page_play_pokdeng.Controls.Add(this.loader_new_game);
             this.page_play_pokdeng.Controls.Add(this.deck_first);
             this.page_play_pokdeng.Controls.Add(this.deck_second);
             this.page_play_pokdeng.Controls.Add(this.deck_third);
@@ -501,59 +488,13 @@
             this.page_play_pokdeng.Controls.Add(this.label6);
             this.page_play_pokdeng.Controls.Add(this.pictureBox7);
             this.page_play_pokdeng.Controls.Add(this.pictureBox8);
-            this.page_play_pokdeng.Controls.Add(this.pictureBox19);
-            this.page_play_pokdeng.Controls.Add(this.pictureBox18);
-            this.page_play_pokdeng.Controls.Add(this.richTextBox1);
+            this.page_play_pokdeng.Controls.Add(this.display_result);
             this.page_play_pokdeng.Location = new System.Drawing.Point(4, 25);
             this.page_play_pokdeng.Name = "page_play_pokdeng";
             this.page_play_pokdeng.Padding = new System.Windows.Forms.Padding(3);
             this.page_play_pokdeng.Size = new System.Drawing.Size(1407, 843);
             this.page_play_pokdeng.TabIndex = 3;
             this.page_play_pokdeng.Text = "ป็อกเด้ง";
-            // 
-            // pictureBox12
-            // 
-            this.pictureBox12.BackColor = System.Drawing.Color.Black;
-            this.pictureBox12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox12.BackgroundImage")));
-            this.pictureBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox12.Location = new System.Drawing.Point(348, 510);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(116, 173);
-            this.pictureBox12.TabIndex = 32;
-            this.pictureBox12.TabStop = false;
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.BackColor = System.Drawing.Color.Black;
-            this.pictureBox11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox11.BackgroundImage")));
-            this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox11.Location = new System.Drawing.Point(348, 146);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(116, 170);
-            this.pictureBox11.TabIndex = 31;
-            this.pictureBox11.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.BackColor = System.Drawing.Color.Black;
-            this.pictureBox10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox10.BackgroundImage")));
-            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox10.Location = new System.Drawing.Point(214, 146);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(109, 170);
-            this.pictureBox10.TabIndex = 30;
-            this.pictureBox10.TabStop = false;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BackColor = System.Drawing.Color.Black;
-            this.pictureBox9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox9.BackgroundImage")));
-            this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox9.Location = new System.Drawing.Point(61, 146);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(130, 170);
-            this.pictureBox9.TabIndex = 29;
-            this.pictureBox9.TabStop = false;
             // 
             // deck_first
             // 
@@ -746,41 +687,34 @@
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             // 
-            // pictureBox19
-            // 
-            this.pictureBox19.BackColor = System.Drawing.Color.Black;
-            this.pictureBox19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox19.BackgroundImage")));
-            this.pictureBox19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox19.Location = new System.Drawing.Point(214, 510);
-            this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(109, 173);
-            this.pictureBox19.TabIndex = 13;
-            this.pictureBox19.TabStop = false;
-            // 
-            // pictureBox18
-            // 
-            this.pictureBox18.BackColor = System.Drawing.Color.Black;
-            this.pictureBox18.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox18.BackgroundImage")));
-            this.pictureBox18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox18.Location = new System.Drawing.Point(61, 510);
-            this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(130, 173);
-            this.pictureBox18.TabIndex = 12;
-            this.pictureBox18.TabStop = false;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(481, 800);
-            this.richTextBox1.TabIndex = 23;
-            this.richTextBox1.Text = "";
-            // 
             // timer
             // 
             this.timer.Interval = 5;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // display_result
+            // 
+            this.display_result.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.display_result.BackColor = System.Drawing.Color.Transparent;
+            this.display_result.Font = new System.Drawing.Font("Microsoft YaHei", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.display_result.ForeColor = System.Drawing.Color.Orange;
+            this.display_result.Location = new System.Drawing.Point(216, 335);
+            this.display_result.Name = "display_result";
+            this.display_result.Size = new System.Drawing.Size(983, 118);
+            this.display_result.TabIndex = 29;
+            this.display_result.Text = "WIN จ่าย 2 เท่า!";
+            this.display_result.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // loader_new_game
+            // 
+            this.loader_new_game.BackColor = System.Drawing.Color.IndianRed;
+            this.loader_new_game.Location = new System.Drawing.Point(422, 456);
+            this.loader_new_game.Name = "loader_new_game";
+            this.loader_new_game.Size = new System.Drawing.Size(571, 41);
+            this.loader_new_game.TabIndex = 30;
+            this.loader_new_game.Value = 30;
             // 
             // ST111
             // 
@@ -789,7 +723,7 @@
             this.BackColor = System.Drawing.Color.BurlyWood;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1520, 915);
+            this.ClientSize = new System.Drawing.Size(1461, 915);
             this.Controls.Add(this.tabControl);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -813,10 +747,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bet_5K)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bet_10K)).EndInit();
             this.page_play_pokdeng.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deck_first)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deck_second)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deck_third)).EndInit();
@@ -828,8 +758,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -874,19 +802,14 @@
         private System.Windows.Forms.TextBox textbox_bet_start;
         private System.Windows.Forms.TextBox textbox_display_bet;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.PictureBox deck_first;
         private System.Windows.Forms.PictureBox deck_third;
         private System.Windows.Forms.PictureBox deck_fourth;
         private System.Windows.Forms.PictureBox deck_fifth;
         private System.Windows.Forms.PictureBox deck_second;
         private System.Windows.Forms.PictureBox deck_sixth;
-        private System.Windows.Forms.PictureBox pictureBox12;
-        private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.PictureBox pictureBox19;
-        private System.Windows.Forms.PictureBox pictureBox18;
+        private System.Windows.Forms.Label display_result;
+        private System.Windows.Forms.ProgressBar loader_new_game;
     }
 }
 

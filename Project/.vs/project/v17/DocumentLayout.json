@@ -11,12 +11,32 @@
       "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\bet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\bet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|D:\\USE\\project363\\Project\\project\\cards_games_ui_deal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\cards_games_ui_deal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\cards_games_ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\cards_games_ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\tab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\tab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\picture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\picture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\pokdeng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\pokdeng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\bet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\bet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\deal_card_5thand6th.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\deal_card_5thand6th.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\pokdeng_muchhand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,22 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\cards_games.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\cards_games.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\picture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\picture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|D:\\USE\\project363\\Project\\project\\cards_games_ui_deal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\cards_games_ui_deal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\deal_card_5thand6th.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\deal_card_5thand6th.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\pokdeng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\pokdeng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,7 +66,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
+              "Title": "Tab.cs",
+              "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\Tab.cs",
+              "RelativeDocumentMoniker": "project\\Tab.cs",
+              "ToolTip": "D:\\USE\\project363\\Project\\project\\Tab.cs",
+              "RelativeToolTip": "project\\Tab.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAlwCYAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T16:09:18.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Bet.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\Bet.cs",
               "RelativeDocumentMoniker": "project\\Bet.cs",
@@ -81,14 +98,14 @@
               "RelativeDocumentMoniker": "project\\Deal_Card_5thAND6th.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\Deal_Card_5thAND6th.cs",
               "RelativeToolTip": "project\\Deal_Card_5thAND6th.cs",
-              "ViewState": "AQIAADUAAAAAAAAAAAAkwD8AAAARAAAA",
+              "ViewState": "AQIAAEMAAAAAAAAAAIAwwFEAAADKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T13:49:29.885Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "PokDeng_muchHand.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\PokDeng_muchHand.cs",
               "RelativeDocumentMoniker": "project\\PokDeng_muchHand.cs",
@@ -101,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "Cards_Games.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\Cards_Games.cs",
               "RelativeDocumentMoniker": "project\\Cards_Games.cs",
@@ -114,26 +131,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "PokDeng.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\PokDeng.cs",
               "RelativeDocumentMoniker": "project\\PokDeng.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\PokDeng.cs",
               "RelativeToolTip": "project\\PokDeng.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAtwCoAAAAWAAAA",
+              "ViewState": "AQIAACkAAAAAAAAAAIAwwCoAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-04T08:52:50.9Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Picture.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\Picture.cs",
               "RelativeDocumentMoniker": "project\\Picture.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\Picture.cs",
               "RelativeToolTip": "project\\Picture.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAQwBcAAAAMAAAA",
+              "ViewState": "AQIAADcAAAAAAAAAAADwvxcAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-03T12:50:35.17Z",
               "EditorCaption": ""
@@ -146,20 +163,20 @@
               "RelativeDocumentMoniker": "project\\Cards_Games_UI.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\Cards_Games_UI.cs",
               "RelativeToolTip": "project\\Cards_Games_UI.cs",
-              "ViewState": "AQIAACsAAAAAAAAAAAA3wA8AAAB7AAAA",
+              "ViewState": "AQIAACcAAAAAAAAAAAAgwEIAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-03T12:29:07.618Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "Cards_Games_UI_deal.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\Cards_Games_UI_deal.cs",
               "RelativeDocumentMoniker": "project\\Cards_Games_UI_deal.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\Cards_Games_UI_deal.cs",
               "RelativeToolTip": "project\\Cards_Games_UI_deal.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAQwCgAAAA6AAAA",
+              "ViewState": "AQIAAGgAAAAAAAAAAAAowFgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-02T19:27:12.571Z",
               "EditorCaption": ""
@@ -172,7 +189,7 @@
               "RelativeDocumentMoniker": "project\\project.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\project.cs",
               "RelativeToolTip": "project\\project.cs",
-              "ViewState": "AQIAAO4AAAAAAAAAAAAqwPsAAACzAAAA",
+              "ViewState": "AQIAAFEAAAAAAAAAAIAwwGAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-31T09:51:06.588Z",
               "EditorCaption": ""

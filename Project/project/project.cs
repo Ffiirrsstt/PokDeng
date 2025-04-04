@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -48,6 +49,7 @@ namespace project
             tab = new Tab(tabControl, dic_tab());
             pic = new Picture(dic_pic());
             handler_bet_chip();
+            trackBar_bet.Minimum = 1000;   // ค่าน้อยสุด
         }
 
         Dictionary<int, TabPage> dic_tab()
@@ -89,26 +91,27 @@ namespace project
         void new_game_pokdeng()
         {
             timer.Enabled = false;
-            int betK = 2000; //เงินเดิมพันเริ่มต้น
+            tab.new_pokdeng_game();
 
+            select_page_newgame_pokdeng();
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedTab == page_newgame_pokdeng) select_page_newgame_pokdeng();
+        }
+
+        void select_page_newgame_pokdeng()
+        {
+            int betK = 2000; //เงินเดิมพันเริ่มต้น
             //แสดงเงินปัจจุบัน
             money_player_waitBet.Text = player.display();
             //ตั้งค่า default ว่าเลือก chip 2k
             bet = bet_services.select_betK(player, pic, bet_2K, betK, betK, textbox_display_bet);
-
-            tab.new_pokdeng_game();
             pic.restore_size_chip(); //จัดการชิปให้เข้าที่และขนาดเท่ากัน
 
-            trackBar_bet.Minimum = 2000;   // ค่าน้อยสุด
             trackBar_bet.Maximum = (int)player.get_money();
             trackBar_bet.Value = 2000;
-        }
-
-        void testSystem()
-        {
-            player = new Player(10000);
-            money_player_label.Text = player.display();
-            money_player_waitBet.Text= player.display();
         }
 
 
@@ -120,8 +123,7 @@ namespace project
         {
             fetch_data_cards();
 
-            //tab.hide_start_program();
-            testSystem();
+            tab.hide_start_program();
 
             cards_ui.displayTXT_display_bet_start(display_bet_start,bet_default);
             textbox_bet_start.Text = bet_default.ToString();
@@ -146,12 +148,12 @@ namespace project
         private void timer_Tick(object sender, EventArgs e)
         {
             if(startGame_deal)
-                (startGame_deal,result_hand) = cards_ui_deal.animation_deal_default(this, player,  dic_deck, card_hands, timer, speed, startGame_deal, btn_draw_card, btn_not_draw_card, bet, money_player_label,richTextBox1);
+                (startGame_deal,result_hand) = cards_ui_deal.animation_deal_default(this, player,  dic_deck, card_hands, timer, speed, startGame_deal, btn_draw_card, btn_not_draw_card, bet, money_player_label, display_result,loader_new_game,tab);
             if (startGame_player_deal || startGame_dealer_deal)
             {
                 int point_dealer = result_hand.result_dealer.points_cards;
                 List<Cards> deck = shuffleCards; //แค่ตั้งใหม่ไม่ให้งงน่ะ
-                (startGame_player_deal, startGame_dealer_deal, dic_deck, card_hands) = deal_5th6th.animation_deal_draw(this, player, dic_deck, card_hands, timer, speed, startGame_player_deal, startGame_dealer_deal, btn_draw_card, btn_not_draw_card, bet, money_player_label, point_dealer, deck, richTextBox1);
+                (startGame_player_deal, startGame_dealer_deal, dic_deck, card_hands) = deal_5th6th.animation_deal_draw(this, player, dic_deck, card_hands, timer, speed, startGame_player_deal, startGame_dealer_deal, btn_draw_card, btn_not_draw_card, bet, money_player_label, point_dealer, deck, display_result,loader_new_game,tab);
             }
         } 
 
@@ -168,23 +170,11 @@ namespace project
                 {6,pic_move.tuple_dic_deck(deck_sixth, 525, 150,false)  },
             };
         }
-        void test_()
-        {
-            pictureBox18.Image = Image.FromStream(new MemoryStream(card_hands[0][0].picture));
-            pictureBox9.Image = Image.FromStream(new MemoryStream(card_hands[1][0].picture));
-            pictureBox19.Image = Image.FromStream(new MemoryStream(card_hands[0][1].picture));
-            pictureBox10.Image = Image.FromStream(new MemoryStream(card_hands[1][1].picture));
-            /*pictureBox12.Image = Image.FromStream(new MemoryStream(card_hands[0][2].picture));
-            pictureBox11.Image = Image.FromStream(new MemoryStream(card_hands[1][2].picture));*/
-
-            pic.setting_pic_list_Stretch(new List<PictureBox>{ pictureBox18,pictureBox9,pictureBox19,pictureBox10,pictureBox12,pictureBox11});
-        }
 
         //ป็อกเด้งเริ่มต้นแจกสองอะสิ
         void animation_deal_default()
         {
             startGame_deal = true;
-            test_();
 
             pic_move.dic_To_back_deck(dic_deck, deck.Location);
 
@@ -196,12 +186,14 @@ namespace project
             //แสดงยอดเงินหลังหักเดิมพันเรียบร้อยแล้ว
             money_player_label.Text = player.display();
             tab.play_pokdeng_game();
-            btn_draw_card.Hide();
-            btn_not_draw_card.Hide();
+            hide_btn_draw();
         }
 
         void pokdeng_game()
         {
+            display_result.Text = "";
+            loader_new_game.Visible = false; //ซ่อน
+
             setting_page_pokdengBasic();
 
             //สับไพ่แบบข้อมูล
@@ -216,6 +208,7 @@ namespace project
 
         private async void btn_draw_card_Click(object sender, EventArgs e)
         {
+            hide_btn_draw();
             startGame_player_deal = true;   
             List<Cards> deck = shuffleCards; 
             //ผู้เล่นเลือกจั่ว หลังจากนั้นดีลเลอร์จะตัดสินใจภายในเมธอดที่ถูกเรียกใช้โดย timer (timer เพราะตัดสินใจหลังแจกผู้เล่นเสร็จ) - ผลแพ้ชนะถูกเรียกใช้ใน timer เพราะรอแจกการ์ดเสร็จน่ะ
@@ -224,6 +217,8 @@ namespace project
 
         private void btn_not_draw_card_Click(object sender, EventArgs e)
         {
+            hide_btn_draw();
+
             int point_dealer = result_hand.result_dealer.points_cards;
             bool result_decide = deal_5th6th.dealer_decide(point_dealer);
             
@@ -242,10 +237,14 @@ namespace project
 
             pic.show_card(dic_deck, card_hands, 2, 1); //เปิดการ์ดทั้งหมดของดีลเลอร์
 
-            richTextBox1.Text = result_hand.result + " " + times_pay_palyer + " " + times_pay_dealer;
-
             //กรณีตัดสินใจดีลเลอร์ไม่จั่ว เนื่องจากไม่ได้จั่วทั้งผู้เล่นและดีลเลอร์ จึงใช้ผลเดิม - result_hand (ถูกคำนวณเอาไว้แล้ว แต่แค่ถ้าไม่ pok เลยยังไม่ได้แสดงเฉย ๆ)
-            cards_ui.result_ui(player,card_hands, result_hand.result, times_pay_palyer, times_pay_dealer, bet,money_player_label);
+            cards_ui.result_ui(player,card_hands, result_hand.result, times_pay_palyer, times_pay_dealer, bet,money_player_label , display_result, loader_new_game, tab);
+        }
+
+        void hide_btn_draw()
+        {
+            btn_draw_card.Hide();
+            btn_not_draw_card.Hide();
         }
 
         private void trackBar_bet_ValueChanged(object sender, EventArgs e) =>
