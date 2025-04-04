@@ -215,10 +215,11 @@
             // 
             // trackBar_bet
             // 
+            this.trackBar_bet.AutoSize = false;
             this.trackBar_bet.BackColor = System.Drawing.Color.White;
             this.trackBar_bet.Location = new System.Drawing.Point(271, 289);
             this.trackBar_bet.Name = "trackBar_bet";
-            this.trackBar_bet.Size = new System.Drawing.Size(593, 56);
+            this.trackBar_bet.Size = new System.Drawing.Size(593, 41);
             this.trackBar_bet.TabIndex = 22;
             this.trackBar_bet.ValueChanged += new System.EventHandler(this.trackBar_bet_ValueChanged);
             // 
@@ -258,7 +259,7 @@
             this.bet_50K_txt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bet_50K_txt.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bet_50K_txt.ForeColor = System.Drawing.Color.White;
-            this.bet_50K_txt.Location = new System.Drawing.Point(756, 384);
+            this.bet_50K_txt.Location = new System.Drawing.Point(755, 384);
             this.bet_50K_txt.Name = "bet_50K_txt";
             this.bet_50K_txt.Size = new System.Drawing.Size(85, 39);
             this.bet_50K_txt.TabIndex = 17;
@@ -274,7 +275,7 @@
             this.bet_10K_txt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bet_10K_txt.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bet_10K_txt.ForeColor = System.Drawing.Color.White;
-            this.bet_10K_txt.Location = new System.Drawing.Point(602, 384);
+            this.bet_10K_txt.Location = new System.Drawing.Point(604, 384);
             this.bet_10K_txt.Name = "bet_10K_txt";
             this.bet_10K_txt.Size = new System.Drawing.Size(83, 39);
             this.bet_10K_txt.TabIndex = 12;
@@ -290,7 +291,7 @@
             this.bet_5K_txt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bet_5K_txt.Font = new System.Drawing.Font("TH Sarabun New", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.bet_5K_txt.ForeColor = System.Drawing.Color.White;
-            this.bet_5K_txt.Location = new System.Drawing.Point(454, 384);
+            this.bet_5K_txt.Location = new System.Drawing.Point(457, 384);
             this.bet_5K_txt.Name = "bet_5K_txt";
             this.bet_5K_txt.Size = new System.Drawing.Size(69, 39);
             this.bet_5K_txt.TabIndex = 11;
@@ -438,7 +439,7 @@
             this.bet_50K.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bet_50K.Location = new System.Drawing.Point(728, 344);
             this.bet_50K.Name = "bet_50K";
-            this.bet_50K.Size = new System.Drawing.Size(136, 114);
+            this.bet_50K.Size = new System.Drawing.Size(135, 114);
             this.bet_50K.TabIndex = 18;
             this.bet_50K.TabStop = false;
             // 
@@ -448,7 +449,7 @@
             this.bet_5K.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bet_5K.BackgroundImage")));
             this.bet_5K.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bet_5K.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bet_5K.Location = new System.Drawing.Point(424, 344);
+            this.bet_5K.Location = new System.Drawing.Point(427, 344);
             this.bet_5K.Name = "bet_5K";
             this.bet_5K.Size = new System.Drawing.Size(130, 114);
             this.bet_5K.TabIndex = 15;
@@ -460,9 +461,9 @@
             this.bet_10K.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bet_10K.BackgroundImage")));
             this.bet_10K.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bet_10K.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bet_10K.Location = new System.Drawing.Point(574, 344);
+            this.bet_10K.Location = new System.Drawing.Point(579, 344);
             this.bet_10K.Name = "bet_10K";
-            this.bet_10K.Size = new System.Drawing.Size(136, 114);
+            this.bet_10K.Size = new System.Drawing.Size(129, 114);
             this.bet_10K.TabIndex = 16;
             this.bet_10K.TabStop = false;
             // 
