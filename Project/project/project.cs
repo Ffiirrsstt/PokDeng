@@ -188,22 +188,13 @@ namespace project
 
         void pokdeng_game()
         {
-            //pokdeng = new PokDeng();
             setting_page_pokdengBasic();
 
             //สับไพ่แบบข้อมูล
             List<Cards> shuffleCards = cards_game.shuffle_cards(cards_data);
             //แจกไพ่แบบข้อมูล
             card_hands = cards_game.deal_cards(shuffleCards, 2);
-            animation_deal_default(card_hands); //แจกไพ่แบบอนิเมชัน
-
-            /*PictureBox card1 = pictureBoxes["card1"];
-            MessageBox.Show(card1.Name);*/
-
-            //List<int> player_draw = new List<int> { 0, 1 }; //ใครเลือกจั่วบ้าง ใส่ index คนที่จั่ว ที่นี่เล่นสองคน มี 0,1 โดย 1 เป็นเจ้ามือ
-            //cardCard_hands = cards_game.draw_additionalCard(cardCard_hands, player_draw, 1, shuffleCards);
-
-            //อนิเมชันไพ่สองใบ - ผู้เล่น | เจ้ามือ
+            animation_deal_default(card_hands); //แจกไพ่แบบอนิเมชัน - ทำงานร่วมกับ timer
         }
 
         //กดปุ่มเริ่มเดิมพัน
@@ -214,38 +205,21 @@ namespace project
             pokdeng_game();
         }
 
-        void select_bet2K(object sender, EventArgs e)
-        {
-            int betK = 2000;
-            bet = bet_services.select_betK(player, pic, bet_2K, bet, betK, textbox_display_bet);
-        }
+        //- ตัวแรกเงินเดิมพันเก่าว่าเคยเดิมพันไรไว้ | ตัวสองเงินที่อยากเดิมพัน
+        void select_bet2K(object sender, EventArgs e) =>
+            bet = bet_services.select_betK(player, pic, bet_2K, bet, 2000, textbox_display_bet);
 
-        void select_bet5K(object sender, EventArgs e)
-        {
-            int betK = 5000;
-            bet =bet_services.select_betK(player, pic, bet_5K, bet, betK, textbox_display_bet);
-        }
+        void select_bet5K(object sender, EventArgs e) =>
+            bet =bet_services.select_betK(player, pic, bet_5K, bet, 5000, textbox_display_bet);
 
-        void select_bet10K(object sender, EventArgs e)
-        {
-            int betK = 10000;
-            bet = bet_services.select_betK(player, pic, bet_10K, bet, betK, textbox_display_bet);
-        }
+        void select_bet10K(object sender, EventArgs e) =>
+            bet = bet_services.select_betK(player, pic, bet_10K, bet, 10000, textbox_display_bet);
 
-        void select_bet50K(object sender, EventArgs e)
-        {
-            int betK = 50000;
-            bet = bet_services.select_betK(player, pic,bet_50K, bet, betK, textbox_display_bet);
+        void select_bet50K(object sender, EventArgs e) =>
+            bet = bet_services.select_betK(player, pic,bet_50K, bet, 50000, textbox_display_bet);
 
-        }
-
-        private void btn_bet_all_in_Click(object sender, EventArgs e)
-        {
-            bet = player.get_money();
-            //ใช้ bet, bet เพราะเดิมพันเงินทั้งหมด ไม่มีคำว่าเงินไม่พอ มีแต่จะได้หมดหรือเสียหมดอะแหละ - ตัวแรกเงินเดิมพันเก่าว่าเคยเดิมพันไรไว้ | ตัวสองเงินที่อยากเดิมพัน
-            bet = bet_services.select_betK(player, pic, null, bet, bet, textbox_display_bet);
-
-        }
+        private void btn_bet_all_in_Click(object sender, EventArgs e) =>
+            bet = bet_services.select_betK(player, pic, null, bet, player.get_money(), textbox_display_bet);
 
         void handler_bet_chip() {
             bet_2K.Click += select_bet2K;
