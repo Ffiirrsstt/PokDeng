@@ -1,26 +1,28 @@
-The Pok Deng game is developed using C# (.NET Framework) and stores data in Microsoft Access (.mdb files).
+The Pok Deng game is developed using C# (.NET Framework) and stores data in Microsoft Access (.mdb format).
 
-The game is played between the player (one person) and the dealer (system).
+It is a Pok Deng game between a player (one person) and the dealer (system).
 
-For betting, players can click chips, click "bet all," or choose via a trackbar.
+For betting, players can click chips, press "All In", or choose via a trackbar.
 
-At the start, players specify their initial amount of money. Then, they place bets and begin playing the game.
+At the beginning, players specify their starting balance (initial money), then place a bet and start playing the game.
 
-Players can continue to place bets, but if their remaining balance becomes too low, they will be invited to start a new game with the initial amount of money.
+Players can continue placing bets, but if their balance becomes too low, they will be forced to exit (the game must restart with the initial money).
 
-Pok Deng calculates the following rankings: Three of a kind > Straight > Pair, and other combinations. In the case of special hands, such as three of a kind facing another three of a kind, the winner is determined by who has the higher hand, such as Three Kings vs Three Queens.
+Pok Deng calculates the hand rankings: Three-of-a-kind > Straight > Numeric hands, etc. In cases of special hands, such as a Three-of-a-kind vs. another Three-of-a-kind, the result will be determined by the higher hand, such as Three Kings vs. Three Queens.
 
-This version of Pok Deng does not determine the winner by suit (Spades, Hearts, Clubs, Diamonds).  
-- Three of a kind pays 5 times the bet.  
-- Straight pays 3 times the bet.  
-- Pair with the same suit on all three cards pays 3 times the bet.  
-- Pair with the same suit on two cards pays 2 times the bet.  
-- Pair of the same rank on two cards pays 2 times the bet.  
-Note: When a Pok 8 or Pok 9 is dealt, the game ends immediately, and the result is revealed.
+This version of Pok Deng does not consider the suit (spades, hearts, diamonds, clubs) when determining the winner.
 
-In cases where the player's hand has any value, they can choose to draw or not. After the player decides, it's the dealer's turn to decide whether to draw or not. Once the dealer's decision is made, the game results will be revealed.
+- Three-of-a-kind pays 5 times.
+- Straight pays 3 times.
+- A hand with all three cards in the same suit pays 3 times.
+- A hand with two cards in the same suit pays 2 times.
+- A hand with two cards of the same rank pays 2 times.
 
-After the game results are shown, there will be a brief loading period (displayed as a progress bar), after which the player can decide how much to bet for the next round.
+Note: If a player gets a Pok 8 or Pok 9, the game will immediately reveal the result of the hand.
 
-- The game system displays animation for dealing the cards.  
-- The game does not store gameplay data (no player information is saved; it is a single-player offline game with no tracking of individual play sessions).
+In the case where the player's hand has any value, the player can choose to draw another card or not. After the player's decision, it will be the dealer's turn to decide whether to draw a card. Afterward, the game result will be revealed.
+
+After the game result is revealed, there will be a brief loading period (displayed as a progress bar), before allowing the player to select how much to bet for the next round.
+
+- The game system includes animations for dealing cards.
+- The game will not store any gameplay data (it is an offline game for a single player and does not store any player data between games).
