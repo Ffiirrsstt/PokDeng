@@ -53,6 +53,7 @@
     <Compile Include="Cards_Games_Services.cs" />
     <Compile Include="Cards_Games_UI.cs" />
     <Compile Include="Cards_Games_UI_deal.cs" />
+    <Compile Include="Deal_Card_5thAND6th.cs" />
     <Compile Include="dictionary_PokDeng.cs" />
     <Compile Include="Picture.cs" />
     <Compile Include="Picture_move.cs" />

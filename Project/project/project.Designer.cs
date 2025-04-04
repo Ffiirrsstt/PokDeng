@@ -37,7 +37,7 @@
             this.btn_pokdeng_game = new System.Windows.Forms.Button();
             this.page_newgame_pokdeng = new System.Windows.Forms.TabPage();
             this.textbox_display_bet = new System.Windows.Forms.TextBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.trackBar_bet = new System.Windows.Forms.TrackBar();
             this.pictureBox20 = new System.Windows.Forms.PictureBox();
             this.btn_bet_all_in = new System.Windows.Forms.Label();
             this.bet_50K_txt = new System.Windows.Forms.Label();
@@ -84,7 +84,7 @@
             this.tabControl.SuspendLayout();
             this.page_main.SuspendLayout();
             this.page_newgame_pokdeng.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_bet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -119,7 +119,7 @@
             this.tabControl.Controls.Add(this.page_main);
             this.tabControl.Controls.Add(this.page_newgame_pokdeng);
             this.tabControl.Controls.Add(this.page_play_pokdeng);
-            this.tabControl.Location = new System.Drawing.Point(12, 1);
+            this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1415, 872);
@@ -185,7 +185,7 @@
             this.page_newgame_pokdeng.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("page_newgame_pokdeng.BackgroundImage")));
             this.page_newgame_pokdeng.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.page_newgame_pokdeng.Controls.Add(this.textbox_display_bet);
-            this.page_newgame_pokdeng.Controls.Add(this.trackBar1);
+            this.page_newgame_pokdeng.Controls.Add(this.trackBar_bet);
             this.page_newgame_pokdeng.Controls.Add(this.pictureBox20);
             this.page_newgame_pokdeng.Controls.Add(this.btn_bet_all_in);
             this.page_newgame_pokdeng.Controls.Add(this.bet_50K_txt);
@@ -223,13 +223,14 @@
             this.textbox_display_bet.Text = "2K";
             this.textbox_display_bet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // trackBar1
+            // trackBar_bet
             // 
-            this.trackBar1.BackColor = System.Drawing.Color.White;
-            this.trackBar1.Location = new System.Drawing.Point(271, 289);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(593, 56);
-            this.trackBar1.TabIndex = 22;
+            this.trackBar_bet.BackColor = System.Drawing.Color.White;
+            this.trackBar_bet.Location = new System.Drawing.Point(271, 289);
+            this.trackBar_bet.Name = "trackBar_bet";
+            this.trackBar_bet.Size = new System.Drawing.Size(593, 56);
+            this.trackBar_bet.TabIndex = 22;
+            this.trackBar_bet.ValueChanged += new System.EventHandler(this.trackBar_bet_ValueChanged);
             // 
             // pictureBox20
             // 
@@ -646,6 +647,7 @@
             this.btn_draw_card.TabIndex = 14;
             this.btn_draw_card.Text = "จั่ว";
             this.btn_draw_card.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_draw_card.Click += new System.EventHandler(this.btn_draw_card_Click);
             // 
             // deck
             // 
@@ -800,7 +802,7 @@
             this.page_main.PerformLayout();
             this.page_newgame_pokdeng.ResumeLayout(false);
             this.page_newgame_pokdeng.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_bet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -867,7 +869,7 @@
         private System.Windows.Forms.PictureBox pictureBox20;
         private System.Windows.Forms.Label btn_draw_card;
         private System.Windows.Forms.Label btn_not_draw_card;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackBar_bet;
         private System.Windows.Forms.Label display_bet_start;
         private System.Windows.Forms.TextBox textbox_bet_start;
         private System.Windows.Forms.TextBox textbox_display_bet;

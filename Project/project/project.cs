@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace project
@@ -18,16 +19,17 @@ namespace project
         PokDeng pokdeng;
         List<List<Cards>> card_hands;
         List<Cards> cards_data ,shuffleCards; //ข้อมูลการ์ดทั้งหมด , ข้อมูลการ์ดที่สับเรียบร้อยแล้ว
-        (PokDeng result_player, PokDeng result_dealer) result_hand;
+        (string result,PokDeng result_player, PokDeng result_dealer) result_hand;
         Bet bet_services = new Bet();
         Dictionary<int, Picture_move> dic_deck;
         Calculate cal = new Calculate();
         Cards_Games cards_game = new Cards_Games();
         Cards_Games_UI_deal cards_ui_deal = new Cards_Games_UI_deal();
+        Deal_Card_5thAND6th deal_5th6th = new Deal_Card_5thAND6th();
         Cards_Games_UI cards_ui = new Cards_Games_UI();
         Picture_move pic_move = new Picture_move();
 
-        int speed = 5; //ความไวไพ่ (ความไวเคลื่อนที่ของไพ่อะแหละจ้ะ)
+        int speed = 15; //ความไวไพ่ (ความไวเคลื่อนที่ของไพ่อะแหละจ้ะ)
         int bet_default = 100000; //วงเงินเดิมพันเริ่มต้นของผู้เล่น - ก็คือแจกเงินตอนแรกอะแหละ
         double bet=2000; //เงินที่เดิมพันในแต่ละตา 
 
@@ -86,14 +88,20 @@ namespace project
 
         void new_game_pokdeng()
         {
+            timer.Enabled = false;
             int betK = 2000; //เงินเดิมพันเริ่มต้น
+
             //แสดงเงินปัจจุบัน
             money_player_waitBet.Text = player.display();
             //ตั้งค่า default ว่าเลือก chip 2k
-            bet_services.select_betK(player, pic, bet_2K, betK, betK, textbox_display_bet);
+            bet = bet_services.select_betK(player, pic, bet_2K, betK, betK, textbox_display_bet);
 
             tab.new_pokdeng_game();
             pic.restore_size_chip(); //จัดการชิปให้เข้าที่และขนาดเท่ากัน
+
+            trackBar_bet.Minimum = 2000;   // ค่าน้อยสุด
+            trackBar_bet.Maximum = (int)player.get_money();
+            trackBar_bet.Value = 2000;
         }
 
         void testSystem()
@@ -125,8 +133,6 @@ namespace project
             //แปลว่ามีข้อผิดพลาดเกิดขึ้น - อย่าพึ่งเข้าหน้าเปิดเกม
             if (bet_start == -1) return;
 
-            timer.Enabled = false;
-
             player = new Player(bet_start); //เริ่มใหม่ทุกครั้งที่กดเริ่มเกมใหม่น่ะ
             new_game_pokdeng();
         }
@@ -136,9 +142,17 @@ namespace project
             cards_ui.displayTXT_display_bet_start(display_bet_start,bet_start);
         }
 
+        bool startGame_player_deal = false, startGame_dealer_deal = false;
         private void timer_Tick(object sender, EventArgs e)
         {
-            result_hand = cards_ui_deal.animation_deal(this, player,  dic_deck, card_hands, timer, speed, startGame_deal, btn_draw_card, btn_not_draw_card, bet, money_player_label);
+            if(startGame_deal)
+                (startGame_deal,result_hand) = cards_ui_deal.animation_deal_default(this, player,  dic_deck, card_hands, timer, speed, startGame_deal, btn_draw_card, btn_not_draw_card, bet, money_player_label,richTextBox1);
+            if (startGame_player_deal || startGame_dealer_deal)
+            {
+                int point_dealer = result_hand.result_dealer.points_cards;
+                List<Cards> deck = shuffleCards; //แค่ตั้งใหม่ไม่ให้งงน่ะ
+                (startGame_player_deal, startGame_dealer_deal, dic_deck, card_hands) = deal_5th6th.animation_deal_draw(this, player, dic_deck, card_hands, timer, speed, startGame_player_deal, startGame_dealer_deal, btn_draw_card, btn_not_draw_card, bet, money_player_label, point_dealer, deck, richTextBox1);
+            }
         } 
 
         Dictionary<int, Picture_move> dic_data_deck()
@@ -167,12 +181,11 @@ namespace project
         }
 
         //ป็อกเด้งเริ่มต้นแจกสองอะสิ
-        void animation_deal_default(List<List<Cards>> card_hands)
+        void animation_deal_default()
         {
             startGame_deal = true;
             test_();
 
-            dic_deck = dic_data_deck();
             pic_move.dic_To_back_deck(dic_deck, deck.Location);
 
             timer.Enabled = true;
@@ -195,8 +208,48 @@ namespace project
             shuffleCards = cards_game.shuffle_cards(cards_data);
             //แจกไพ่แบบข้อมูล
             card_hands = cards_game.deal_cards(shuffleCards, 2);
-            animation_deal_default(card_hands); //แจกไพ่แบบอนิเมชัน - ทำงานร่วมกับ timer
+            dic_deck = dic_data_deck(); //ข้อมูลเกี่ยวกับอนิเมชันการ์ดน่ะ
+            cards_ui.all_flip_card_down(dic_deck, deck); //ปิดการ์ดทั้งหมดก่อน เพราะเริ่มตาใหม่
+            animation_deal_default(); //แจกไพ่แบบอนิเมชัน - ทำงานร่วมกับ timer
         }
+
+
+        private async void btn_draw_card_Click(object sender, EventArgs e)
+        {
+            startGame_player_deal = true;   
+            List<Cards> deck = shuffleCards; 
+            //ผู้เล่นเลือกจั่ว หลังจากนั้นดีลเลอร์จะตัดสินใจภายในเมธอดที่ถูกเรียกใช้โดย timer (timer เพราะตัดสินใจหลังแจกผู้เล่นเสร็จ) - ผลแพ้ชนะถูกเรียกใช้ใน timer เพราะรอแจกการ์ดเสร็จน่ะ
+            (dic_deck, card_hands) = deal_5th6th.player_animation( card_hands, dic_deck,deck, timer);
+        }
+
+        private void btn_not_draw_card_Click(object sender, EventArgs e)
+        {
+            int point_dealer = result_hand.result_dealer.points_cards;
+            bool result_decide = deal_5th6th.dealer_decide(point_dealer);
+            
+            //ผู้เล่นไม่จั่ว งั้นดีลเลอร์ตัดสินใจว่าจะจั่วไหม เสร็จแล้วคำนวณผลแพ้-ชนะ - ผลแพ้ชนะถูกเรียกใช้ใน timer เพราะรอแจกการ์ดเสร็จน่ะ
+            if (result_decide)
+            {
+                List<Cards> deck = shuffleCards;
+
+                startGame_dealer_deal = true;
+                (dic_deck, card_hands) = deal_5th6th.dealer_decide_animation(card_hands, dic_deck, deck, timer);
+                return;
+            }
+
+            int times_pay_palyer = result_hand.result_player.times_pay;
+            int times_pay_dealer = result_hand.result_player.times_pay;
+
+            pic.show_card(dic_deck, card_hands, 2, 1); //เปิดการ์ดทั้งหมดของดีลเลอร์
+
+            richTextBox1.Text = result_hand.result + " " + times_pay_palyer + " " + times_pay_dealer;
+
+            //กรณีตัดสินใจดีลเลอร์ไม่จั่ว เนื่องจากไม่ได้จั่วทั้งผู้เล่นและดีลเลอร์ จึงใช้ผลเดิม - result_hand (ถูกคำนวณเอาไว้แล้ว แต่แค่ถ้าไม่ pok เลยยังไม่ได้แสดงเฉย ๆ)
+            cards_ui.result_ui(player,card_hands, result_hand.result, times_pay_palyer, times_pay_dealer, bet,money_player_label);
+        }
+
+        private void trackBar_bet_ValueChanged(object sender, EventArgs e) =>
+            bet = bet_services.select_betK(player, pic, null, bet, trackBar_bet.Value, textbox_display_bet,false); //เลือก false คือไม่ต้องให้มีการตอบสนอง เช่น เปลี่ยนขนาดชิปไรงี้
 
         //กดปุ่มเริ่มเดิมพัน
         private void btn_start_bet_Click(object sender, EventArgs e)
@@ -210,33 +263,6 @@ namespace project
         void select_bet2K(object sender, EventArgs e) =>
             bet = bet_services.select_betK(player, pic, bet_2K, bet, 2000, textbox_display_bet);
 
-        void normally()
-        {
-
-        }
-
-
-
-        void dealer_decide()
-        {
-            int point_dealer = result_hand.result_dealer.points_cards;
-            if (point_dealer <= 4)
-            {
-                int idx_dealer = 1, draw_card = 1;
-                List<Cards> deck = shuffleCards;
-
-                card_hands = cards_game.draw_additionalCard(card_hands, new List<int> { idx_dealer }, draw_card, deck);
-                dic_deck[6].display = true;
-                dic_deck[6].start_move = true;
-                timer.Enabled = true;
-            }
-        }
-        private void btn_not_draw_card_Click(object sender, EventArgs e)
-        {
-            //ผู้เล่นไม่จั่ว งั้นดีลเลอร์ตัดสินใจว่าจะจั่วไหม เสร็จแล้วคำนวณผลแพ้-ชนะ
-            dealer_decide();
-        }
-
         void select_bet5K(object sender, EventArgs e) =>
             bet =bet_services.select_betK(player, pic, bet_5K, bet, 5000, textbox_display_bet);
 
@@ -247,7 +273,7 @@ namespace project
             bet = bet_services.select_betK(player, pic,bet_50K, bet, 50000, textbox_display_bet);
 
         private void btn_bet_all_in_Click(object sender, EventArgs e) =>
-            bet = bet_services.select_betK(player, pic, null, bet, player.get_money(), textbox_display_bet);
+            bet = bet_services.select_betK(player, pic, null, bet, player.get_money(), textbox_display_bet,false);
 
         void handler_bet_chip() {
             bet_2K.Click += select_bet2K;

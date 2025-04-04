@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace project
 {
@@ -12,7 +12,7 @@ namespace project
         Picture pic = new Picture();
         PokDeng pokdeng = new PokDeng();
         Cards_Games_UI ui = new Cards_Games_UI();
-
+        Cards_Games cards_game = new Cards_Games();
 
         // แจกไพ่ - ปุ่มมันมีขอบขาว ไม่สวย เลยใช้ label เอาน่ะ....
         public Dictionary<int, Picture_move> 
@@ -29,47 +29,36 @@ namespace project
         }
 
         //return เจอป็อกมั้ยอะแหละ(t-เจอ/f-ไม่) , ผล(แพ้-ชนะ-เสมอ) , ดึงข้อมูลต่าง ๆ ของการ์ดบนมือ (ฝั่งผู้เล่น , ฝั่งดีลเลอร์)
-        public (bool,string,(PokDeng,PokDeng)) dealing_cards_each_player
+        public (bool,bool,string,(PokDeng,PokDeng)) dealing_cards_each_player
             (Dictionary<int, Picture_move>  dic_deck, List<List<Cards>> card_hands, Timer timer, bool startGame_deal,
             Label draw_card, Label not_draw_card, Point loc_card_number_fourth, Point target_card_number_fourth)
         {
             if (startGame_deal && loc_card_number_fourth.X <= target_card_number_fourth.X && loc_card_number_fourth.Y >= target_card_number_fourth.Y)
             {
-                PictureBox pic_player_num1 = dic_deck[1].pic;
-                PictureBox pic_player_num2 = dic_deck[3].pic; //dic_deck[3] เพราะแจกสลับ ดังนั้นใบที่สองเป็นของดีลเลอร์ ซึ่งไม่แสดงไพ่ดีลเลอร์จนกว่าจะถึงเวลาเปิดไพ่
-
                 //true(เปิดไพ่ - เจอป็อก) | false(ปิดไพ่ - ยังไม่มีใครป็อก) สั้น ๆ เช็กว่าผู้เล่นและดีลเลอร์ป็อก (ผลรวม 8/9 ไหม)
                 var (check_pok, (result_player, result_dealer)) = pokdeng.check_pok_All(dic_deck, card_hands, draw_card, not_draw_card);
 
-                pic_player_num1.Image = Image.FromStream(new MemoryStream(card_hands[0][0].picture)); //นอกจากหยุดจับเวลาก็มาแสดงไพ่ให้ผู้เล่นเห็นด้วยว่าแจกได้ไร
-                //card_hands[0][2].picture - คนที่ 0 คือ ผู้เล่น | ถ้าคนที่ 1 คือดีลเลอร์ และ 1 คือ ไพ่ใบที่สองอะนะ
-                pic_player_num2.Image = Image.FromStream(new MemoryStream(card_hands[0][1].picture));
-
-                pic.setting_pic_list_Stretch(new List<PictureBox> { pic_player_num1, pic_player_num2 });
+                pic.show_card(dic_deck, card_hands, 2, 0);
 
                 timer.Enabled = false; //หยุดจำเวลาชั่วคราว - จนกว่าจะ start ใหม่อะแหละนะ
                 //ถ้าเจอป็อกแล้วคือเปิดไพ่อะแหละ ดังนั้นไปหาว่าใครชนะ
                 if (check_pok)
                 {
                     string result = pokdeng.win_lose_draw(result_player, result_dealer);
-                    return (true,result,(result_player, result_dealer)); 
+                    return (false,true,result,(result_player, result_dealer)); 
                 }
 
-                return (false, "", (result_player, result_dealer));
+                return (false,false, "", (result_player, result_dealer));
             }
 
-            return (false, "", (new PokDeng(), new PokDeng()));
+            return (startGame_deal,false, "", (new PokDeng(), new PokDeng()));
         }
 
-        public (PokDeng result_hand_player, PokDeng result_hand_dealer) animation_deal
-            (Form form,Player player, Dictionary<int, Picture_move>  dic_deck, List<List<Cards>> card_hands, Timer timer, int speed,bool startGame_deal, Label draw_card, Label not_draw_card,double bet,Label money_player_label)
+        public int move_deal(Form form,Dictionary<int, Picture_move> dic_deck,int card_number_change, int speed)
         {
-            string text = "";
-            int card_number_change = 0; //ไว้แก้อะนะ มันไปแก้ใน if ข้างในไม่ได้ เพราะเปลี่ยนแปลงข้อมูล dic ขณะวน loop อยู่ไม่ได้
             foreach (var card in dic_deck)
             {
                 var (pic, loc_target, _, start_move) = card.Value;
-                text += pic.Name + " " + start_move;
                 int card_number = card.Key;
                 int current_X = pic.Location.X, current_Y = pic.Location.Y;
 
@@ -90,12 +79,22 @@ namespace project
 
                 form.Invalidate();
             }
-            MessageBox.Show(text);
+            return card_number_change;
+        }
+
+        //return แรกคือ startGame_deal - เป็นการแจกไพ่สี่ใบแรกสุดหรือเปล่าน่ะ เอาไว้เช็กเพื่อปิด timer น่ะ
+        //เฉพาะแจก 4 ใบแรก
+        public (bool, (string result,PokDeng result_hand_player, PokDeng result_hand_dealer)) animation_deal_default
+            (Form form,Player player, Dictionary<int, Picture_move>  dic_deck, List<List<Cards>> card_hands, Timer timer, int speed,bool startGame_deal, Label draw_card, Label not_draw_card,double bet,Label money_player_label, RichTextBox r)
+        {
+            int card_number_change = 0; //ไว้แก้อะนะ มันไปแก้ใน if ข้างในไม่ได้ เพราะเปลี่ยนแปลงข้อมูล dic ขณะวน loop อยู่ไม่ได้
+
+            card_number_change = move_deal(form,dic_deck,card_number_change,speed);
 
             return deal_fourCard(player,card_hands,dic_deck, timer, card_number_change,  startGame_deal,  draw_card, not_draw_card, bet , money_player_label);
         }
 
-        (PokDeng result_hand_player, PokDeng result_hand_dealer) deal_fourCard(Player player, List<List<Cards>> card_hands, Dictionary<int, Picture_move> dic_deck,Timer timer,
+        (bool ,(string result,PokDeng result_hand_player, PokDeng result_hand_dealer)) deal_fourCard(Player player, List<List<Cards>> card_hands, Dictionary<int, Picture_move> dic_deck,Timer timer,
             int card_number_change,bool startGame_deal, Label draw_card, Label not_draw_card, double bet, Label money_player_label)
         {
             //ถ้าใบแรกเคลื่อนที่ถึงที่หมาย ใบถัดไปเคลื่อนที่ จนครบสี่ใบแรก
@@ -107,13 +106,13 @@ namespace project
             Point loc_card_number_fourth = dic_deck[4].pic.Location;
             Point target_card_number_fourth = dic_deck[4].loc_target;
 
-            var (check_pok, result, (result_hand_player, result_hand_dealer)) = dealing_cards_each_player
+            var (result_startGame_deal, check_pok, result, (result_hand_player, result_hand_dealer)) = dealing_cards_each_player
             (dic_deck, card_hands, timer, startGame_deal, draw_card, not_draw_card, loc_card_number_fourth, target_card_number_fourth);
 
             if (check_pok) ui.result_ui(player, card_hands, result, result_hand_player.times_pay, result_hand_dealer.times_pay,
             bet, money_player_label);
 
-            return (result_hand_player, result_hand_dealer);
+            return (result_startGame_deal, (result, result_hand_player, result_hand_dealer));
         }
     }
 }

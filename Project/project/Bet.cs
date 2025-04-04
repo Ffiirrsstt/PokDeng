@@ -18,10 +18,11 @@ namespace project
 
             MessageBox.Show("ยอดเงินปัจจุบันของคุณ คือ " + cal.display_money(money_current) + Environment.NewLine +
                 "ซึ่งไม่เพียงพอสำหรับการเดิมพัน : " + cal.display_money(bet));
+
             return false; //เงินไม่พอ ไม่ให้เดิมพัน
         }
 
-        public double select_betK(Player player, Picture pic,PictureBox picturebox, double bet, double betK ,TextBox textbox_display_bet,bool allin=false)
+        public double select_betK(Player player, Picture pic,PictureBox picturebox, double bet, double betK ,TextBox textbox_display_bet,bool resize_chip= true)
         {
             double old_bet = bet; //เผื่อชิปใหม่ที่เลือก เงินไม่พอ จะให้ย้อนกลับไปเลือกชิปเก่าน่ะ
             bet = betK;
@@ -31,7 +32,7 @@ namespace project
             }
 
             pic.restore_size_chip();
-            if(!allin)pic.resize_chip(picturebox);
+            if(resize_chip) pic.resize_chip(picturebox);
             return bet;
         }
     }
