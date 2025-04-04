@@ -15,6 +15,7 @@ namespace project
         Calculate cal = new Calculate();
         dictionary_PokDeng dic = new dictionary_PokDeng();
         PokDeng pokdeng = new PokDeng();
+        int delay_loading_newGame = 10; //100
 
         public void displayTXT_display_bet_start(Label display_label, double bet) => display_label.Text = "เงินเดิมพันเริ่มต้น : $ " + cal.display_money(bet);
 
@@ -53,6 +54,14 @@ namespace project
             money_player_label.Text = player.display();
 
             await loading(progress);
+
+            double money = player.get_money();
+            if(money<1000) //เพราะเดิมพันขั้นต่ำที่หนึ่งพัน
+            {
+                MessageBox.Show("ยอดเงินคงเหลือของคุณน้อยเกินไป กรุณาเริ่มเล่นเกมใหม่");
+                tab.hide_start_program();
+                return;
+            }
             tab.new_pokdeng_game();
         }
 
@@ -62,7 +71,8 @@ namespace project
             progress.Visible = true; //แสดง
             for (int i = 1; i <= 100; i++)
             {
-                await Task.Delay(100); //1000 รอ 1 วินาที
+                //1000 รอ 1 วินาที
+                await Task.Delay(delay_loading_newGame);
                 progress.Value = i;
             }
         }
@@ -94,7 +104,7 @@ namespace project
                 return "DRAW ได้รับเงินคืน!";
             }
 
-            return "";
+            return "ขออภัย ระบบขัดข้อง";
         }
 
     }

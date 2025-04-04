@@ -42,13 +42,14 @@ namespace project
 
                 timer.Enabled = false; //หยุดจำเวลาชั่วคราว - จนกว่าจะ start ใหม่อะแหละนะ
                 //ถ้าเจอป็อกแล้วคือเปิดไพ่อะแหละ ดังนั้นไปหาว่าใครชนะ
+                string result = pokdeng.win_lose_draw(result_player, result_dealer); 
+                //เพราะจะเอา result ไปใช้ในกรณีที่ผู้เล่นไม่จั่ว และดีลเลอร์ก็ไม่จั่วน่ะ จะได้ไม่ต้องคำนวณใหม่
                 if (check_pok)
                 {
-                    string result = pokdeng.win_lose_draw(result_player, result_dealer);
                     return (false,true,result,(result_player, result_dealer)); 
                 }
 
-                return (false,false, "", (result_player, result_dealer));
+                return (false,false, result, (result_player, result_dealer));
             }
 
             return (startGame_deal,false, "", (new PokDeng(), new PokDeng()));

@@ -30,7 +30,7 @@ namespace project
         Cards_Games_UI cards_ui = new Cards_Games_UI();
         Picture_move pic_move = new Picture_move();
 
-        int speed = 15; //ความไวไพ่ (ความไวเคลื่อนที่ของไพ่อะแหละจ้ะ)
+        int speed = 15, speed_slow = 3, speed_fast= 6; //ความไวไพ่ (ความไวเคลื่อนที่ของไพ่อะแหละจ้ะ)
         int bet_default = 100000; //วงเงินเดิมพันเริ่มต้นของผู้เล่น - ก็คือแจกเงินตอนแรกอะแหละ
         double bet=2000; //เงินที่เดิมพันในแต่ละตา 
 
@@ -155,6 +155,7 @@ namespace project
                 List<Cards> deck = shuffleCards; //แค่ตั้งใหม่ไม่ให้งงน่ะ
                 (startGame_player_deal, startGame_dealer_deal, dic_deck, card_hands) = deal_5th6th.animation_deal_draw(this, player, dic_deck, card_hands, timer, speed, startGame_player_deal, startGame_dealer_deal, btn_draw_card, btn_not_draw_card, bet, money_player_label, point_dealer, deck, display_result,loader_new_game,tab);
             }
+
         } 
 
         Dictionary<int, Picture_move> dic_data_deck()
@@ -233,12 +234,15 @@ namespace project
             }
 
             int times_pay_palyer = result_hand.result_player.times_pay;
-            int times_pay_dealer = result_hand.result_player.times_pay;
+            int times_pay_dealer = result_hand.result_dealer.times_pay;
 
             pic.show_card(dic_deck, card_hands, 2, 1); //เปิดการ์ดทั้งหมดของดีลเลอร์
 
             //กรณีตัดสินใจดีลเลอร์ไม่จั่ว เนื่องจากไม่ได้จั่วทั้งผู้เล่นและดีลเลอร์ จึงใช้ผลเดิม - result_hand (ถูกคำนวณเอาไว้แล้ว แต่แค่ถ้าไม่ pok เลยยังไม่ได้แสดงเฉย ๆ)
             cards_ui.result_ui(player,card_hands, result_hand.result, times_pay_palyer, times_pay_dealer, bet,money_player_label , display_result, loader_new_game, tab);
+
+            //ถ้าอันนี้ก็สั้นดี แต่มันจะต้องคำนวณหาแพ้-ชนะใหม่อะนะ
+            //cards_ui.cal_display_resultUI(player, card_hands, bet, money_player_label, display_result, loader_new_game, tab);
         }
 
         void hide_btn_draw()
