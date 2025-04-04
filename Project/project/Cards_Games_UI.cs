@@ -15,7 +15,7 @@ namespace project
         Calculate cal = new Calculate();
         dictionary_PokDeng dic = new dictionary_PokDeng();
         PokDeng pokdeng = new PokDeng();
-        int delay_loading_newGame = 10; //100
+        int delay_loading_newGame = 50;
 
         public void displayTXT_display_bet_start(Label display_label, double bet) => display_label.Text = "เงินเดิมพันเริ่มต้น : $ " + cal.display_money(bet);
 
@@ -31,7 +31,6 @@ namespace project
         }
 
         //คำนวณและแสดงผลลัพธ์
-
         public void cal_display_resultUI(Player player,List<List<Cards>>card_hands,double bet,Label money_player_label, Label display,ProgressBar loader,Tab tab)
         {
             List<Cards> hand_player = card_hands[0];

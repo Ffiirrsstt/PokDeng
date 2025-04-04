@@ -26,7 +26,7 @@ namespace project
         Cards_Games_UI cards_ui = new Cards_Games_UI();
         Picture_move pic_move = new Picture_move();
 
-        int speed = 15, speed_slow = 3, speed_fast= 6; //ความไวไพ่ (ความไวเคลื่อนที่ของไพ่อะแหละจ้ะ)
+        int speed = 15;//ความไวไพ่ (ความไวเคลื่อนที่ของไพ่อะแหละจ้ะ)
         int bet_default = 100000; //วงเงินเดิมพันเริ่มต้นของผู้เล่น - ก็คือแจกเงินตอนแรกอะแหละ
         double bet=2000; //เงินที่เดิมพันในแต่ละตา 
 
