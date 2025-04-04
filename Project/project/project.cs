@@ -15,9 +15,10 @@ namespace project
         Picture pic;
         Player player;
         Cards cards;
-        List<Cards> cards_data;
         PokDeng pokdeng;
         List<List<Cards>> card_hands;
+        List<Cards> cards_data ,shuffleCards; //ข้อมูลการ์ดทั้งหมด , ข้อมูลการ์ดที่สับเรียบร้อยแล้ว
+        (PokDeng result_player, PokDeng result_dealer) result_hand;
         Bet bet_services = new Bet();
         Dictionary<int, Picture_move> dic_deck;
         Calculate cal = new Calculate();
@@ -137,8 +138,8 @@ namespace project
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            cards_ui_deal.animation_deal(this, player,  dic_deck, card_hands, timer, speed, startGame_deal, btn_draw_card, btn_not_draw_card, bet, money_player_label);
-        }
+            result_hand = cards_ui_deal.animation_deal(this, player,  dic_deck, card_hands, timer, speed, startGame_deal, btn_draw_card, btn_not_draw_card, bet, money_player_label);
+        } 
 
         Dictionary<int, Picture_move> dic_data_deck()
         {
@@ -191,7 +192,7 @@ namespace project
             setting_page_pokdengBasic();
 
             //สับไพ่แบบข้อมูล
-            List<Cards> shuffleCards = cards_game.shuffle_cards(cards_data);
+            shuffleCards = cards_game.shuffle_cards(cards_data);
             //แจกไพ่แบบข้อมูล
             card_hands = cards_game.deal_cards(shuffleCards, 2);
             animation_deal_default(card_hands); //แจกไพ่แบบอนิเมชัน - ทำงานร่วมกับ timer
@@ -208,6 +209,33 @@ namespace project
         //- ตัวแรกเงินเดิมพันเก่าว่าเคยเดิมพันไรไว้ | ตัวสองเงินที่อยากเดิมพัน
         void select_bet2K(object sender, EventArgs e) =>
             bet = bet_services.select_betK(player, pic, bet_2K, bet, 2000, textbox_display_bet);
+
+        void normally()
+        {
+
+        }
+
+
+
+        void dealer_decide()
+        {
+            int point_dealer = result_hand.result_dealer.points_cards;
+            if (point_dealer <= 4)
+            {
+                int idx_dealer = 1, draw_card = 1;
+                List<Cards> deck = shuffleCards;
+
+                card_hands = cards_game.draw_additionalCard(card_hands, new List<int> { idx_dealer }, draw_card, deck);
+                dic_deck[6].display = true;
+                dic_deck[6].start_move = true;
+                timer.Enabled = true;
+            }
+        }
+        private void btn_not_draw_card_Click(object sender, EventArgs e)
+        {
+            //ผู้เล่นไม่จั่ว งั้นดีลเลอร์ตัดสินใจว่าจะจั่วไหม เสร็จแล้วคำนวณผลแพ้-ชนะ
+            dealer_decide();
+        }
 
         void select_bet5K(object sender, EventArgs e) =>
             bet =bet_services.select_betK(player, pic, bet_5K, bet, 5000, textbox_display_bet);

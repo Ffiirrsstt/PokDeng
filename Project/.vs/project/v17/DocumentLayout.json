@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "D:\\USE\\project363\\Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|D:\\USE\\project363\\Project\\project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\bet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\bet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\picture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\picture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|D:\\USE\\project363\\Project\\project\\cards_games_ui_deal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\cards_games_ui_deal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|D:\\USE\\project363\\Project\\project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\cards_games.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\cards_games.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\pokdeng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\pokdeng.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\cards_games_ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\cards_games_ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|d:\\use\\project363\\project\\project\\picture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{10648F73-5D8D-4834-A46C-E90B6BEA9048}|project\\project.csproj|solutionrelative:project\\picture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +50,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "Cards_Games.cs",
+              "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\Cards_Games.cs",
+              "RelativeDocumentMoniker": "project\\Cards_Games.cs",
+              "ToolTip": "D:\\USE\\project363\\Project\\project\\Cards_Games.cs",
+              "RelativeToolTip": "project\\Cards_Games.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAIAwwDIAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T10:22:10.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PokDeng.cs",
+              "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\PokDeng.cs",
+              "RelativeDocumentMoniker": "project\\PokDeng.cs",
+              "ToolTip": "D:\\USE\\project363\\Project\\project\\PokDeng.cs",
+              "RelativeToolTip": "project\\PokDeng.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAWwBsAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T08:52:50.9Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Picture.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\Picture.cs",
               "RelativeDocumentMoniker": "project\\Picture.cs",
@@ -65,20 +95,20 @@
               "RelativeDocumentMoniker": "project\\Cards_Games_UI.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\Cards_Games_UI.cs",
               "RelativeToolTip": "project\\Cards_Games_UI.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAcAAAAFAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAcAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-03T12:29:07.618Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Cards_Games_UI_deal.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\Cards_Games_UI_deal.cs",
               "RelativeDocumentMoniker": "project\\Cards_Games_UI_deal.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\Cards_Games_UI_deal.cs",
               "RelativeToolTip": "project\\Cards_Games_UI_deal.cs",
-              "ViewState": "AQIAADcAAAAAAAAAAAAYwEAAAADhAAAA",
+              "ViewState": "AQIAAGIAAAAAAAAAAAAkwHEAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-02T19:27:12.571Z",
               "EditorCaption": ""
@@ -86,32 +116,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Bet.cs",
-              "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\Bet.cs",
-              "RelativeDocumentMoniker": "project\\Bet.cs",
-              "ToolTip": "D:\\USE\\project363\\Project\\project\\Bet.cs",
-              "RelativeToolTip": "project\\Bet.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAIAwwCEAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T12:46:05.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "project.cs",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\project.cs",
               "RelativeDocumentMoniker": "project\\project.cs",
               "ToolTip": "D:\\USE\\project363\\Project\\project\\project.cs",
               "RelativeToolTip": "project\\project.cs",
-              "ViewState": "AQIAAOoAAAAAAAAAAAA1wP4AAAArAAAA",
+              "ViewState": "AQIAANcAAAAAAAAAAAAtwOcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-31T09:51:06.588Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "project.cs [Design]",
               "DocumentMoniker": "D:\\USE\\project363\\Project\\project\\project.cs",
               "RelativeDocumentMoniker": "project\\project.cs",

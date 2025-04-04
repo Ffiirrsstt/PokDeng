@@ -629,6 +629,7 @@
             this.btn_not_draw_card.TabIndex = 22;
             this.btn_not_draw_card.Text = "ไม่จั่ว";
             this.btn_not_draw_card.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_not_draw_card.Click += new System.EventHandler(this.btn_not_draw_card_Click);
             // 
             // btn_draw_card
             // 

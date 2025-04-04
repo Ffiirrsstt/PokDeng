@@ -61,13 +61,15 @@ namespace project
             return (false, "", (new PokDeng(), new PokDeng()));
         }
 
-        public void animation_deal
+        public (PokDeng result_hand_player, PokDeng result_hand_dealer) animation_deal
             (Form form,Player player, Dictionary<int, Picture_move>  dic_deck, List<List<Cards>> card_hands, Timer timer, int speed,bool startGame_deal, Label draw_card, Label not_draw_card,double bet,Label money_player_label)
         {
+            string text = "";
             int card_number_change = 0; //ไว้แก้อะนะ มันไปแก้ใน if ข้างในไม่ได้ เพราะเปลี่ยนแปลงข้อมูล dic ขณะวน loop อยู่ไม่ได้
             foreach (var card in dic_deck)
             {
                 var (pic, loc_target, _, start_move) = card.Value;
+                text += pic.Name + " " + start_move;
                 int card_number = card.Key;
                 int current_X = pic.Location.X, current_Y = pic.Location.Y;
 
@@ -88,7 +90,15 @@ namespace project
 
                 form.Invalidate();
             }
+            MessageBox.Show(text);
 
+            return deal_fourCard(player,card_hands,dic_deck, timer, card_number_change,  startGame_deal,  draw_card, not_draw_card, bet , money_player_label);
+        }
+
+        (PokDeng result_hand_player, PokDeng result_hand_dealer) deal_fourCard(Player player, List<List<Cards>> card_hands, Dictionary<int, Picture_move> dic_deck,Timer timer,
+            int card_number_change,bool startGame_deal, Label draw_card, Label not_draw_card, double bet, Label money_player_label)
+        {
+            //ถ้าใบแรกเคลื่อนที่ถึงที่หมาย ใบถัดไปเคลื่อนที่ จนครบสี่ใบแรก
             dic_deck = setting_deal_default(dic_deck, timer, card_number_change, startGame_deal, draw_card, not_draw_card);
 
             /*//จะเช็กว่าแจกเริ่มต้นคนละสองใบเสร็จหรือยังอะแหละ
@@ -102,6 +112,8 @@ namespace project
 
             if (check_pok) ui.result_ui(player, card_hands, result, result_hand_player.times_pay, result_hand_dealer.times_pay,
             bet, money_player_label);
+
+            return (result_hand_player, result_hand_dealer);
         }
     }
 }
