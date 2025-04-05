@@ -19,18 +19,19 @@ namespace project
 
         DataSet data = new DataSet();
 
-        public async Task<List<Cards>> fetchDataCards()
+        public List<Cards> fetchDataCards()
+        //public async Task<List<Cards>> fetchDataCards()
         {
             OleDbConnection conn = new OleDbConnection(conStr);
-            //conn.Open();
-            await conn.OpenAsync();
+            conn.Open();
+            //await conn.OpenAsync();
             string sql = "select * from Cards";
             OleDbCommand cmd = new OleDbCommand(sql, conn);
             OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
-            //adapter.Fill(data, "Cards");
+            adapter.Fill(data, "Cards");
 
             //Fill ใช้เพราะพยายามใช้คำสั่งเดียวกับที่เรียน
-            await Task.Run(() => adapter.Fill(data, "Cards"));
+            //await Task.Run(() => adapter.Fill(data, "Cards"));
             DataTable cards_table = data.Tables["Cards"];
 
             conn.Close();

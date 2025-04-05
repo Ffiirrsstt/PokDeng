@@ -81,10 +81,12 @@ namespace project
             warning_display_betStart.Text = "";
         }
 
-        async Task fetch_data_cards()
+        void fetch_data_cards()
+        //async Task fetch_data_cards()
         {
             cards = new Cards();
-            cards_data = await cards.fetchDataCards();
+            cards_data = cards.fetchDataCards();
+            //cards_data = await cards.fetchDataCards();
         }
 
         void new_game_pokdeng()

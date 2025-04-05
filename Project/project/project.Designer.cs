@@ -125,6 +125,7 @@
             this.page_main.Controls.Add(this.display_bet_start);
             this.page_main.Controls.Add(this.textbox_bet_start);
             this.page_main.Controls.Add(this.btn_pokdeng_game);
+            this.page_main.Cursor = System.Windows.Forms.Cursors.Hand;
             this.page_main.Location = new System.Drawing.Point(4, 25);
             this.page_main.Name = "page_main";
             this.page_main.Padding = new System.Windows.Forms.Padding(3);
@@ -220,6 +221,7 @@
             // 
             this.trackBar_bet.AutoSize = false;
             this.trackBar_bet.BackColor = System.Drawing.Color.White;
+            this.trackBar_bet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.trackBar_bet.Location = new System.Drawing.Point(271, 289);
             this.trackBar_bet.Name = "trackBar_bet";
             this.trackBar_bet.Size = new System.Drawing.Size(593, 41);
