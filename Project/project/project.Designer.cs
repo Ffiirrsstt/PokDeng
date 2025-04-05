@@ -57,6 +57,7 @@
             this.bet_5K = new System.Windows.Forms.PictureBox();
             this.bet_10K = new System.Windows.Forms.PictureBox();
             this.page_play_pokdeng = new System.Windows.Forms.TabPage();
+            this.loader_new_game = new System.Windows.Forms.ProgressBar();
             this.deck_first = new System.Windows.Forms.PictureBox();
             this.deck_second = new System.Windows.Forms.PictureBox();
             this.deck_third = new System.Windows.Forms.PictureBox();
@@ -73,9 +74,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.display_result = new System.Windows.Forms.Label();
-            this.loader_new_game = new System.Windows.Forms.ProgressBar();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.warning_display_betStart = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.page_main.SuspendLayout();
             this.page_newgame_pokdeng.SuspendLayout();
@@ -111,7 +112,7 @@
             this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1415, 872);
+            this.tabControl.Size = new System.Drawing.Size(1428, 872);
             this.tabControl.TabIndex = 1;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -120,15 +121,17 @@
             this.page_main.BackColor = System.Drawing.Color.Coral;
             this.page_main.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("page_main.BackgroundImage")));
             this.page_main.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.page_main.Controls.Add(this.warning_display_betStart);
             this.page_main.Controls.Add(this.display_bet_start);
             this.page_main.Controls.Add(this.textbox_bet_start);
             this.page_main.Controls.Add(this.btn_pokdeng_game);
             this.page_main.Location = new System.Drawing.Point(4, 25);
             this.page_main.Name = "page_main";
             this.page_main.Padding = new System.Windows.Forms.Padding(3);
-            this.page_main.Size = new System.Drawing.Size(1407, 843);
+            this.page_main.Size = new System.Drawing.Size(1420, 843);
             this.page_main.TabIndex = 0;
             this.page_main.Text = "หน้าหลัก";
+            this.page_main.Click += new System.EventHandler(this.page_main_Click);
             // 
             // display_bet_start
             // 
@@ -197,7 +200,7 @@
             this.page_newgame_pokdeng.Location = new System.Drawing.Point(4, 25);
             this.page_newgame_pokdeng.Name = "page_newgame_pokdeng";
             this.page_newgame_pokdeng.Padding = new System.Windows.Forms.Padding(3);
-            this.page_newgame_pokdeng.Size = new System.Drawing.Size(1407, 843);
+            this.page_newgame_pokdeng.Size = new System.Drawing.Size(1420, 843);
             this.page_newgame_pokdeng.TabIndex = 1;
             this.page_newgame_pokdeng.Text = "ป็อกเด้ง";
             // 
@@ -493,9 +496,18 @@
             this.page_play_pokdeng.Location = new System.Drawing.Point(4, 25);
             this.page_play_pokdeng.Name = "page_play_pokdeng";
             this.page_play_pokdeng.Padding = new System.Windows.Forms.Padding(3);
-            this.page_play_pokdeng.Size = new System.Drawing.Size(1407, 843);
+            this.page_play_pokdeng.Size = new System.Drawing.Size(1420, 843);
             this.page_play_pokdeng.TabIndex = 3;
             this.page_play_pokdeng.Text = "ป็อกเด้ง";
+            // 
+            // loader_new_game
+            // 
+            this.loader_new_game.BackColor = System.Drawing.Color.IndianRed;
+            this.loader_new_game.Location = new System.Drawing.Point(422, 456);
+            this.loader_new_game.Name = "loader_new_game";
+            this.loader_new_game.Size = new System.Drawing.Size(571, 41);
+            this.loader_new_game.TabIndex = 30;
+            this.loader_new_game.Value = 30;
             // 
             // deck_first
             // 
@@ -568,7 +580,7 @@
             this.btn_not_draw_card.ForeColor = System.Drawing.Color.Black;
             this.btn_not_draw_card.Location = new System.Drawing.Point(1232, 755);
             this.btn_not_draw_card.Name = "btn_not_draw_card";
-            this.btn_not_draw_card.Size = new System.Drawing.Size(152, 64);
+            this.btn_not_draw_card.Size = new System.Drawing.Size(165, 64);
             this.btn_not_draw_card.TabIndex = 22;
             this.btn_not_draw_card.Text = "ไม่จั่ว";
             this.btn_not_draw_card.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -585,7 +597,7 @@
             this.btn_draw_card.ForeColor = System.Drawing.Color.Black;
             this.btn_draw_card.Location = new System.Drawing.Point(1047, 755);
             this.btn_draw_card.Name = "btn_draw_card";
-            this.btn_draw_card.Size = new System.Drawing.Size(152, 64);
+            this.btn_draw_card.Size = new System.Drawing.Size(165, 64);
             this.btn_draw_card.TabIndex = 14;
             this.btn_draw_card.Text = "จั่ว";
             this.btn_draw_card.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -611,7 +623,7 @@
             this.money_player_label.ForeColor = System.Drawing.Color.White;
             this.money_player_label.Location = new System.Drawing.Point(662, 755);
             this.money_player_label.Name = "money_player_label";
-            this.money_player_label.Size = new System.Drawing.Size(226, 45);
+            this.money_player_label.Size = new System.Drawing.Size(239, 45);
             this.money_player_label.TabIndex = 6;
             this.money_player_label.Text = "$ 0";
             this.money_player_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -626,7 +638,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(662, 700);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(226, 45);
+            this.label5.Size = new System.Drawing.Size(239, 45);
             this.label5.TabIndex = 5;
             this.label5.Text = "Player";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -662,7 +674,7 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(662, 70);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(229, 114);
+            this.label6.Size = new System.Drawing.Size(242, 114);
             this.label6.TabIndex = 2;
             this.label6.Text = "Dealer";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -688,11 +700,6 @@
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             // 
-            // timer
-            // 
-            this.timer.Interval = 5;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
             // display_result
             // 
             this.display_result.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -703,19 +710,27 @@
             this.display_result.ForeColor = System.Drawing.Color.Orange;
             this.display_result.Location = new System.Drawing.Point(216, 335);
             this.display_result.Name = "display_result";
-            this.display_result.Size = new System.Drawing.Size(983, 118);
+            this.display_result.Size = new System.Drawing.Size(996, 118);
             this.display_result.TabIndex = 29;
             this.display_result.Text = "WIN จ่าย 2 เท่า!";
             this.display_result.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // loader_new_game
+            // timer
             // 
-            this.loader_new_game.BackColor = System.Drawing.Color.IndianRed;
-            this.loader_new_game.Location = new System.Drawing.Point(422, 456);
-            this.loader_new_game.Name = "loader_new_game";
-            this.loader_new_game.Size = new System.Drawing.Size(571, 41);
-            this.loader_new_game.TabIndex = 30;
-            this.loader_new_game.Value = 30;
+            this.timer.Interval = 5;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // warning_display_betStart
+            // 
+            this.warning_display_betStart.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.warning_display_betStart.Font = new System.Drawing.Font("TH Sarabun New", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.warning_display_betStart.ForeColor = System.Drawing.Color.Transparent;
+            this.warning_display_betStart.Location = new System.Drawing.Point(52, 691);
+            this.warning_display_betStart.Name = "warning_display_betStart";
+            this.warning_display_betStart.Size = new System.Drawing.Size(903, 119);
+            this.warning_display_betStart.TabIndex = 4;
+            this.warning_display_betStart.Text = "กรุณากรอกข้อมูล และต้องกรอกเป็นตัวเลขเท่านั้น !";
+            this.warning_display_betStart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ST111
             // 
@@ -811,6 +826,7 @@
         private System.Windows.Forms.PictureBox deck_sixth;
         private System.Windows.Forms.Label display_result;
         private System.Windows.Forms.ProgressBar loader_new_game;
+        private System.Windows.Forms.Label warning_display_betStart;
     }
 }
 

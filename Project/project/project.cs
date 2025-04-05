@@ -44,8 +44,11 @@ namespace project
             //ออกแบบ dic ให้แก้ง่ายหน่อย
             tab = new Tab(tabControl, dic_tab());
             pic = new Picture(dic_pic());
-            handler_bet_chip();
+
             trackBar_bet.Minimum = 1000;   // ค่าน้อยสุด
+            handler_bet_chip();
+
+
         }
 
         Dictionary<int, TabPage> dic_tab()
@@ -72,16 +75,16 @@ namespace project
             };
         }
 
+        void set_warning_betStart_Default()
+        {
+            warning_display_betStart.BackColor = Color.Transparent;
+            warning_display_betStart.Text = "";
+        }
+
         async Task fetch_data_cards()
         {
             cards = new Cards();
             cards_data = await cards.fetchDataCards();
-        }
-        void game_intro()
-        {
-            //await Task.Delay(5000);
-            //this.BackgroundImage = Image.FromFile("D:\\USE\\img\\project363\\Intro.png");
-
         }
 
         void new_game_pokdeng()
@@ -94,6 +97,7 @@ namespace project
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (tabControl.SelectedTab == page_main) set_warning_betStart_Default(); //ปิดแจ้งเตือนเวลากรอกข้อมูลผิดน่ะ
             if (tabControl.SelectedTab == page_newgame_pokdeng) select_page_newgame_pokdeng();
         }
 
@@ -123,21 +127,22 @@ namespace project
 
             cards_ui.displayTXT_display_bet_start(display_bet_start,bet_default);
             textbox_bet_start.Text = bet_default.ToString();
+
+            set_warning_betStart_Default();
         }
 
-        private void btn_new_pokdeng_game_Click(object sender, EventArgs e)
-        {
-            double bet_start = cal.string_ToDouble(textbox_bet_start.Text);
-            //แปลว่ามีข้อผิดพลาดเกิดขึ้น - อย่าพึ่งเข้าหน้าเปิดเกม
-            if (bet_start == -1) return;
-
-            player = new Player(bet_start); //เริ่มใหม่ทุกครั้งที่กดเริ่มเกมใหม่น่ะ
-            new_game_pokdeng();
-        }
+        private void btn_new_pokdeng_game_Click(object sender, EventArgs e) => start_Topage2();
         private void textbox_bet_start_TextChanged(object sender, EventArgs e)
         {
-            double bet_start = cal.string_ToDouble(textbox_bet_start.Text, false);
+            string txt_bet_start = textbox_bet_start.Text;
+
+            double bet_start = cal.betStart_string_ToDouble(txt_bet_start,warning_display_betStart, false);
+
+            if (bet_start != 0) set_warning_betStart_Default(); //ไม่มีปัญหาอะไรแล้ว เอาแจ้งเตือนออกเด้อ
+
             cards_ui.displayTXT_display_bet_start(display_bet_start,bet_start);
+
+
         }
 
         bool startGame_player_deal = false, startGame_dealer_deal = false;
@@ -247,8 +252,20 @@ namespace project
             btn_not_draw_card.Hide();
         }
 
+        void start_Topage2()
+        {
+            double bet_start = cal.betStart_string_ToDouble(textbox_bet_start.Text, warning_display_betStart);
+            //แปลว่ามีข้อผิดพลาดเกิดขึ้น - อย่าพึ่งเข้าหน้าเปิดเกม (เลขตาละไม่ต่ำกว่าหนึ่งพัน)
+            if (bet_start == 0) return;
+
+            player = new Player(bet_start); //เริ่มใหม่ทุกครั้งที่กดเริ่มเกมใหม่น่ะ
+            new_game_pokdeng();
+        }
+
         private void trackBar_bet_ValueChanged(object sender, EventArgs e) =>
             bet = bet_services.select_betK(player, pic, null, bet, trackBar_bet.Value, textbox_display_bet,false); //เลือก false คือไม่ต้องให้มีการตอบสนอง เช่น เปลี่ยนขนาดชิปไรงี้
+
+        private void page_main_Click(object sender, EventArgs e) => start_Topage2();
 
         //กดปุ่มเริ่มเดิมพัน
         private void btn_start_bet_Click(object sender, EventArgs e)
