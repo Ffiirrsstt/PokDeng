@@ -165,7 +165,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_pokdeng_game.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_pokdeng_game.Font = new System.Drawing.Font("TH Sarabun New", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.btn_pokdeng_game.Location = new System.Drawing.Point(961, 691);
+            this.btn_pokdeng_game.Location = new System.Drawing.Point(961, 690);
             this.btn_pokdeng_game.Name = "btn_pokdeng_game";
             this.btn_pokdeng_game.Size = new System.Drawing.Size(412, 119);
             this.btn_pokdeng_game.TabIndex = 1;

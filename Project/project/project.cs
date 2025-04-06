@@ -105,15 +105,18 @@ namespace project
 
         void select_page_newgame_pokdeng()
         {
-            int betK = 2000; //เงินเดิมพันเริ่มต้น
+            double money = player.get_money();
+            int betK; //เงินเดิมพันเริ่มต้น
+            if (money >= 2000) betK = 2000; //2พันเพราะจะได้ set chip 2000 ไว้น่ะ
+            else betK = 1000; //ค่าต่ำสุดแล้ว
+
             //แสดงเงินปัจจุบัน
             money_player_waitBet.Text = player.display();
-            //ตั้งค่า default ว่าเลือก chip 2k
-            bet = bet_services.select_betK(player, pic, bet_2K, betK, betK, textbox_display_bet);
-            pic.restore_size_chip(); //จัดการชิปให้เข้าที่และขนาดเท่ากัน
 
-            trackBar_bet.Maximum = (int)player.get_money();
-            trackBar_bet.Value = 2000;
+            pic.restore_size_chip(); //จัดการชิปให้เข้าที่และขนาดเท่ากัน
+            //ตั้งค่า default ว่าเลือก chip 2k
+            trackBar_bet.Maximum = (int)money; //ต้องมาก่อน ไม่งั้นจะ error เพราะเหตุผลว่าเกินขอบเขตของ trackbar (ในนี้มีตั้ง trackBar_bet.Value)
+            bet = bet_services.select_betK(player, pic, bet_2K, trackBar_bet, betK, betK, textbox_display_bet);
         }
 
 
@@ -265,7 +268,7 @@ namespace project
         }
 
         private void trackBar_bet_ValueChanged(object sender, EventArgs e) =>
-            bet = bet_services.select_betK(player, pic, null, bet, trackBar_bet.Value, textbox_display_bet,false); //เลือก false คือไม่ต้องให้มีการตอบสนอง เช่น เปลี่ยนขนาดชิปไรงี้
+            bet = bet_services.select_betK(player, pic, null, trackBar_bet, bet, trackBar_bet.Value, textbox_display_bet,false); //เลือก false คือไม่ต้องให้มีการตอบสนอง เช่น เปลี่ยนขนาดชิปไรงี้
 
         private void page_main_Click(object sender, EventArgs e) => start_Topage2();
 
@@ -279,19 +282,19 @@ namespace project
 
         //- ตัวแรกเงินเดิมพันเก่าว่าเคยเดิมพันไรไว้ | ตัวสองเงินที่อยากเดิมพัน
         void select_bet2K(object sender, EventArgs e) =>
-            bet = bet_services.select_betK(player, pic, bet_2K, bet, 2000, textbox_display_bet);
+            bet = bet_services.select_betK(player, pic, bet_2K, trackBar_bet, bet, 2000, textbox_display_bet);
 
         void select_bet5K(object sender, EventArgs e) =>
-            bet =bet_services.select_betK(player, pic, bet_5K, bet, 5000, textbox_display_bet);
+            bet =bet_services.select_betK(player, pic, bet_5K, trackBar_bet, bet, 5000, textbox_display_bet);
 
         void select_bet10K(object sender, EventArgs e) =>
-            bet = bet_services.select_betK(player, pic, bet_10K, bet, 10000, textbox_display_bet);
+            bet = bet_services.select_betK(player, pic, bet_10K, trackBar_bet, bet, 10000, textbox_display_bet);
 
         void select_bet50K(object sender, EventArgs e) =>
-            bet = bet_services.select_betK(player, pic,bet_50K, bet, 50000, textbox_display_bet);
+            bet = bet_services.select_betK(player, pic,bet_50K, trackBar_bet, bet, 50000, textbox_display_bet);
 
         private void btn_bet_all_in_Click(object sender, EventArgs e) =>
-            bet = bet_services.select_betK(player, pic, null, bet, player.get_money(), textbox_display_bet,false);
+            bet = bet_services.select_betK(player, pic, null, trackBar_bet, bet, player.get_money(), textbox_display_bet,false);
 
         void handler_bet_chip() {
             bet_2K.Click += select_bet2K;
